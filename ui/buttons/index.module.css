@@ -1,0 +1,6 @@
+.button{
+    background-color: aqua;
+}
+.blue{
+    background-color: var(--primary-color);
+}

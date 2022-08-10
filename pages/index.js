@@ -1,3 +1,5 @@
+import HomePage from "../components/home-page";
+
 export default function Home() {
-  return <div>Hola soy el front de MiraVos</div>;
+  return <HomePage></HomePage>;
 }
