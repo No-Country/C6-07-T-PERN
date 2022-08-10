@@ -1,3 +1,9 @@
 body{
-    --primary-color:#000
+    --primary:#F2B356;
+    --secondary:#6BE3B3;
+    --accent:#D3A7FF;
+    --background:#060606;
+    --background-secondary:#333333;
+    --outlined:#79747E;
+    --text:#FBFBFB;
 }
