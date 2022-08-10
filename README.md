@@ -1,110 +1,34 @@
-# Miravos
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-_Miravos es una web que_ **facilita la toma de decisión a la hora de elegir una película o serie** _para ver tanto sea por streamming o cine._
+## Getting Started
 
-_Así como uno busca las valoraciones y comentarios de personas para realizar una compra o elegir un restaurante, Miravos busca su_ **valor diferencial, en ofrecer a la persona usuaria los User Reviews de IMDb** _(Internet Movie Database) junto con el puntaje otorgado._
+First, run the development server:
 
-_La propuesta inicial es que con las variables de_ **sinopsis, puntaje, comentarios y trailer** _de cada película se logre la_ **satisfacción de la persona para hallar la elección de su agrado**.
-
-_Para aquellas personas que ya se tomaban el trabajo de buscar una película adecuada, se simplifica otorgando los parámetros para la mejor elección._
-
-_Para aquellas personas que no se preocupaban por elegir, les va a ahorrar muchísimo tiempo de películas que no valen la pena._
-
-## Comenzando 🚀
-
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
-
-Mira **Deployment** para conocer como desplegar el proyecto.
-
-### Pre-requisitos 📋
-
-_Que cosas necesitas para instalar el software y como instalarlas_
-
-```
-Da un ejemplo
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
-### Instalación 🔧
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-_Dí cómo será ese paso_
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-```
-Da un ejemplo
-```
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-_Y repite_
+## Learn More
 
-```
-hasta finalizar
-```
+To learn more about Next.js, take a look at the following resources:
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Ejecutando las pruebas ⚙️
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+## Deploy on Vercel
 
-### Analice las pruebas end-to-end 🔩
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
-
-## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
-- [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-- [Maven](https://maven.apache.org/) - Manejador de dependencias
-- [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-- **Adrián Fermanelli** - _UX UI Designer_ - [AdrianFermanelli](https://github.com/AdrianFermanelli)
-- **Fabián Alfonso Gómez** - _Full Stack - PERN_ - [Nano204](https://https://github.com/Nano204)
-- **Manuel Alejandro Martinez** - _Full Stack - PERN_ - [Manu-Martinez](#https://github.com/Manu-Martinez)
-- **Denis Parada** - _Full Stack - PERN_ - [DenisMPar](#https://github.com/DenisMPar)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto.
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-- Comenta a otros sobre este proyecto 📢
-- Invita una cerveza 🍺 o un café ☕ a alguien del equipo.
-- Da las gracias públicamente 🤓.
-- Dona con cripto a esta dirección: `0xf253fc233333078436d111175e5a76a649890000`
-- etc.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
