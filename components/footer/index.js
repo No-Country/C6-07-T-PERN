@@ -2,7 +2,7 @@ import {DarkLogo, InstagramIcon, TwitterIcon} from "../../ui/icons/index.js";
 import css from "./index.module.css";
 
 export default function Footer() {
-return <div>
+return <div className={css.divFooterMain}>
 	<div className={css.divFooterLogo}>
 	<DarkLogo /> 
 	</div>
@@ -10,7 +10,7 @@ return <div>
 		<InstagramIcon /> 
         <TwitterIcon />
 	</div>
-	<div>
+	<div className={css.copyrightFooter}>
 		Todos los derechos reservados
 	</div>
 </div>
