@@ -1,16 +1,19 @@
 .logo{
+    cursor: pointer;
     width: 100%;
     height: 100%;
     max-width: 190px;
     max-height: 64px;
 }
 .icon{
+    cursor: pointer;
     width: 100%;
     height: 100%;
     max-width: 19px;
     max-height: 19px;
 }
 .social_media{
+    cursor: pointer;
     width: 100%;
     height: 100%;
     max-width: 24px;
