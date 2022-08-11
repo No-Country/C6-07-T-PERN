@@ -1,0 +1,28 @@
+.navBar{
+    padding: 0;
+    padding-right: 20px;
+    height: 56px;
+    background-color: var(--background);
+}
+.navBarLogo{
+    height: 100%;
+    width: 100%;
+}
+.navBarItemsContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.navMenu{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    gap: 23px;
+}
+.navMenuItem{
+    width: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
