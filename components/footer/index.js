@@ -1,3 +1,5 @@
+import {DarkLogo, Insta, Twitter} from "../../ui/icons/index.js";
+
 export default function Footer() {
-  return <div>Footer</div>;
+  return <div><DarkLogo /> <Insta /> <Twitter /> Todos los derechos reservados</div>;
 }
