@@ -1,3 +1,4 @@
+// import { PrimaryButton } from "../ui/buttons";
 import { PrimaryButton } from "../ui/buttons";
 import {
   ArrowDownIcon,
@@ -34,8 +35,8 @@ export default function UI() {
       <ArrowRightIcon></ArrowRightIcon>
       <ImdbIcon></ImdbIcon>
       <InstagramIcon></InstagramIcon>
-      <FacebookIcon></FacebookIcon>
       <TwitterIcon></TwitterIcon>
+      <PrimaryButton>Más Datos</PrimaryButton>
     </div>
   );
 }

@@ -1,10 +1,13 @@
 .bgcolor {
-	padding: 15px 25px;
-	font-size: 15px;
-	font-weight: normal;
+	font-family: inherit;
+	max-width: 101px;
+	padding: 7px 12px;
+	font-size: 16px;
+	font-weight: 600;
 	background-color: var(--secondary);
 	border-radius: 10px;
 	outline: none;
 	border: 2px;
 	cursor: pointer;
+	color:var(--background)
 }
