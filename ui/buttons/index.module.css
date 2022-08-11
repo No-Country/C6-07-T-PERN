@@ -1,6 +1,10 @@
-.button{
-    background-color: aqua;
-}
-.blue{
-    background-color: var(--primary-color);
+.bgcolor {
+	padding: 15px 25px;
+	font-size: 15px;
+	font-weight: normal;
+	background-color: var(--secondary);
+	border-radius: 10px;
+	outline: none;
+	border: 2px;
+	cursor: pointer;
 }
