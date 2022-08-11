@@ -1,0 +1,18 @@
+.divFooterLogo {
+	float: left;
+	width: 50%;
+}
+
+.divFooterIcons {
+	float: right;
+	width: 50%;
+	display: flex;
+	color: var(--secondary);
+	flex-direction: row;
+	align-content: center;
+}
+
+.copyrightFooter {
+	text-align: center;
+	color: var(--outlined);
+}
