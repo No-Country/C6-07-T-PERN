@@ -9,6 +9,10 @@ import Right from "./images/arrow-right.svg";
 import Imdb from "./images/imdb-icon.svg";
 import Insta from "./images/instagram-icon.svg";
 import Twitter from "./images/twitter-icon.svg";
+import Amazon from "./images/amazon-icon.svg";
+import Netflix from "./images/netflix-icon.svg";
+import Disney from "./images/disney-icon.svg";
+import Hbo from "./images/hbo-icon.svg";
 import css from "./index.module.css";
 export function ColorLogo() {
   return <Color className={css.logo}></Color>;
@@ -43,4 +47,16 @@ export function InstagramIcon() {
 
 export function TwitterIcon() {
   return <Twitter className={css["social_media"]}></Twitter>;
+}
+export function AmazonIcon() {
+  return <Amazon className={css.platform}></Amazon>;
+}
+export function NetflixIcon() {
+  return <Netflix className={css.platform}></Netflix>;
+}
+export function DisneyIcon() {
+  return <Disney className={css.platform}></Disney>;
+}
+export function HboIcon() {
+  return <Hbo className={css.platform}></Hbo>;
 }

@@ -1,4 +1,4 @@
-.buttons {
+.primary {
 	font-family: inherit;
 	max-width: 101px;
 	padding: 7px 12px;
@@ -10,4 +10,11 @@
 	border: 2px;
 	cursor: pointer;
 	color:var(--background)
+}
+.platform{
+	border-style: none;
+	width: 70px;
+height: 32px;
+	background-color: var(--background-secondary);
+	border-radius: 6px;
 }

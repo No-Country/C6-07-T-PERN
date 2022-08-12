@@ -1,17 +1,21 @@
 // import { PrimaryButton } from "../ui/buttons";
 import Footer from "../components/footer";
 import NavBar from "../components/nav-bar";
-import { PrimaryButton } from "../ui/buttons";
+import { PlatformFilterButton, PrimaryButton } from "../ui/buttons";
 import {
+  AmazonIcon,
   ArrowDownIcon,
   ArrowRightIcon,
   BurgerIcon,
   CloseIcon,
   ColorLogo,
   DarkLogo,
+  DisneyIcon,
   FacebookIcon,
+  HboIcon,
   ImdbIcon,
   InstagramIcon,
+  NetflixIcon,
   SaveIcon,
   SearchIcon,
   TwitterIcon,
@@ -27,6 +31,7 @@ export default function UI() {
           backgroundColor: "#060606",
           gap: "20px",
           marginBottom: "20px",
+          padding: "10px",
         }}
       >
         <DarkLogo></DarkLogo>
@@ -41,6 +46,18 @@ export default function UI() {
         <InstagramIcon></InstagramIcon>
         <TwitterIcon></TwitterIcon>
         <PrimaryButton>Más Datos</PrimaryButton>
+        <PlatformFilterButton>
+          <AmazonIcon></AmazonIcon>
+        </PlatformFilterButton>
+        <PlatformFilterButton>
+          <NetflixIcon></NetflixIcon>
+        </PlatformFilterButton>
+        <PlatformFilterButton>
+          <DisneyIcon></DisneyIcon>
+        </PlatformFilterButton>
+        <PlatformFilterButton>
+          <HboIcon></HboIcon>
+        </PlatformFilterButton>
         <Footer></Footer>
       </div>
       <NavBar></NavBar>
