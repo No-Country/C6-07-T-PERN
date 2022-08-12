@@ -9,10 +9,10 @@ export default function DetailsMovie() {
   const router = useRouter();
   const { id } = router.query;
   const [serie, setserie] = useState();
-  console.log(serie);
+
   useEffect(() => {
     async function getserie() {
-      const data = await serieBuilder(id, "ar");
+      const data = await serieBuilder(id, [], "ar");
       setserie(data);
     }
     getserie();

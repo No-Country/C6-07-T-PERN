@@ -17,6 +17,10 @@ async function bootstrap() {
   );
   app.enableCors();
   // Stablish the connection port
+<<<<<<< HEAD
   await app.listen(PORT);
+=======
+  await app.listen(process.env.PORT);
+>>>>>>> 5257cca42ca0a10533f7db1a30ddd9b65b651eb5
 }
 bootstrap();

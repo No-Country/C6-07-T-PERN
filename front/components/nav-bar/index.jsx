@@ -27,7 +27,6 @@ function NavBar(props) {
   const dispatch = useDispatch();
 
   async function handleWatchList() {
-    console.log("handle");
     const res = await isLogged();
     if (res.logged == true) {
       router.push("/my-list");
@@ -36,7 +35,6 @@ function NavBar(props) {
     }
   }
   async function handleProfile() {
-    console.log("handle");
     const res = await isLogged();
     if (res.logged == true) {
       router.push("/profile");

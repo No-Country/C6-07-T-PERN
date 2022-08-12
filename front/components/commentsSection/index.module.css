@@ -1,6 +1,11 @@
 .margin{
     margin: 0;
 }
+.containerTitle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .commentsSectionContainer{
   margin: 0 auto;
   max-width: 1105px;
@@ -56,5 +61,8 @@ border-radius: 8px;
     outline: none;
   }
   .commentsSubmitButton{
+    width: 200px;
+    display: flex;
+    gap: 15px;
     place-self: end;
   }

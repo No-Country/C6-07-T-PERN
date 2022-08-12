@@ -63,10 +63,13 @@ function getTrailer(mediaId) {
 //Nano: Función para construir el objeto media con la información necesaria para nuestro filtros
 export async function serieBuilder(mediaId, lists, country) {
   //Nano: Extraigo las listas
-  const thisMediaLists = lists.find(
-    (media) =>
-      media.media.mediaId == mediaId && media.media.mediaType == "serie"
-  );
+  const thisMediaLists =
+    lists.length > 0
+      ? lists.find(
+          (media) =>
+            media.media.mediaId == mediaId && media.media.mediaType == "serie"
+        )
+      : null;
 
   //Nano: Hago la llamada a la API de detalles
   const details = await getDetails(mediaId);

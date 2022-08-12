@@ -1,12 +1,45 @@
-import { PrimaryButton } from "../../ui/buttons";
-import { H5 } from "../../ui/text";
+import { useState } from "react";
+import { OutlinedButton, PrimaryButton } from "../../ui/buttons";
+import { H4, H5 } from "../../ui/text";
 import Comment from "../comment";
 import css from "./index.module.css";
 export default function CommentsSection(props) {
+  const [showTextArea, setShowTextArea] = useState();
   const comments = props.comments;
 
   return (
     <div className={css.commentsSectionContainer}>
+      <div className={css.userCommentSection}>
+        {showTextArea ? (
+          <>
+            <H5>Deja tu comentario:</H5>
+            <form className={css.commentsForm} onSubmit={props.submit}>
+              <textarea
+                className={css.commentsTextArea}
+                name="message"
+              ></textarea>
+              <div className={css.commentsSubmitButton}>
+                <OutlinedButton
+                  onClick={() => {
+                    setShowTextArea(false);
+                  }}
+                >
+                  Cancelar
+                </OutlinedButton>
+                <PrimaryButton>Enviar</PrimaryButton>
+              </div>
+            </form>
+          </>
+        ) : null}
+      </div>
+      <div className={css.containerTitle}>
+        <H4>Comentarios:</H4>
+        {!showTextArea ? (
+          <PrimaryButton onClick={() => setShowTextArea(true)}>
+            Comentar
+          </PrimaryButton>
+        ) : null}
+      </div>
       <div className={css.commentsBox}>
         {comments.length > 0
           ? comments.map((item) => {
@@ -20,27 +53,6 @@ export default function CommentsSection(props) {
               );
             })
           : null}
-      </div>
-      <div className={css.userCommentSection}>
-        <H5>Deja tu comentario:</H5>
-        <form className={css.commentsForm} onSubmit={props.submit}>
-          {/* <label>
-            <H5 className={css.margin} aut>
-              User Name:
-            </H5>
-            <input
-              className={css.commentsInput}
-              type={"text"}
-              name="userName"
-              autoComplete="off"
-            />
-          </label> */}
-          {/* <H5 className={css.margin}>Comentario:</H5> */}
-          <textarea className={css.commentsTextArea} name="message"></textarea>
-          <PrimaryButton className={css.commentsSubmitButton}>
-            Enviar
-          </PrimaryButton>
-        </form>
       </div>
     </div>
   );

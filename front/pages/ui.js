@@ -1,4 +1,5 @@
 // import { PrimaryButton } from "../ui/buttons";
+import { Messages } from "../components/alertMessages";
 import FilterContainer from "../components/filterContainer";
 import Footer from "../components/footer";
 
@@ -80,6 +81,9 @@ export default function UI() {
         <H5>H5!</H5>
         <Loading />
         <FilterContainer />
+        <div>
+          <Messages text={"Agregada a la lista"} />
+        </div>
       </div>
     </>
   );
