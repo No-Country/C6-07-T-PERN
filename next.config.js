@@ -1,12 +1,18 @@
+const withSvgr = require("next-svgr");
+
 /** @type {import('next').NextConfig} */
+
 require("dotenv").config();
 
-const nextConfig = {
+module.exports = withSvgr({
+  // your config for other plugins or the general next.js here...
   reactStrictMode: true,
   swcMinify: true,
+  compiler: {
+    styledComponents: true,
+  },
   env: {
     APIKEY: process.env.APIKEY,
   },
-};
+});
 
-module.exports = nextConfig;
