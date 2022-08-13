@@ -8,6 +8,7 @@ import Close from "./images/close.svg";
 import Right from "./images/arrow-right.svg";
 import Imdb from "./images/imdb-icon.svg";
 import Insta from "./images/instagram-icon.svg";
+import Face from "./images/facebook-icon.svg";
 import Twitter from "./images/twitter-icon.svg";
 import Amazon from "./images/amazon-icon.svg";
 import Netflix from "./images/netflix-icon.svg";
@@ -43,6 +44,9 @@ export function ImdbIcon() {
 }
 export function InstagramIcon() {
   return <Insta className={css["social_media"]}></Insta>;
+}
+export function FacebookIcon() {
+  return <Face className={css["social_media"]}></Face>;
 }
 
 export function TwitterIcon() {
