@@ -7,10 +7,25 @@ async function mediaBuilder(mediaId, country) {
     `https://api.themoviedb.org/3/movie/${mediaId}?api_key=${api_key}&language=es-LA`
   ).then((r) => r.json());
 
-  //Nano: Hago la llamada a la API de creaditos
+  //Nano: Hago la llamada a la API de creditos
   const crew = await fetch(
     `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${api_key}&language=es-LA`
   ).then((r) => r.json());
+
+  //Nano: Hago la llamada a la API de titulos
+  const alternativeTitle = await fetch(
+    `https://api.themoviedb.org/3/movie/${mediaId}/alternative_titles?api_key=${api_key}`
+  )
+    .then((r) => r.json())
+    .then((response) => {
+      const title =
+        response.titles &&
+        response.titles.find(
+          (element) =>
+            element.iso_3166_1 === country || element.iso_3166_1 === "ES"
+        );
+      return title ? title.title : null;
+    });
 
   //Nano: Hago la llamada a la API de plataformas
   const platforms = await fetch(
@@ -39,11 +54,15 @@ async function mediaBuilder(mediaId, country) {
   if (details) {
     const media = {
       id: details.id,
-      title: details.original_title,
+      title: alternativeTitle || details.original_title,
       overview: details.overview,
       release_date: details.release_date,
-      // release_year: details.release_date.splice(0, 4),
-      vote_average: details.vote_average,
+      release_year: details.release_date
+        ? details.release_date.slice(0, 4)
+        : null,
+      vote_average: details.vote_average
+        ? Math.floor(details.vote_average * 10) / 10
+        : null,
       genres: details.genres,
       image: `https://image.tmdb.org/t/p/w500/${details.poster_path}`,
       actors: crew.cast && crew.cast.filter((actor) => actor.popularity >= 5),
@@ -53,11 +72,11 @@ async function mediaBuilder(mediaId, country) {
       platforms: platforms.map((platform) => ({
         id: platform.provider_id,
         name: platform.provider_name,
+        logo: `https://image.tmdb.org/t/p/w500/${platform.logo_path}`,
       })),
       trailer: `https://www.youtube.com/watch?v=${trailer}`,
       // type,
     };
-    // console.log("Detail: ", details.release_date.toString().splice(0, 4));
     return media;
   }
   return undefined;
@@ -80,7 +99,8 @@ export function getMedia() {
         return media.filter((element) => element.id);
       })
       .then((response) => {
-        console.log("Media:", response);
+        // console.table(response);
+        // console.log(response);
         dispatch({ type: SET_MEDIA, payload: response });
       });
   };

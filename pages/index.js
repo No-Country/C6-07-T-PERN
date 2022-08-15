@@ -1,6 +1,5 @@
-import HomePage from "../components/home-page";
-import StoreTester from "../components/storeTester/storeTester";
+import CardsContainer from "../components/cardsContainer";
 
 export default function Home() {
-  return <StoreTester></StoreTester>;
+  return <CardsContainer />
 }

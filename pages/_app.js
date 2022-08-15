@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
   // que los estados globales del stores esten en toda app
   return (
     <Provider store={store}>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </Provider>
   );
 }
