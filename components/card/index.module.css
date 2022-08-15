@@ -1,0 +1,16 @@
+.divCardMain {
+  display: inline-block;
+  max-width: 300px;
+}
+
+.imgCardMain {
+  max-width: 200px;
+}
+
+.imgCardPlatform {
+  max-width: 35px;
+}
+
+.imgCardRaiting {
+  max-width: 35px;
+}
