@@ -1,16 +1,57 @@
 .divCardMain {
-  display: inline-block;
-  max-width: 300px;
+  color: #fff;
+  background-color: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  width: 328px;
+  height: 517px;
+  border-radius: 8px;
+}
+.divCardHeader{
+  margin: 4px 0 6px 0;
+  height: 29px;
+  color: var(--primary);
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  gap:4px;
+}
+.sinopsisText{
+  margin: 0;
 }
 
 .imgCardMain {
-  max-width: 200px;
+  width: 290px;
+  height: 420px;
 }
-
+.divCardImage{
+  height: 420px;
+  margin:0 auto;
+  position: relative;
+}
+.divImgCardPlatform{
+  position: absolute;
+  bottom: 10px;
+  left: 9px;
+}
 .imgCardPlatform {
-  max-width: 35px;
+  width: 56px;
+  height: 32px;
 }
+.divCardFooter{
+  height: 36px;
+  width: 100%;
+  margin: 16px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.divCardRaiting{
 
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
 .imgCardRaiting {
   max-width: 35px;
 }
