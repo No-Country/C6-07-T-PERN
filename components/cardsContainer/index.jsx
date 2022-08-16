@@ -33,7 +33,7 @@ function CardsContainer() {
 
   //Nano: Devolución de la etiqueta
   return (
-    <div className="divCardContainer">
+    <div className={css.divCardContainer}>
       {media.map((element) => {
         return <Card key={element.id} media={element} />;
       })}

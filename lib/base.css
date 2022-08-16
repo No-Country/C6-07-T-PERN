@@ -5,6 +5,7 @@
 }
 
 body{
+    margin: 0;
     font-family: 'Red Hat Display', sans-serif;
     --primary:#F2B356;
     --secondary:#6BE3B3;
