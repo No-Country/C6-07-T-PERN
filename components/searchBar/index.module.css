@@ -1,0 +1,37 @@
+.searchBarContainer {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.searchBarInput {
+	width: 70%;
+	height: 24px;
+	border: 2px solid #79747E;
+	border-radius: 6px;
+	background-color: transparent;
+}
+
+.searchBarCloseIcon {
+	float: left;
+	border: double transparent;
+	background-color: transparent;
+}
+
+.searchBarArrowRightIcon {
+	float: right;
+	border: double transparent;
+	background-color: transparent;
+}
+
+.searchBarContainer::after {
+	display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.4em;
+    padding: 0 0.3em;
+	color: #CCC;
+}
+
