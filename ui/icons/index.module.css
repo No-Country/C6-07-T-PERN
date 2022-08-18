@@ -10,8 +10,8 @@
     cursor: pointer;
     width: 100%;
     height: 100%;
-    max-width: 19px;
-    max-height: 19px;
+    max-width: 24px;
+    max-height: 24px;
 }
 .social_media{
     cursor: pointer;
@@ -25,4 +25,12 @@
     width: 100%;
     height: 100%;
    
+}
+.platformIcon{
+    cursor:default;
+	border-style: none;
+	width: 100%;
+height: 32px;
+	background-color: var(--background-secondary);
+	border-radius: 6px;
 }

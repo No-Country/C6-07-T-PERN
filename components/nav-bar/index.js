@@ -1,4 +1,4 @@
-import { BurgerIcon, ColorLogo, SaveIcon, SearchIcon } from "../../ui/icons";
+import { ProfileIcon, ColorLogo, SaveIcon, SearchIcon } from "../../ui/icons";
 import css from "./index.module.css";
 export default function NavBar() {
   return (
@@ -15,7 +15,7 @@ export default function NavBar() {
             <SaveIcon></SaveIcon>
           </li>
           <li className={css.navMenuItem}>
-            <BurgerIcon></BurgerIcon>
+            <ProfileIcon></ProfileIcon>
           </li>
         </ul>
       </div>

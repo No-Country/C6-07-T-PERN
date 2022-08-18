@@ -34,8 +34,8 @@ function CardsContainer() {
   //Nano: Devolución de la etiqueta
   return (
     <div className={css.divCardContainer}>
-      {media.map((element) => {
-        return <Card key={element.id} media={element} />;
+      {media.map((element, index) => {
+        return <Card key={element.id} media={element} priority={index == 0? true: false}/>;
       })}
     </div>
   );

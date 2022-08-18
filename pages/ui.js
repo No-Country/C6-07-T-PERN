@@ -6,7 +6,7 @@ import {
   AmazonIcon,
   ArrowDownIcon,
   ArrowRightIcon,
-  BurgerIcon,
+  ProfileIcon,
   CloseIcon,
   ColorLogo,
   DarkLogo,
@@ -36,7 +36,7 @@ export default function UI() {
       >
         <DarkLogo></DarkLogo>
         <ColorLogo></ColorLogo>
-        <BurgerIcon></BurgerIcon>
+        <ProfileIcon></ProfileIcon>
         <SearchIcon></SearchIcon>
         <SaveIcon></SaveIcon>
         <ArrowDownIcon></ArrowDownIcon>

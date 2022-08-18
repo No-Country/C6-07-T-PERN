@@ -7,8 +7,9 @@
 body{
     margin: 0;
     font-family: 'Red Hat Display', sans-serif;
-    --primary:#F2B356;
-    --secondary:#6BE3B3;
+    background-color: var(--background);
+    --primary:#6BE3B3;
+    --secondary:#F2B356;
     --accent:#D3A7FF;
     --background:#060606;
     --background-secondary:#333333;
