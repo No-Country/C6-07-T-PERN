@@ -1,0 +1,6 @@
+.divPlatformFilters{
+    padding: 16px 0;
+    width: 100%;
+    display: flex;
+justify-content: space-between;
+}

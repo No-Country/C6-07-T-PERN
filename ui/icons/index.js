@@ -1,6 +1,6 @@
 import Color from "./images/color-logo.svg";
 import Dark from "./images/dark-logo.svg";
-import Burger from "./images/burger-icon.svg";
+import Profile from "./images/profile-icon.svg";
 import Search from "./images/search-icon.svg";
 import Save from "./images/save-icon.svg";
 import Down from "./images/arrow-down.svg";
@@ -21,8 +21,8 @@ export function ColorLogo() {
 export function DarkLogo() {
   return <Dark className={css.logo}></Dark>;
 }
-export function BurgerIcon() {
-  return <Burger className={css.icon}></Burger>;
+export function ProfileIcon() {
+  return <Profile className={css.icon}></Profile>;
 }
 export function SearchIcon() {
   return <Search className={css.icon}></Search>;
@@ -63,4 +63,7 @@ export function DisneyIcon() {
 }
 export function HboIcon() {
   return <Hbo className={css.platform}></Hbo>;
+}
+export function PlatformIcon(props) {
+  return <button className={css.platformIcon}>{props.children}</button>;
 }

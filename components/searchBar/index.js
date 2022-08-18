@@ -6,20 +6,17 @@ import css from "./index.module.css";
 
 // Manu: exportacion del componente SearchBar
 export default function SearchBar(props) {
-	
-return (
-	<div className={css.searchBarContainer}>
-		<form onSubmit={props.submit}>
-		<button className={css.searchBarCloseIcon}><CloseIcon /></button>
-		<input className={css.searchBarInput}
-		type='text'
-		value='Búsqueda'
-		placeholder="searchMediaBar"
-		/>
-		<button className={css.searchBarArrowRightIcon}><ArrowRightIcon /></button>
-		</form>	  	
-	</div>
-
-);
-
+  return (
+    <div className={css.searchBarContainer}>
+      <form onSubmit={props.submit} className={css.searchBarForm}>
+        <div className={css.searchBarIcons} onClick={props.toggle}>
+          <CloseIcon />
+        </div>
+        <input className={css.searchBarInput} type="text" placeholder="" />
+        <div className={css.searchBarIcons}>
+          <ArrowRightIcon />
+        </div>
+      </form>
+    </div>
+  );
 }

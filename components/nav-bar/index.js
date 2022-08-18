@@ -1,6 +1,6 @@
-import { BurgerIcon, ColorLogo, SaveIcon, SearchIcon } from "../../ui/icons";
+import { ProfileIcon, ColorLogo, SaveIcon, SearchIcon } from "../../ui/icons";
 import css from "./index.module.css";
-export default function NavBar() {
+export default function NavBar(props) {
   return (
     <nav className={css.navBar}>
       <div className={css.navBarItemsContainer}>
@@ -8,14 +8,14 @@ export default function NavBar() {
           <ColorLogo></ColorLogo>
         </div>
         <ul className={css.navMenu}>
-          <li className={css.navMenuItem}>
+          <li className={css.navMenuItem} onClick={props.toggle}>
             <SearchIcon></SearchIcon>
           </li>
           <li className={css.navMenuItem}>
             <SaveIcon></SaveIcon>
           </li>
           <li className={css.navMenuItem}>
-            <BurgerIcon></BurgerIcon>
+            <ProfileIcon></ProfileIcon>
           </li>
         </ul>
       </div>

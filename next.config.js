@@ -14,5 +14,12 @@ module.exports = withSvgr({
   env: {
     APIKEY: process.env.APIKEY,
   },
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
+  images: {
+    domains: [`image.tmdb.org`],
+  },
 });
-

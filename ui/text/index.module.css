@@ -1,0 +1,10 @@
+.text{
+    color: var(--text);
+}
+
+
+
+.title{
+    font-size: 24px;
+    font-weight: 700;
+    }
