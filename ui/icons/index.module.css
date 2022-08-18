@@ -1,4 +1,5 @@
 .logo{
+    place-self: center;
     cursor: pointer;
     width: 100%;
     height: 100%;
@@ -14,6 +15,7 @@
     max-height: 24px;
 }
 .social_media{
+    place-self: center;
     cursor: pointer;
     width: 100%;
     height: 100%;
@@ -21,12 +23,14 @@
     max-height: 24px;
 }
 .platform{
+    place-self: center;
     cursor: pointer;
     width: 100%;
     height: 100%;
    
 }
 .platformIcon{
+    place-self: center;
     cursor:default;
 	border-style: none;
 	width: 100%;
