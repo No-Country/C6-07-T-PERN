@@ -3,7 +3,7 @@ import Color from "./images/color-logo.svg";
 import Dark from "./images/dark-logo.svg";
 import Profile from "./images/profile-icon.svg";
 import Search from "./images/search-icon.svg";
-import WatchList from "./images/WatchList-icon.svg";
+import WatchList from "./images/watchList-icon.svg";
 import Down from "./images/arrow-down.svg";
 import Up from "./images/arrow-up.svg";
 import Close from "./images/close.svg";
