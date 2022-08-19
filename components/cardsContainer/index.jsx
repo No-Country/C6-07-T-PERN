@@ -10,7 +10,7 @@ import css from "./index.module.css";
 //Nano: Mapeo de los estados de redux con las props del elemento
 function mapStateToProps(state) {
   return {
-    media: state.media,
+    media: state.mediaReducer,
   };
 }
 
@@ -22,20 +22,28 @@ function mapDispatchToProps(dispatch) {
 }
 
 //Nano: Función principal para contrucción de la etiqueta
-function CardsContainer() {
+function CardsContainer(props) {
   //Nano: Asociación del objeto media y los dispátch con las props:
-  const media = useSelector((state) => state.media);
+  const { media } = useSelector((state) => state.mediaReducer);
+  const { filter } = useSelector((state) => state.filterReducer);
   const dispatch = useDispatch();
   //Nano: Aministración de estados de la etiqueta Card
+
   useEffect(() => {
     dispatch(getMedia());
-  }, []);
+  }, [filter]);
 
   //Nano: Devolución de la etiqueta
   return (
     <div className={css.divCardContainer}>
       {media.map((element, index) => {
-        return <Card key={element.id} media={element} priority={index == 0? true: false}/>;
+        return (
+          <Card
+            key={element.id}
+            media={element}
+            priority={index == 0 ? true : false}
+          />
+        );
       })}
     </div>
   );

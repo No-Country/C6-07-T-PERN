@@ -1,5 +1,11 @@
-import css from "./index.module.css";
+//Nano: Importo dispatch para enviar estados al store
+import { setFilterByPlatform } from "../../store/actions";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
+
+//Se importan los estiilos desde archivo propio
+import css from "./index.module.css";
+
 export function PrimaryButton(props) {
   return <button className={css.primary}>{props.children}</button>;
 }
@@ -8,9 +14,14 @@ export function PlatformFilterButton(props) {
   function toggle() {
     setActive(!active);
   }
+  const dispatch = useDispatch();
   return (
     <button
-      onClick={toggle}
+      onClick={() => {
+        console.log(props);
+        toggle();
+        dispatch(setFilterByPlatform(props.platform));
+      }}
       className={css.buttonFilter}
       style={{
         opacity: `${active ? "100%" : "40%"}`,

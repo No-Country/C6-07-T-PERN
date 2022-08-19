@@ -5,16 +5,16 @@ import css from "./index.module.css";
 export default function PlatformFilters() {
   return (
     <div className={css.divPlatformFilters}>
-      <PlatformFilterButton>
+      <PlatformFilterButton platform="Netflix">
         <NetflixIcon></NetflixIcon>
       </PlatformFilterButton>
-      <PlatformFilterButton>
+      <PlatformFilterButton platform="HBO Go">
         <HboIcon></HboIcon>
       </PlatformFilterButton>
-      <PlatformFilterButton>
+      <PlatformFilterButton platform="Disney Plus">
         <DisneyIcon></DisneyIcon>
       </PlatformFilterButton>
-      <PlatformFilterButton>
+      <PlatformFilterButton platform="Amazon Prime Video">
         <AmazonIcon></AmazonIcon>
       </PlatformFilterButton>
     </div>
