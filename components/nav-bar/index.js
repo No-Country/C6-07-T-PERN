@@ -1,4 +1,9 @@
-import { ProfileIcon, ColorLogo, SaveIcon, SearchIcon } from "../../ui/icons";
+import {
+  ProfileIcon,
+  ColorLogo,
+  WatchListIcon,
+  SearchIcon,
+} from "../../ui/icons";
 import css from "./index.module.css";
 export default function NavBar(props) {
   return (
@@ -12,7 +17,7 @@ export default function NavBar(props) {
             <SearchIcon></SearchIcon>
           </li>
           <li className={css.navMenuItem}>
-            <SaveIcon></SaveIcon>
+            <WatchListIcon></WatchListIcon>
           </li>
           <li className={css.navMenuItem}>
             <ProfileIcon></ProfileIcon>

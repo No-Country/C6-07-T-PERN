@@ -8,9 +8,14 @@ import {
   ImdbIcon,
   NetflixIcon,
   AmazonIcon,
+  SeenIcon,
+  SaveIcon,
+  ArrowUpIcon,
 } from "../../ui/icons";
 import Image from "next/future/image";
 import css from "./index.module.css";
+import { useState } from "react";
+import { H2, H3semiBold, H4 } from "../../ui/text";
 
 //Denis: funcion que devuelve el icono de la plataforma correspondiente
 function showMoviePlatform(platform) {
@@ -44,28 +49,86 @@ function showMoviePlatform(platform) {
 //Nano: Función principal para contrucción de la etiqueta
 export default function Card(props) {
   const { media } = props;
+  const [showSinopsis, setShowsinopsis] = useState(false);
+
   //Nano: Devolución de la etiqueta
   return (
     <div className={css.divCardMain}>
-      <div className={css.divCardHeader}>
+      <div
+        className={css.divCardHeader}
+        onClick={() => {
+          setShowsinopsis(!showSinopsis);
+        }}
+      >
         <p className={css.sinopsisText}>Sinopsis</p>
-        <ArrowDownIcon className={css.headerArrowDown}></ArrowDownIcon>
+        {showSinopsis ? (
+          <ArrowUpIcon className={css.headerArrowDown}></ArrowUpIcon>
+        ) : (
+          <ArrowDownIcon className={css.headerArrowDown}></ArrowDownIcon>
+        )}
       </div>
-      <div className={css.divCardImage}>
-        <Image
-          priority={props.priority}
-          className={css.imgCardMain}
-          width={290}
-          height={420}
-          src={media.image}
-          alt={`${media.title}-banner`}
-        />
-        <div className={css.divImgCardPlatform}>
-          {media.platforms.map((element) => {
-            return showMoviePlatform(element);
-          })}
+      {showSinopsis ? (
+        <div
+          className={css.divSinopsisContainer}
+          onMouseLeave={() => {
+            setShowsinopsis(false);
+          }}
+        >
+          <div className={css.divSinopsisHeader}>
+            <SeenIcon></SeenIcon>
+            <H2>{props.title}</H2>
+            <SaveIcon></SaveIcon>
+          </div>
+          <div className={css.divSinopsisBody}>
+            <div>
+              <H4 className={css.sinopsisTextMargin}>Director</H4>
+              <H3semiBold className={css.sinopsisTextMargin}>
+                {props.director}{" "}
+              </H3semiBold>
+            </div>
+            <div>
+              <H4 className={css.sinopsisTextMargin}>Elenco</H4>
+              {props.actors.map((element, index) => {
+                return index <= 1 ? (
+                  <H3semiBold
+                    className={css.sinopsisTextMargin}
+                    key={element.id}
+                  >
+                    {element.name}
+                  </H3semiBold>
+                ) : null;
+              })}
+            </div>
+            <div>
+              <H3semiBold className={css.sinopsisTextMargin}>
+                Sinopsis
+              </H3semiBold>
+              <H4 className={css.sinopsisBodyText}>{props.sinopsis}</H4>
+            </div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div
+          className={css.divCardImage}
+          onMouseEnter={() => {
+            setShowsinopsis(true);
+          }}
+        >
+          <Image
+            priority={props.priority}
+            className={css.imgCardMain}
+            width={290}
+            height={420}
+            src={media.image}
+            alt={`${media.title}-banner`}
+          />
+          <div className={css.divImgCardPlatform}>
+            {media.platforms.map((element) => {
+              return showMoviePlatform(element);
+            })}
+          </div>
+        </div>
+      )}
       <div className={css.divCardFooter}>
         <div className={css.divCardRaiting}>
           <p className={css.textCardRaiting}>{media.vote_average}</p>
