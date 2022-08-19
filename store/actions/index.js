@@ -1,19 +1,23 @@
 export const SET_MEDIA = "media/set";
 const api_key = process.env.APIKEY;
 
-async function mediaBuilder(mediaId, country) {
-  const details = await fetch(
-    //Nano: Hago la llamada a la API de detalles
+//Nano: Función para llamar la API de detalles
+function getDetails(mediaId) {
+  return fetch(
     `https://api.themoviedb.org/3/movie/${mediaId}?api_key=${api_key}&language=es-LA`
   ).then((r) => r.json());
+}
 
-  //Nano: Hago la llamada a la API de creditos
-  const crew = await fetch(
+//Nano: Función para llamar la API de creditos
+function getCredits(mediaId) {
+  return fetch(
     `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${api_key}&language=es-LA`
   ).then((r) => r.json());
+}
 
-  //Nano: Hago la llamada a la API de titulos
-  const alternativeTitle = await fetch(
+//Nano: Función para llamar la API de títulos y retornar el titulo alternativo
+function getTitles(mediaId, country) {
+  return fetch(
     `https://api.themoviedb.org/3/movie/${mediaId}/alternative_titles?api_key=${api_key}`
   )
     .then((r) => r.json())
@@ -26,9 +30,11 @@ async function mediaBuilder(mediaId, country) {
         );
       return title ? title.title : null;
     });
+}
 
-  //Nano: Hago la llamada a la API de plataformas
-  const platforms = await fetch(
+//Nano: Función para llamar la API de plataformas
+function getPlatforms(mediaId, country) {
+  return fetch(
     `https://api.themoviedb.org/3/movie/${mediaId}/watch/providers?api_key=${api_key}`
   ).then(async (r) => {
     let result = await r.json();
@@ -41,19 +47,33 @@ async function mediaBuilder(mediaId, country) {
     }
     return platforms;
   });
+}
 
-  // Nano: Hago la llamada a la API de plataformas
-  const trailer = await fetch(
+//Nano: Función para llamar la API de trailers
+function getTrailer(mediaId) {
+  return fetch(
     `https://api.themoviedb.org/3/movie/${mediaId}/videos?api_key=${api_key}&language=es-LA`
   ).then(async (r) => {
     const result = await r.json();
     return result.results ? result.results[0] && result.results[0].key : null;
   });
+}
 
-  //Nano: Construyo el objeto con la informacion necearia
-  if (details) {
+//Nano: Función para construir el objeto media con la información necesaria para nuestro filtros
+async function mediaBuilder(mediaId, country) {
+  //Nano: Hago la llamada a la API de detalles
+  const details = await getDetails(mediaId);
+  if (details.id) {
+    //Nano: Si la llamada a detalles funciona, hago la llamada al resto de los endpoints
+    const crew = await getCredits(mediaId);
+    const alternativeTitle = await getTitles(mediaId, country);
+    const platforms = await getPlatforms(mediaId, country);
+    const trailer = await getTrailer(mediaId);
+
+    //Nano: Construyo el objeto con la informacion necesaria
     const media = {
       id: details.id,
+      adults: details.adult,
       title: alternativeTitle || details.original_title,
       overview: details.overview,
       release_date: details.release_date,
@@ -82,6 +102,58 @@ async function mediaBuilder(mediaId, country) {
   return undefined;
 }
 
+function mediaFilter(media) {
+  let filter = {
+    //adults: false,
+    // min_release_year: 2020,
+    // max_release_year: 2022,
+    // vote_average: [5, 8],
+    //genres: ["Acción", "Terror"],
+   // platforms: ["Netflix", "Disney Plus"],
+  };
+  return media.filter((element) => {
+    if (element) {
+      const adultFilter = filter.adults
+        ? element.adults === filter.adults
+        : true;
+      const min_release_yearFilter = filter.min_release_year
+        ? element.release_year >= filter.min_release_year
+        : true;
+      const max_release_yearFilter = filter.max_release_year
+        ? element.release_year <= filter.max_release_year
+        : true;
+      const vote_averageFilter = filter.vote_average
+        ? filter.vote_average.includes(Math.round(element.vote_average))
+        : true;
+      const genresFilter = filter.genres
+        ? element.genres
+            .map((genre) => filter.genres.includes(genre.name))
+            .includes(true)
+        : true;
+      const platformsFilter = filter.platforms
+        ? element.platforms
+            .map((platform) => filter.platforms.includes(platform.name))
+            .includes(true)
+        : true;
+
+      if (Object.keys(filter).length) {
+        if (
+          adultFilter &&
+          min_release_yearFilter &&
+          max_release_yearFilter &&
+          vote_averageFilter &&
+          genresFilter &&
+          platformsFilter
+        ) {
+          return element;
+        }
+      } else {
+        return element;
+      }
+    }
+  });
+}
+
 export function getMedia() {
   return async (dispatch) => {
     return fetch(
@@ -91,16 +163,13 @@ export function getMedia() {
       .then(async (response) => {
         const { results } = response;
         const media = await Promise.all(
-          results.map(async (result, index) => {
-            // if (index == 0)
+          results.map(async (result) => {
             return await mediaBuilder(result.id, "AR");
           })
         );
-        return media.filter((element) => element.id);
+        return mediaFilter(media);
       })
       .then((response) => {
-        // console.table(response);
-        // console.log(response);
         dispatch({ type: SET_MEDIA, payload: response });
       });
   };
