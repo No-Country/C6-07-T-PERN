@@ -4,7 +4,7 @@ const initialState = {
   media: [],
 };
 
-const rootReducer = (state = initialState, action) => {
+const mediaReducer = (state = initialState, action) => {  
   switch (action.type) {
     case SET_MEDIA:
       return {
@@ -14,4 +14,4 @@ const rootReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default rootReducer;
+export default mediaReducer;

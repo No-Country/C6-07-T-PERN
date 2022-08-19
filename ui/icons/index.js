@@ -1,3 +1,4 @@
+//Denis: Importo imagenes de logos
 import Color from "./images/color-logo.svg";
 import Dark from "./images/dark-logo.svg";
 import Profile from "./images/profile-icon.svg";
@@ -15,6 +16,8 @@ import Netflix from "./images/netflix-icon.svg";
 import Disney from "./images/disney-icon.svg";
 import Hbo from "./images/hbo-icon.svg";
 import css from "./index.module.css";
+
+//Exporto los logos UI
 export function ColorLogo() {
   return <Color className={css.logo}></Color>;
 }
@@ -48,10 +51,13 @@ export function InstagramIcon() {
 export function FacebookIcon() {
   return <Face className={css["social_media"]}></Face>;
 }
-
 export function TwitterIcon() {
   return <Twitter className={css["social_media"]}></Twitter>;
 }
+export function PlatformIcon(props) {
+  return <button className={css.platformIcon}>{props.children}</button>;
+}
+
 export function AmazonIcon() {
   return <Amazon className={css.platform}></Amazon>;
 }
@@ -63,7 +69,4 @@ export function DisneyIcon() {
 }
 export function HboIcon() {
   return <Hbo className={css.platform}></Hbo>;
-}
-export function PlatformIcon(props) {
-  return <button className={css.platformIcon}>{props.children}</button>;
 }
