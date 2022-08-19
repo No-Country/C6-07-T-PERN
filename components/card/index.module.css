@@ -10,7 +10,7 @@
 .divCardHeader {
   margin: 4px 0 6px 0;
   height: 29px;
-  color: var(--primary);
+  color: var(--secondary);
   width: 100%;
   justify-content: center;
   display: flex;
@@ -21,8 +21,7 @@
 }
 
 .imgCardMain {
-  width: 290px;
-  height: 420px;
+  border-radius: 4px;
 }
 .divCardImage {
   height: 420px;
@@ -33,6 +32,10 @@
   position: absolute;
   bottom: 10px;
   left: 9px;
+  display: flex;
+  flex-direction: column;
+  max-width: 56px;
+  gap: 8px;
 }
 .imgCardPlatform {
   width: 56px;

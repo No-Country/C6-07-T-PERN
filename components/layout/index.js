@@ -1,7 +1,7 @@
 import Footer from "../footer";
 import Header from "../header";
 
-export default function Layout(props) {
+export function Layout(props) {
   return (
     <>
       <Header></Header>

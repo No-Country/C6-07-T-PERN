@@ -11,7 +11,7 @@ export function PlatformFilterButton(props) {
   return (
     <button
       onClick={toggle}
-      className={css.platform}
+      className={css.buttonFilter}
       style={{
         opacity: `${active ? "100%" : "40%"}`,
         filter: `${
