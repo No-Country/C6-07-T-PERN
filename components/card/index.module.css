@@ -24,8 +24,10 @@
 .imgCardMain {
   border-radius: 4px;
 }
-.divSinopsiscontainer{
+.divSinopsisContainer{
+  height: 420px;
   width: 100%;
+  overflow-y: scroll;
 }
 .divSinopsisHeader{
   display: flex;
@@ -36,8 +38,8 @@
   flex-direction: column;
   padding: 0 10px;
   padding-top: 27px;
-height: 349px;
-overflow-y: scroll;
+  /* min-height: 318px; */
+
 gap: 26px;
 }
 .sinopsisTextMargin{
@@ -47,18 +49,18 @@ gap: 26px;
   line-height: 26px;
 }
 
-.divSinopsisBody::-webkit-scrollbar {
+.divSinopsisContainer::-webkit-scrollbar {
  width: 5px;
 height: 4px;
 }
 
 
-.divSinopsisBody::-webkit-scrollbar-track {
+.divSinopsisContainer::-webkit-scrollbar-track {
   background:none;
 }
  
 
-.divSinopsisBody::-webkit-scrollbar-thumb {
+.divSinopsisContainer::-webkit-scrollbar-thumb {
   background: var(--background);
   border-radius: 10px;
   height:2px;
