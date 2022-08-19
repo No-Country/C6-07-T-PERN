@@ -3,8 +3,9 @@ import Color from "./images/color-logo.svg";
 import Dark from "./images/dark-logo.svg";
 import Profile from "./images/profile-icon.svg";
 import Search from "./images/search-icon.svg";
-import Save from "./images/save-icon.svg";
+import WatchList from "./images/WatchList-icon.svg";
 import Down from "./images/arrow-down.svg";
+import Up from "./images/arrow-up.svg";
 import Close from "./images/close.svg";
 import Right from "./images/arrow-right.svg";
 import Imdb from "./images/imdb-icon.svg";
@@ -15,9 +16,9 @@ import Amazon from "./images/amazon-icon.svg";
 import Netflix from "./images/netflix-icon.svg";
 import Disney from "./images/disney-icon.svg";
 import Hbo from "./images/hbo-icon.svg";
+import Seen from "./images/seen-icon.svg";
+import Save from "./images/save-icon.svg";
 import css from "./index.module.css";
-
-//Exporto los logos UI
 export function ColorLogo() {
   return <Color className={css.logo}></Color>;
 }
@@ -30,8 +31,11 @@ export function ProfileIcon() {
 export function SearchIcon() {
   return <Search className={css.icon}></Search>;
 }
-export function SaveIcon() {
-  return <Save className={css.icon}></Save>;
+export function WatchListIcon() {
+  return <WatchList className={css.icon}></WatchList>;
+}
+export function ArrowUpIcon() {
+  return <Up className={css.icon}></Up>;
 }
 export function ArrowDownIcon() {
   return <Down className={css.icon}></Down>;
@@ -51,13 +55,10 @@ export function InstagramIcon() {
 export function FacebookIcon() {
   return <Face className={css["social_media"]}></Face>;
 }
+
 export function TwitterIcon() {
   return <Twitter className={css["social_media"]}></Twitter>;
 }
-export function PlatformIcon(props) {
-  return <button className={css.platformIcon}>{props.children}</button>;
-}
-
 export function AmazonIcon() {
   return <Amazon className={css.platform}></Amazon>;
 }
@@ -69,4 +70,13 @@ export function DisneyIcon() {
 }
 export function HboIcon() {
   return <Hbo className={css.platform}></Hbo>;
+}
+export function SaveIcon() {
+  return <Save className={css.save}></Save>;
+}
+export function SeenIcon() {
+  return <Seen className={css.seen}></Seen>;
+}
+export function PlatformIcon(props) {
+  return <button className={css.platformIcon}>{props.children}</button>;
 }

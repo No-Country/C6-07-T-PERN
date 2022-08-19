@@ -9,10 +9,14 @@ body{
     font-family: 'Red Hat Display', sans-serif;
     background-color: var(--background);
     --primary:#6BE3B3;
+    --primary-press:#2A9E70;
+    --primary-hover:#C7FFE8;
     --secondary:#F2B356;
     --accent:#D3A7FF;
     --background:#060606;
     --background-secondary:#333333;
     --outlined:#79747E;
     --text:#FBFBFB;
+    --text-gray:#9D9D9D;
+    --error:#FF0000;
 }

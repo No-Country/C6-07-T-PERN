@@ -1,10 +1,27 @@
 .text{
     color: var(--text);
 }
-
-
-
 .title{
     font-size: 24px;
     font-weight: 700;
     }
+.subtitle{
+    font-size: 20px;
+    font-weight: 400;
+}
+.subtitleSemiBold{
+    font-size: 20px;
+    font-weight: 600;
+}
+.body{
+    font-size: 16px;
+    font-weight: 400;
+}
+.buttons{
+    font-size: 16px;
+    font-weight: 600;
+}
+.tiny{
+    font-size: 14px;
+    font-weight: 400;
+}

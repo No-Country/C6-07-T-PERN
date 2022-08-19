@@ -42,6 +42,10 @@ function CardsContainer(props) {
             key={element.id}
             media={element}
             priority={index == 0 ? true : false}
+            actors={element.actors}
+            sinopsis={element.overview}
+            title={element.title}
+            director={element.director}
           />
         );
       })}

@@ -20,6 +20,7 @@ import {
   SearchIcon,
   TwitterIcon,
 } from "../ui/icons";
+import { H2, H3, H3semiBold, H4, H4Buttons, H5 } from "../ui/text";
 
 export default function UI() {
   return (
@@ -58,9 +59,15 @@ export default function UI() {
         <PlatformFilterButton>
           <HboIcon></HboIcon>
         </PlatformFilterButton>
+        <NavBar></NavBar>
         <Footer></Footer>
+        <H2>H2!</H2>
+        <H3>H3!</H3>
+        <H3semiBold>H3Semi!</H3semiBold>
+        <H4>H4!</H4>
+        <H4Buttons>H4Buttons!</H4Buttons>
+        <H5>H5!</H5>
       </div>
-      <NavBar></NavBar>
     </>
   );
 }

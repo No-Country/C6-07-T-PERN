@@ -1,5 +1,6 @@
 .divCardMain {
   color: #fff;
+  padding: 0 18px;
   background-color: var(--background-secondary);
   display: flex;
   flex-direction: column;
@@ -23,12 +24,60 @@
 .imgCardMain {
   border-radius: 4px;
 }
-.divCardImage {
+.divSinopsisContainer{
+  height: 420px;
+  width: 100%;
+  overflow-y: scroll;
+}
+.divSinopsisHeader{
+  display: flex;
+  justify-content: space-between;
+}
+.divSinopsisBody{
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  padding-top: 27px;
+  /* min-height: 318px; */
+
+gap: 26px;
+}
+.sinopsisTextMargin{
+  margin: 4px 0;
+}
+.sinopsisBodyText{
+  line-height: 26px;
+}
+
+.divSinopsisContainer::-webkit-scrollbar {
+ width: 5px;
+height: 4px;
+}
+
+
+.divSinopsisContainer::-webkit-scrollbar-track {
+  background:none;
+}
+ 
+
+.divSinopsisContainer::-webkit-scrollbar-thumb {
+  background: var(--background);
+  border-radius: 10px;
+  height:2px;
+} 
+
+
+
+
+.divCardImage{
   height: 420px;
   margin: 0 auto;
   position: relative;
 }
-.divImgCardPlatform {
+
+
+
+.divImgCardPlatform{
   position: absolute;
   bottom: 10px;
   left: 9px;
@@ -46,7 +95,7 @@
   width: 100%;
   margin: 16px 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
