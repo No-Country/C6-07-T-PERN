@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 //Nano: Importado de archivos propios:
 import { PrimaryButton } from "../../ui/buttons";
 import {
@@ -14,7 +16,7 @@ import {
 } from "../../ui/icons";
 import Image from "next/future/image";
 import css from "./index.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { H2, H3semiBold, H4 } from "../../ui/text";
 
 //Denis: funcion que devuelve el icono de la plataforma correspondiente
@@ -50,10 +52,28 @@ function showMoviePlatform(platform) {
 export default function Card(props) {
   const { media } = props;
   const [showSinopsis, setShowsinopsis] = useState(false);
+  //Nano: Estados para transcición de inggreso
+  const [isMounted, setIsMounted] = useState(false);
+  //Nano: Adición de estilos para ingreso de las cards
+  const unmountedStyle = { opacity: 0, transition: "opacity 500ms ease-out" };
+  const mountedStyle = { opacity: 1, transition: "opacity 500ms ease-out" };
+  const { filter } = useSelector((state) => state.filterReducer);
+
+  useEffect(() => {
+    if (!isMounted) {
+      return setIsMounted(true);
+    }
+    return function cleanup() {
+      isMounted && setIsMounted(false);
+    };
+  }, [filter, isMounted]);
 
   //Nano: Devolución de la etiqueta
   return (
-    <div className={css.divCardMain}>
+    <div
+      className={css.divCardMain}
+      style={isMounted ? mountedStyle : unmountedStyle}
+    >
       <div
         className={css.divCardHeader}
         onClick={() => {

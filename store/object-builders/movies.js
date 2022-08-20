@@ -25,7 +25,9 @@ function getTitles(mediaId, country) {
         response.titles &&
         response.titles.find(
           (element) =>
-            element.iso_3166_1 === country || element.iso_3166_1 === "ES"
+            element.iso_3166_1 === country ||
+            element.iso_3166_1 === "ES" ||
+            element.iso_3166_1 === "US"
         );
       return title ? title.title : null;
     });
@@ -65,7 +67,14 @@ export async function movieBuilder(mediaId, country) {
   if (details.id) {
     //Nano: Si la llamada a detalles funciona, hago la llamada al resto de los endpoints
     const crew = await getCredits(mediaId);
-    const alternativeTitle = await getTitles(mediaId, country);
+    if (
+      details.original_title === details.title &&
+      details.original_language !== "es"
+    ) {
+      const title = await getTitles(mediaId, country);
+    } else {
+      const title = details.title;
+    }
     const platforms = await getPlatforms(mediaId, country);
     const trailer = await getTrailer(mediaId);
     const getDirector = () => {
@@ -83,11 +92,12 @@ export async function movieBuilder(mediaId, country) {
         return casting.length ? casting : [{ id: null, name: "No disponible" }];
       }
     };
+
     //Nano: Construyo el objeto con la informacion necesaria
     const media = {
       id: details.id,
       adults: details.adult,
-      title: alternativeTitle || details.original_title,
+      title: details.title || alternativeTitle,
       overview: details.overview || "No disponible",
       release_date: details.release_date,
       release_year: details.release_date
