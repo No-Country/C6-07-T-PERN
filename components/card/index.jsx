@@ -1,3 +1,4 @@
+//Nano: Importado de librerias
 import { useSelector } from "react-redux";
 
 //Nano: Importado de archivos propios:
@@ -50,17 +51,19 @@ function showMoviePlatform(platform) {
 
 //Nano: Función principal para contrucción de la etiqueta
 export default function Card(props) {
-  const { media } = props;
+  const { media, delay } = props;
   const [showSinopsis, setShowsinopsis] = useState(false);
   //Nano: Estados para transcición de inggreso
   const [isMounted, setIsMounted] = useState(false);
   //Nano: Adición de estilos para ingreso de las cards(
   const unmountedStyle = {
     opacity: 0,
-    transform: "translate(0px, 100px)",
-    transition: "all 500ms ease-out",
+    transform: "translate(0px, 300px)",
   };
-  const mountedStyle = { opacity: 1, transition: "all 500ms ease-out" };
+  const mountedStyle = {
+    opacity: 1,
+    transition: `all ${500 + 250 * delay}ms ease-out`,
+  };
   const { filter } = useSelector((state) => state.filterReducer);
 
   useEffect(() => {
