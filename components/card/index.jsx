@@ -76,7 +76,9 @@ export default function Card(props) {
         >
           <div className={css.divSinopsisHeader}>
             <SeenIcon></SeenIcon>
-            <H2>{props.title}</H2>
+            <h2 style={{ padding: "0px 15px", textAlign: "center" }}>
+              {props.title}
+            </h2>
             <SaveIcon></SaveIcon>
           </div>
           <div className={css.divSinopsisBody}>
