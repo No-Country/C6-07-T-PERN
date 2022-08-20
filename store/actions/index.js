@@ -1,9 +1,10 @@
 import store from "../index";
 
-import { getMovies, mediaBuilder } from "../object-builders/movies";
+import { getMovies } from "../object-builders/movies";
 import { mediaFilter } from "../object-builders/filters";
 
 export const SET_MEDIA = "media/set";
+export const CLEAR_MEDIA = "media/clear";
 export const SET_FILTER_BY_PLATFORM = "filter/platform/set";
 const api_key = process.env.APIKEY;
 
@@ -37,5 +38,12 @@ export function getMedia() {
     let media = [...movies];
     media = mediaFilter(media, filter);
     dispatch({ type: SET_MEDIA, payload: media });
+  };
+}
+
+export function clearMedia() {
+  return {
+    type: CLEAR_MEDIA,
+    payload: [],
   };
 }

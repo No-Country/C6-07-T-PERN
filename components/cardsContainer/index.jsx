@@ -3,7 +3,7 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 //Nano: Importado de archivos propios:
-import { getMedia } from "../../store/actions";
+import { clearMedia, getMedia } from "../../store/actions";
 import Card from "../card";
 import css from "./index.module.css";
 import { Loading } from "../../ui/icons";
@@ -31,6 +31,7 @@ function CardsContainer(props) {
   //Nano: Aministración de estados de la etiqueta Card
 
   useEffect(() => {
+    media.length && dispatch(clearMedia());
     dispatch(getMedia());
   }, [filter]);
 
