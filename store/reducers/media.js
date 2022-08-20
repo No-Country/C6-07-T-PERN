@@ -1,20 +1,18 @@
-import { SET_MEDIA } from "../actions";
-import { CLEAR_MEDIA } from "../actions";
+import { SET_MEDIA, CLEAR_MEDIA, FILTER_MEDIA } from "../actions";
 
 const initialState = {
-  media: [],
+  allMedia: [],
+  filteredMedia: [],
 };
 
 const mediaReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_MEDIA:
-      return {
-        media: action.payload,
-      };
+      return { ...state, allMedia: action.payload };
     case CLEAR_MEDIA:
-      return {
-        media: action.payload,
-      };
+      return { ...state, filteredMedia: action.payload };
+    case FILTER_MEDIA:
+      return { ...state, filteredMedia: action.payload };
     default:
       return state;
   }

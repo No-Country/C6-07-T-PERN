@@ -1,3 +1,9 @@
+export function definedMediaFilter(media) {
+  return media.filter((element) => {
+    if (element) return element;
+  });
+}
+
 export function mediaFilter(media, filter) {
   return media.filter((element) => {
     if (element) {

@@ -3,7 +3,7 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 //Nano: Importado de archivos propios:
-import { clearMedia, getMedia } from "../../store/actions";
+import { clearMedia, filterMedia, getMedia } from "../../store/actions";
 import Card from "../card";
 import css from "./index.module.css";
 import { Loading } from "../../ui/icons";
@@ -25,15 +25,21 @@ function mapDispatchToProps(dispatch) {
 //Nano: Función principal para contrucción de la etiqueta
 function CardsContainer(props) {
   //Nano: Asociación del objeto media y los dispátch con las props:
-  const { media } = useSelector((state) => state.mediaReducer);
+  const { allMedia, filteredMedia: media } = useSelector(
+    (state) => state.mediaReducer
+  );
   const { filter } = useSelector((state) => state.filterReducer);
   const dispatch = useDispatch();
   //Nano: Aministración de estados de la etiqueta Card
 
   useEffect(() => {
-    media.length && dispatch(clearMedia());
-    dispatch(getMedia());
-  }, [filter]);
+    !allMedia.length && dispatch(getMedia());
+    return function setUp() {
+      if (!media.length) return dispatch(filterMedia());
+      media.length && dispatch(clearMedia());
+      setTimeout(() => dispatch(filterMedia()));
+    };
+  }, [filter, allMedia]);
 
   //Nano: Devolución de la etiqueta
   return (
@@ -51,6 +57,7 @@ function CardsContainer(props) {
               sinopsis={element.overview}
               title={element.title}
               director={element.director}
+              delay={index}
             />
           );
         })

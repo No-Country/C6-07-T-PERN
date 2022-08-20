@@ -18,7 +18,6 @@ export function PlatformFilterButton(props) {
   return (
     <button
       onClick={() => {
-        console.log(props);
         toggle();
         dispatch(setFilterByPlatform(props.platform));
       }}
