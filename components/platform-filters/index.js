@@ -8,7 +8,7 @@ export default function PlatformFilters() {
       <PlatformFilterButton platform="Netflix">
         <NetflixIcon></NetflixIcon>
       </PlatformFilterButton>
-      <PlatformFilterButton platform="HBO Go">
+      <PlatformFilterButton platform="HBO Max">
         <HboIcon></HboIcon>
       </PlatformFilterButton>
       <PlatformFilterButton platform="Disney Plus">

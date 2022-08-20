@@ -1,6 +1,6 @@
 import store from "../index";
 
-import { mediaBuilder } from "../object-builders/movies";
+import { getMovies, mediaBuilder } from "../object-builders/movies";
 import { mediaFilter } from "../object-builders/filters";
 
 export const SET_MEDIA = "media/set";
@@ -14,7 +14,6 @@ export function setFilterByPlatform(payload) {
       .filterReducer.filter.platforms.filter(
         (platform) => platform !== payload
       );
-    console.log("Incluides:", platformsFilter);
     return {
       type: SET_FILTER_BY_PLATFORM,
       payload: platformsFilter,
@@ -25,7 +24,6 @@ export function setFilterByPlatform(payload) {
     ...store.getState().filterReducer.filter.platforms,
     payload,
   ];
-  console.log("Not Incluides:", platformsFilter);
   return {
     type: SET_FILTER_BY_PLATFORM,
     payload: platformsFilter,
@@ -34,24 +32,10 @@ export function setFilterByPlatform(payload) {
 
 export function getMedia() {
   return async (dispatch) => {
-    return fetch(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}&page=2`
-    // `https://api.themoviedb.org/3/movie/now_playing?api_key=${api_key}&language=en-US&`
-    )
-      .then((r) => r.json())
-      .then(async (response) => {
-        const { results } = response;
-        const filter = store.getState().filterReducer.filter;
-        console.log(filter);
-        const media = await Promise.all(
-          results.map(async (result) => {
-            return await mediaBuilder(result.id, "AR");
-          })
-        );
-        return mediaFilter(media, filter);
-      })
-      .then((response) => {
-        dispatch({ type: SET_MEDIA, payload: response });
-      });
+    const movies = await getMovies();
+    const filter = store.getState().filterReducer.filter;
+    let media = [...movies];
+    media = mediaFilter(media, filter);
+    dispatch({ type: SET_MEDIA, payload: media });
   };
 }

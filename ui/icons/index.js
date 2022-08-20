@@ -80,3 +80,14 @@ export function SeenIcon() {
 export function PlatformIcon(props) {
   return <button className={css.platformIcon}>{props.children}</button>;
 }
+
+export function Loading() {
+  return (
+    <div className={css.loaderContainer}>
+      <div className={css.loader}>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  );
+}

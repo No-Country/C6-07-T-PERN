@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { getMedia } from "../../store/actions";
 import Card from "../card";
 import css from "./index.module.css";
+import { Loading } from "../../ui/icons";
 
 //Nano: Mapeo de los estados de redux con las props del elemento
 function mapStateToProps(state) {
@@ -36,19 +37,23 @@ function CardsContainer(props) {
   //Nano: Devolución de la etiqueta
   return (
     <div className={css.divCardContainer}>
-      {media.map((element, index) => {
-        return (
-          <Card
-            key={element.id}
-            media={element}
-            priority={index == 0 ? true : false}
-            actors={element.actors}
-            sinopsis={element.overview}
-            title={element.title}
-            director={element.director}
-          />
-        );
-      })}
+      {!media.length ? (
+        <Loading />
+      ) : (
+        media.map((element, index) => {
+          return (
+            <Card
+              key={element.id}
+              media={element}
+              priority={index == 0 ? true : false}
+              actors={element.actors}
+              sinopsis={element.overview}
+              title={element.title}
+              director={element.director}
+            />
+          );
+        })
+      )}
     </div>
   );
 }
