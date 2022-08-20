@@ -54,9 +54,13 @@ export default function Card(props) {
   const [showSinopsis, setShowsinopsis] = useState(false);
   //Nano: Estados para transcición de inggreso
   const [isMounted, setIsMounted] = useState(false);
-  //Nano: Adición de estilos para ingreso de las cards
-  const unmountedStyle = { opacity: 0, transition: "opacity 500ms ease-out" };
-  const mountedStyle = { opacity: 1, transition: "opacity 500ms ease-out" };
+  //Nano: Adición de estilos para ingreso de las cards(
+  const unmountedStyle = {
+    opacity: 0,
+    transform: "translate(0px, 100px)",
+    transition: "all 500ms ease-out",
+  };
+  const mountedStyle = { opacity: 1, transition: "all 500ms ease-out" };
   const { filter } = useSelector((state) => state.filterReducer);
 
   useEffect(() => {
