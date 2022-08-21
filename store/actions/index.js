@@ -22,7 +22,6 @@ export function setFilterByPlatform(payload) {
       payload: platformsFilter,
     };
   }
-
   const platformsFilter = [
     ...store.getState().filterReducer.filter.platforms,
     payload,
@@ -51,10 +50,11 @@ export function clearMedia() {
 export function filterMedia() {
   let media = store.getState().mediaReducer.allMedia;
   const filter = store.getState().filterReducer.filter;
-  media = (media.length &&
-    media[0] !== "No hay coincidencias" &&
-    mediaFilter(media, filter).length &&
-    mediaFilter(media, filter)) || ["No hay coincidencias"];
+  media = media.length
+    ? (media[0] !== "No hay coincidencias" &&
+        mediaFilter(media, filter).length &&
+        mediaFilter(media, filter)) || ["No hay coincidencias"]
+    : [];
   return {
     type: FILTER_MEDIA,
     payload: media,
