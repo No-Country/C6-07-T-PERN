@@ -1,3 +1,6 @@
+//Nano: Importado de librerias
+import { useSelector } from "react-redux";
+
 //Nano: Importado de archivos propios:
 import { PrimaryButton } from "../../ui/buttons";
 import {
@@ -14,7 +17,7 @@ import {
 } from "../../ui/icons";
 import Image from "next/future/image";
 import css from "./index.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { H2, H3semiBold, H4 } from "../../ui/text";
 
 //Denis: funcion que devuelve el icono de la plataforma correspondiente
@@ -48,12 +51,36 @@ function showMoviePlatform(platform) {
 
 //Nano: Función principal para contrucción de la etiqueta
 export default function Card(props) {
-  const { media } = props;
+  const { media, delay } = props;
   const [showSinopsis, setShowsinopsis] = useState(false);
+  //Nano: Estados para transcición de inggreso
+  const [isMounted, setIsMounted] = useState(false);
+  //Nano: Adición de estilos para ingreso de las cards(
+  const unmountedStyle = {
+    opacity: 0,
+    transform: "translate(0px, 300px)",
+  };
+  const mountedStyle = {
+    opacity: 1,
+    transition: `all ${500 + 250 * delay}ms ease-out`,
+  };
+  const { filter } = useSelector((state) => state.filterReducer);
+
+  useEffect(() => {
+    if (!isMounted) {
+      return setIsMounted(true);
+    }
+    return function cleanup() {
+      isMounted && setIsMounted(false);
+    };
+  }, [filter, isMounted]);
 
   //Nano: Devolución de la etiqueta
   return (
-    <div className={css.divCardMain}>
+    <div
+      className={css.divCardMain}
+      style={isMounted ? mountedStyle : unmountedStyle}
+    >
       <div
         className={css.divCardHeader}
         onClick={() => {
@@ -76,7 +103,9 @@ export default function Card(props) {
         >
           <div className={css.divSinopsisHeader}>
             <SeenIcon></SeenIcon>
-            <H2 className={css.sinopsisTitle}>{props.title}</H2>
+            <h2 style={{ padding: "0px 15px", textAlign: "center" }}>
+              {props.title}
+            </h2>
             <SaveIcon></SaveIcon>
           </div>
           <div className={css.divSinopsisBody}>

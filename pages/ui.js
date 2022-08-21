@@ -19,6 +19,7 @@ import {
   SaveIcon,
   SearchIcon,
   TwitterIcon,
+  Loading,
 } from "../ui/icons";
 import { H2, H3, H3semiBold, H4, H4Buttons, H5 } from "../ui/text";
 
@@ -67,6 +68,7 @@ export default function UI() {
         <H4>H4!</H4>
         <H4Buttons>H4Buttons!</H4Buttons>
         <H5>H5!</H5>
+        <Loading />
       </div>
     </>
   );

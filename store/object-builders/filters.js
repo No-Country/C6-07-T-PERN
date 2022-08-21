@@ -1,3 +1,9 @@
+export function definedMediaFilter(media) {
+  return media.filter((element) => {
+    if (element) return element;
+  });
+}
+
 export function mediaFilter(media, filter) {
   return media.filter((element) => {
     if (element) {
@@ -24,18 +30,14 @@ export function mediaFilter(media, filter) {
             .includes(true)
         : true;
 
-      if (Object.keys(filter).length) {
-        if (
-          adultFilter &&
-          min_release_yearFilter &&
-          max_release_yearFilter &&
-          vote_averageFilter &&
-          genresFilter &&
-          platformsFilter
-        ) {
-          return element;
-        }
-      } else {
+      if (
+        adultFilter &&
+        min_release_yearFilter &&
+        max_release_yearFilter &&
+        vote_averageFilter &&
+        genresFilter &&
+        platformsFilter
+      ) {
         return element;
       }
     }
