@@ -76,7 +76,7 @@ export default function Card(props) {
         >
           <div className={css.divSinopsisHeader}>
             <SeenIcon></SeenIcon>
-            <H2>{props.title}</H2>
+            <H2 className={css.sinopsisTitle}>{props.title}</H2>
             <SaveIcon></SaveIcon>
           </div>
           <div className={css.divSinopsisBody}>
