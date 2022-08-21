@@ -1,0 +1,70 @@
+.checkBoxDiv {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+.checkBoxList {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.checkBoxList::after {
+	display: block;
+	
+	content: "";
+	height: 2px;
+	background-color: var(--outlined);
+	width: auto;
+	margin: 0px 16px;
+	margin-bottom: 9px;
+}
+
+
+.checkBoxButton {
+	background: transparent;
+	border: transparent;
+}
+
+.checkBoxIcon {
+	position: relative;
+		place-self: center;
+		cursor: pointer;
+		width: 100%;
+		max-width: 20px;
+		max-height: 24px;
+}
+
+.checkBoxFilter {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	position: relative;
+}
+
+.checkBoxContainer {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.checkBoxItem {
+	width: inherit;
+	display: inherit;
+    position: fixed;
+    z-index: 50;
+	text-align: initial;
+}
+
+.checkBoxFilterButton {
+	margin: 0;
+	padding: 0;
+	width: 0px;
+	background-color: var(--primary);
+	color: var(--background);
+}
+
