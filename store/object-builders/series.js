@@ -3,61 +3,39 @@ const api_key = process.env.APIKEY;
 //Nano: Función para llamar la API de detalles
 function getDetails(mediaId) {
   return fetch(
-    `https://api.themoviedb.org/3/movie/${mediaId}?api_key=${api_key}&language=es-LA`
+    // `https://api.themoviedb.org/3/movie/${mediaId}?api_key=${api_key}&language=es-LA`
+    `https://api.themoviedb.org/3/tv/${mediaId}?api_key=${api_key}&language=en-LA`
   ).then((r) => r.json());
 }
 
 //Nano: Función para llamar la API de creditos
 function getCredits(mediaId) {
   return fetch(
-    `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${api_key}&language=es-LA`
+    // `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${api_key}&language=es-LA`
+    `https://api.themoviedb.org/3/tv/${mediaId}/credits?api_key=${api_key}&language=es-LA`
   ).then((r) => r.json());
 }
 
-//Nano: Función para llamar la API de títulos y retornar el titulo alternativo
-async function getTitles(mediaId) {
-  const alternativeTitleResponse = await fetch(
-    `https://api.themoviedb.org/3/movie/${mediaId}/alternative_titles?api_key=${api_key}`
-  ).then((r) => r.json());
-  const translationsResponse = await fetch(
-    `https://api.themoviedb.org/3/movie/${mediaId}/translations?api_key=${api_key}`
-  ).then((r) => r.json());
-
-  const alternativeTitleObject =
-    alternativeTitleResponse.titles &&
-    (alternativeTitleResponse.titles.find(
-      (element) => element.iso_3166_1 === "ES"
-    ) ||
-      alternativeTitleResponse.titles.find(
-        (element) => element.iso_3166_1 === "US"
-      ));
-  const alternativeTitle =
-    alternativeTitleObject && alternativeTitleObject.title;
-
-  const translatedTitleObjectES =
-    translationsResponse.translations &&
-    translationsResponse.translations.find((element) => {
-      return element.name === "Español";
+//Nano: Función para llamar la API de traducción de sinopsis
+function getOverview(mediaId, country) {
+  return fetch(
+    // `https://api.themoviedb.org/3/movie/${mediaId}/alternative_titles?api_key=${api_key}`
+    `https://api.themoviedb.org/3/tv/${mediaId}/translations?api_key=${api_key}`
+  )
+    .then((r) => r.json())
+    .then((response) => {
+      const overview =
+        response.translations &&
+        response.translations.find((element) => element.name === "Español");
+      return overview ? overview.data.overview : null;
     });
-
-  const translatedTitleObjectEN =
-    translationsResponse.translations &&
-    translationsResponse.translations.find((element) => {
-      return element.name === "English";
-    });
-  const translatedTitle =
-    (translatedTitleObjectES && translatedTitleObjectES.data.title) ||
-    (translatedTitleObjectEN && translatedTitleObjectEN.data.title);
-
-  return alternativeTitle && alternativeTitle.includes(":")
-    ? alternativeTitle
-    : translatedTitle || alternativeTitle || null;
 }
 
 //Nano: Función para llamar la API de plataformas
 function getPlatforms(mediaId, country) {
   return fetch(
-    `https://api.themoviedb.org/3/movie/${mediaId}/watch/providers?api_key=${api_key}`
+    // `https://api.themoviedb.org/3/movie/${mediaId}/watch/providers?api_key=${api_key}`
+    `https://api.themoviedb.org/3/tv/${mediaId}/watch/providers?api_key=${api_key}`
   ).then(async (r) => {
     let result = await r.json();
     let platforms = [];
@@ -74,7 +52,8 @@ function getPlatforms(mediaId, country) {
 //Nano: Función para llamar la API de trailers
 function getTrailer(mediaId) {
   return fetch(
-    `https://api.themoviedb.org/3/movie/${mediaId}/videos?api_key=${api_key}&language=es-LA`
+    // `https://api.themoviedb.org/3/movie/${mediaId}/videos?api_key=${api_key}&language=es-LA`
+    `https://api.themoviedb.org/3/tv/${mediaId}/videos?api_key=${api_key}&language=es-LA`
   ).then(async (r) => {
     const result = await r.json();
     return result.results ? result.results[0] && result.results[0].key : null;
@@ -82,7 +61,7 @@ function getTrailer(mediaId) {
 }
 
 //Nano: Función para construir el objeto media con la información necesaria para nuestro filtros
-export async function movieBuilder(mediaId, country) {
+export async function serieBuilder(mediaId, country) {
   //Nano: Hago la llamada a la API de detalles
   const details = await getDetails(mediaId);
   if (details.id) {
@@ -90,22 +69,7 @@ export async function movieBuilder(mediaId, country) {
     const crew = await getCredits(mediaId);
     const platforms = await getPlatforms(mediaId, country);
     const trailer = await getTrailer(mediaId);
-    const translatedTitle = await getTitles(mediaId);
-    // console.log(details.original_language, details.title, translatedTitle);
-    //Nano: Validación de titulos en indiomas con caracterés diferentes
-    const title = !(
-      details.original_language == "ko" ||
-      details.original_language == "ch" ||
-      details.original_language == "ja" ||
-      details.original_language == "ru" ||
-      details.original_language == "hi" ||
-      details.original_language == "th" ||
-      details.original_language == "cn" ||
-      details.original_language == "vi"
-    )
-      ? details.title
-      : translatedTitle || details.title;
-
+    const overview = await getOverview(mediaId, "AR");
     const getDirector = () => {
       if (crew.crew) {
         const directorObject = crew.crew.find(
@@ -125,18 +89,21 @@ export async function movieBuilder(mediaId, country) {
     //Nano: Construyo el objeto con la informacion necesaria
     const media = {
       id: details.id,
-      adults: details.adult,
-      title: title,
-      overview: details.overview || "No disponible",
-      release_date: details.release_date,
-      release_year: details.release_date
-        ? details.release_date.slice(0, 4)
+      adults: details.adults,
+      title: details.name,
+      overview: overview || "No disponible",
+      release_date: details.first_air_date,
+      //   release_year: details.id,
+      release_year: details.first_air_date
+        ? details.first_air_date.slice(0, 4)
         : "N/D",
       vote_average: details.vote_average
         ? Math.floor(details.vote_average * 10) / 10
         : "N/D",
       genres: details.genres,
-      image: `https://image.tmdb.org/t/p/w500/${details.poster_path}`,
+      image: `https://image.tmdb.org/t/p/w500/${
+        details.poster_path || details.backdrop_path
+      }`,
       actors: getCast(),
       director: getDirector(),
       platforms: platforms.map((platform) => ({
@@ -145,17 +112,18 @@ export async function movieBuilder(mediaId, country) {
         logo: `https://image.tmdb.org/t/p/w500/${platform.logo_path}`,
       })),
       trailer: `https://www.youtube.com/watch?v=${trailer}`,
-      type: "movie",
+      type: "serie",
     };
     return media;
   }
-  return undefined;
+  return null;
 }
 // //Nano: Función para hacer llamado a API y traer los elementos
-// export async function getMovies() {
+// export async function getSeries() {
 //   // `https://api.themoviedb.org/3/movie/now_playing?api_key=${api_key}&language=en-US&`
 //   const baseURL = (page) =>
-//     `https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}&page=${page}`;
+//     // `https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}&page=${page}`;
+//     `https://api.themoviedb.org/3/tv/on_the_air?api_key=${api_key}&language=es-LA&page=${page}`;
 //   const apiCall = async (baseURL) => await fetch(baseURL).then((r) => r.json());
 //   const apiResponse = await apiCall(baseURL(1));
 //   const { results, total_pages: pages } = apiResponse;
@@ -171,10 +139,10 @@ export async function movieBuilder(mediaId, country) {
 //       self.findIndex((element2) => element2.id === element.id) === index
 //   );
 
-//   const movies = await Promise.all(
+//   const series = await Promise.all(
 //     allResultsNoDuplicated.map(async (result) => {
-//       return await movieBuilder(result.id, "AR");
+//       return await serieBuilder(result.id, "AR");
 //     })
 //   );
-//   return movies;
+//   return series;
 // }

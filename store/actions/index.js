@@ -1,12 +1,13 @@
+//Nano: Importo de archivos propios
 import store from "../index";
-
-import { getMovies } from "../object-builders/movies";
+import { getMediaFromAPI } from "../object-builders/mediaCalls";
 import { definedMediaFilter, mediaFilter } from "../object-builders/filters";
 
 export const SET_MEDIA = "media/set";
 export const CLEAR_MEDIA = "media/clear";
 export const FILTER_MEDIA = "media/filter";
 export const SET_FILTER_BY_PLATFORM = "filter/platform/set";
+
 const api_key = process.env.APIKEY;
 
 export function setFilterByPlatform(payload) {
@@ -32,11 +33,10 @@ export function setFilterByPlatform(payload) {
   };
 }
 
-export function getMedia() {
+export function getMedia(caller, query) {
   return async (dispatch) => {
-    const movies = await getMovies();
-    let media = [...movies];
-    media = definedMediaFilter(media);
+    let media = await getMediaFromAPI(caller, query);
+    media = media.length ? definedMediaFilter(media) : ["No hay coincidencias"];
     dispatch({ type: SET_MEDIA, payload: media });
   };
 }
@@ -49,10 +49,12 @@ export function clearMedia() {
 }
 
 export function filterMedia() {
-  const movies = store.getState().mediaReducer.allMedia;
+  let media = store.getState().mediaReducer.allMedia;
   const filter = store.getState().filterReducer.filter;
-  let media = [...movies];
-  media = mediaFilter(media, filter);
+  media = (media.length &&
+    media[0] !== "No hay coincidencias" &&
+    mediaFilter(media, filter).length &&
+    mediaFilter(media, filter)) || ["No hay coincidencias"];
   return {
     type: FILTER_MEDIA,
     payload: media,

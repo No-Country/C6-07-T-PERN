@@ -62,7 +62,7 @@ export default function Card(props) {
   };
   const mountedStyle = {
     opacity: 1,
-    transition: `all ${500 + 250 * delay}ms ease-out`,
+    transition: `all ${500 + 200 * delay}ms ease-out`,
   };
   const { filter } = useSelector((state) => state.filterReducer);
 
