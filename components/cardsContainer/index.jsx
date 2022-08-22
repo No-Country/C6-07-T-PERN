@@ -33,7 +33,7 @@ function CardsContainer(props) {
   //Nano: Aministración de estados de la etiqueta Card
 
   useEffect(() => {
-    !allMedia.length && dispatch(getMedia());
+    !allMedia.length && dispatch(getMedia("trending"));
     return function setUp() {
       if (!media.length) return dispatch(filterMedia());
       media.length && dispatch(clearMedia());
@@ -46,18 +46,20 @@ function CardsContainer(props) {
     <div className={css.divCardContainer}>
       {!media.length ? (
         <Loading />
+      ) : media[0] === "No hay coincidencias" ? (
+        <h1 style={{ color: "white" }}>{media[0]}</h1>
       ) : (
         media.map((element, index) => {
           return (
             <Card
-              key={element.id}
+              key={element.id + element.type}
               media={element}
               priority={index == 0 ? true : false}
               actors={element.actors}
               sinopsis={element.overview}
               title={element.title}
               director={element.director}
-              delay={index}
+              delay={index <= 5 ? index : 5}
             />
           );
         })

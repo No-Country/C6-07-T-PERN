@@ -1,45 +1,49 @@
 .searchBarContainer {
-	position: relative;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	transition: 1s ease-in-out;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  transition: 1s ease-in-out;
 }
 .searchBarContainer::after {
-	display: block;
-	
-	content: "";
-	height: 1px;
-	background-color: var(--outlined);
-	width: auto;
-	margin: 0px 16px;
-	margin-top: 9px;
+  display: block;
+
+  content: "";
+  height: 1px;
+  background-color: var(--outlined);
+  width: auto;
+  margin: 0px 16px;
+  margin-top: 9px;
 }
 
-.searchBarForm{
-	height: 34px;
-display: flex;
-gap: 16px;
-justify-content: center;
-align-items: center;
+.searchBarForm {
+  height: 34px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
 }
 .searchBarInput {
-	color: var(--text);
-	padding: 7px 16px;
-	width: 70%;
-	height: 34px;
-	border: 2px solid #79747E;
-	border-radius: 6px;
-	background-color: transparent;
+  color: var(--text);
+  padding: 7px 16px;
+  width: 70%;
+  height: 34px;
+  border: 2px solid #79747e;
+  border-radius: 6px;
+  background-color: transparent;
 }
 
-.searchBarIcons{
-	width: 16px;
-	height: 14px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.searchBarIcons {
+  width: 16px;
+  height: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-
+.searchBarButton {
+  background-color: transparent;
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+}
