@@ -1,4 +1,5 @@
 // import { PrimaryButton } from "../ui/buttons";
+import FilterContainer from "../components/filterContainer";
 import Footer from "../components/footer";
 import NavBar from "../components/nav-bar";
 import { PlatformFilterButton, PrimaryButton } from "../ui/buttons";
@@ -69,6 +70,7 @@ export default function UI() {
         <H4Buttons>H4Buttons!</H4Buttons>
         <H5>H5!</H5>
         <Loading />
+        <FilterContainer />
       </div>
     </>
   );

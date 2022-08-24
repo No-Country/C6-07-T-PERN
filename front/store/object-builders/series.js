@@ -111,7 +111,7 @@ export async function serieBuilder(mediaId, country) {
         name: platform.provider_name,
         logo: `https://image.tmdb.org/t/p/w500/${platform.logo_path}`,
       })),
-      trailer: `https://www.youtube.com/watch?v=${trailer}`,
+      trailer: `${trailer}`,
       type: "serie",
     };
     return media;

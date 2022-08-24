@@ -33,6 +33,14 @@
   display: flex;
   justify-content: space-between;
 }
+.headerArrowDown{
+  height: 16px;
+  width: 16px;
+}
+.sinopsisTitle{
+  padding: 8px 24px;
+  margin: 0;
+}
 .divSinopsisBody{
   display: flex;
   flex-direction: column;
@@ -52,16 +60,19 @@ gap: 26px;
 .divSinopsisContainer::-webkit-scrollbar {
  width: 5px;
 height: 4px;
+
 }
 
 
 .divSinopsisContainer::-webkit-scrollbar-track {
+  margin-top: 150px;
   background:none;
 }
  
 
 .divSinopsisContainer::-webkit-scrollbar-thumb {
-  background: var(--background);
+
+  background: var(--outlined);
   border-radius: 10px;
   height:2px;
 } 

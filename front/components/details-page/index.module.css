@@ -1,0 +1,19 @@
+.noMargin{
+    margin: 0;
+}
+.mainContainer{
+    padding: 0 16px;
+}
+.detailsContainer{
+    display: flex;
+flex-direction: column;
+gap: 40px;
+
+}
+.title{
+    margin: 24px 0;
+}
+.cardContainer{
+    display: flex;
+    justify-content: center;
+}

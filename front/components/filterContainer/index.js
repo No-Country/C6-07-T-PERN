@@ -40,18 +40,18 @@ export default function FilterContainer() {
 				<div>
 				{showFilter == "genero" ? (
 					<>
+					<button onClick={() => {setShow(false);}}>Close</button>
 					<FilterGenre>Géneros</FilterGenre>
-					<button className={css.closeButtonGenre} onClick={() => {setShow(false);}}>Close</button>
 					</>
 				) : showFilter == "año" ? (
 					<>
+					<button onClick={() => {setShow(false);}}>Close</button>
 					<FilterYear>Año</FilterYear>
-					<button className={css.closeButtonYear} onClick={() => {setShow(false);}}>Close</button>
 					</>
 				) : showFilter == "puntuacion" ? (
 					<>
+					<button onClick={() => {setShow(false);}}>Close</button>
 					<FilterRating>Puntuación</FilterRating>
-					<button className={css.closeButtonYear} onClick={() => {setShow(false);}}>Close</button>
 					</>
 				) : null}
 			</div>

@@ -19,6 +19,7 @@ import Image from "next/future/image";
 import css from "./index.module.css";
 import { useEffect, useState } from "react";
 import { H2, H3semiBold, H4 } from "../../ui/text";
+import { useRouter } from "next/router";
 
 //Denis: funcion que devuelve el icono de la plataforma correspondiente
 function showMoviePlatform(platform) {
@@ -51,6 +52,7 @@ function showMoviePlatform(platform) {
 
 //Nano: Función principal para contrucción de la etiqueta
 export default function Card(props) {
+  const router = useRouter();
   const { media, delay } = props;
   const [showSinopsis, setShowsinopsis] = useState(false);
   //Nano: Estados para transcición de inggreso
@@ -74,6 +76,10 @@ export default function Card(props) {
       isMounted && setIsMounted(false);
     };
   }, [filter, isMounted]);
+
+  function goToDetails(id, type) {
+    router.push(`/details/${type}/${id}`);
+  }
 
   //Nano: Devolución de la etiqueta
   return (
@@ -164,7 +170,14 @@ export default function Card(props) {
           <ImdbIcon></ImdbIcon>
         </div>
         <p className={css.textCardYear}>{media.release_year}</p>
-        <PrimaryButton className={css.buttonCardData}>Mas Datos</PrimaryButton>
+        <PrimaryButton
+          className={css.buttonCardData}
+          onClick={() => {
+            goToDetails(media.id, media.type);
+          }}
+        >
+          Mas Datos
+        </PrimaryButton>
       </div>
     </div>
   );
