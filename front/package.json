@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "dotenv": "^16.0.1",
+        "lodash": "^4.17.21",
         "next": "12.2.4",
         "next-svgr": "^0.0.2",
         "react": "18.2.0",
