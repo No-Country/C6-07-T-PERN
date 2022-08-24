@@ -7,7 +7,7 @@ import { useState } from "react";
 import css from "./index.module.css";
 
 export function PrimaryButton(props) {
-  return <button className={css.primary}>{props.children}</button>;
+  return <button className={css.primary} onClick={props.onClick}>{props.children}</button>;
 }
 export function PlatformFilterButton(props) {
   const [active, setActive] = useState(false);
