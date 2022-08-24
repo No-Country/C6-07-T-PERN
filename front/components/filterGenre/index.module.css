@@ -14,9 +14,10 @@
 
 .filterGenreBoxB {
 	margin: 0;
-	padding: 0 67px;
+	padding: 2px 66px;
 	display: block;
 	flex-direction: column-reverse;
+	height: 5px;
 	float: right;
 }
 

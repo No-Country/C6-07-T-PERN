@@ -1,0 +1,11 @@
+.closeButtonGenre {
+	margin: 245px 30px;
+	padding: 0;
+	display: block;
+}
+
+.closeButtonYear {
+	margin: -26px 100px;
+	padding: 0;
+	display: block;
+}

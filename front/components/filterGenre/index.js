@@ -1,10 +1,12 @@
+var _ = require('lodash');
 import { H4 } from "../../ui/text";
 import { PrimaryButton } from "../../ui/buttons";
-var _ = require('lodash');
+import { getMedia, filterMedia } from "../../store/actions";
 import css from "../filterGenre/index.module.css";
 
 export default function FilterGenre() {
-    const genre = [];
+	const media = getMedia();
+	const genre = [media.id];
 
 	function checkBoxClick(e) {
 		const { name, checked } = e.target;
@@ -15,8 +17,8 @@ export default function FilterGenre() {
 		} 
 	};
 
-	function genreSubmit() {
-		
+	function genreSubmit(e, media) {
+		this.media({...this.state.request.media, [e.data.target]: e.data.value})
 	}
 
 	return ( <div>
@@ -44,6 +46,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="accion"
+				id={0}
 				onChange={checkBoxClick}
                 /> Acción
 		    </label>
@@ -52,6 +55,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="animacion"
+				id={2}
 				onChange={checkBoxClick}
                 /> Animación
 		    </label>
@@ -60,6 +64,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="aventura"
+				id={1}
 				onChange={checkBoxClick}
                 /> Aventura
 		    </label>
@@ -68,6 +73,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="belica"
+				id={17}
 				onChange={checkBoxClick}
                 /> Bélica
 		    </label>
@@ -76,6 +82,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="ciencia ficcion"
+				id={14}
 				onChange={checkBoxClick}
                 /> Ciencia Ficción
 		    </label>
@@ -84,6 +91,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="comedia"
+				id={3}
 				onChange={checkBoxClick}
                 /> Comedia
 		    </label>
@@ -92,6 +100,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="crimen"
+				id={4}
 				onChange={checkBoxClick}
                 /> Crimen
 		    </label>
@@ -100,6 +109,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="documental"
+				id={5}
 				onChange={checkBoxClick}
                 /> Documental
 		    </label>
@@ -108,6 +118,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="drama"
+				id={6}
 				onChange={checkBoxClick}
                 /> Drama
 		    </label>
@@ -116,6 +127,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="familia"
+				id={7}
 				onChange={checkBoxClick}
                 /> Familia
 		    </label>
@@ -127,6 +139,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="Fantasia"
+				id={8}
 				onChange={checkBoxClick}
                 /> Fantasia
 		    </label>
@@ -135,6 +148,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="historia"
+				id={9}
 				onChange={checkBoxClick}
                 /> Historia
 		    </label>
@@ -143,6 +157,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="misterio"
+				id={12}
 				onChange={checkBoxClick}
                 /> Misterio
 		    </label>
@@ -151,6 +166,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="musica"
+				id={11}
 				onChange={checkBoxClick}
                 /> Música
 		    </label>
@@ -159,6 +175,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="pelicula de tv"
+				id={15}
 				onChange={checkBoxClick}
                 /> Película de TV
 		    </label>
@@ -167,6 +184,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="romance"
+				id={13}
 				onChange={checkBoxClick}
                 /> Romance
 		    </label>
@@ -175,6 +193,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="suspenso"
+				id={16}
 				onChange={checkBoxClick}
                 /> Suspenso
 		    </label>
@@ -183,6 +202,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="terror"
+				id={10}
 				onChange={checkBoxClick}
                 /> Terror
 		    </label>
@@ -191,6 +211,7 @@ export default function FilterGenre() {
 				<input
                 type="checkbox"
                 name="western"
+				id={18}
 				onChange={checkBoxClick}
                 /> Western
 		    </label>
