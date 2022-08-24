@@ -1,6 +1,8 @@
 import { H4 } from "../../ui/text";
 import { PrimaryButton } from "../../ui/buttons";
 var _ = require('lodash');
+import css from "../filterRating/index.module.css";
+
 
 
 export default function FilterRating() {
@@ -102,7 +104,7 @@ export default function FilterRating() {
 		</label>
 		<br></br>
 		</H4>
-		<div><PrimaryButton onClick={() =>ratingSubmit()}>Filtrar</PrimaryButton></div>
+		<div className={css.filterButtonRating}><PrimaryButton onClick={() =>ratingSubmit()}>Filtrar</PrimaryButton></div>
 	</div> 
 	)
 }
