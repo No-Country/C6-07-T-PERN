@@ -2,14 +2,14 @@ import { useState } from "react";
 import FilterGenre from "../filterGenre";
 import FilterYear from "../filterYear";
 import FilterRating from "../filterRating";
+import css from "../filterContainer/index.module.css";
 
 export default function FilterContainer() {
 	const [showFilter, setShowFilter] = useState();
 	const [show, setShow] = useState(false);
-	const [toggleGenre, setToggleGenre] = useState(false);
-	const [toggleYear, setToggleYear] = useState(false);
-    const [toggleRating, setToggleRating] = useState(false);
-
+	// const [toggleGenre, setToggleGenre] = useState(false);
+	// const [toggleYear, setToggleYear] = useState(false);
+    // const [toggleRating, setToggleRating] = useState(false);
     function setFilter(filter) {
 		setShow(true);
 		const actions = {
@@ -26,6 +26,7 @@ export default function FilterContainer() {
 		const action = actions[filter];
 		action();
 	}
+	
 
 	return (
 		<div>
@@ -39,18 +40,18 @@ export default function FilterContainer() {
 				<div>
 				{showFilter == "genero" ? (
 					<>
-					<button onClick={() => {setShow(false);}}>Close</button>
 					<FilterGenre>Géneros</FilterGenre>
+					<button className={css.closeButtonGenre} onClick={() => {setShow(false);}}>Close</button>
 					</>
 				) : showFilter == "año" ? (
 					<>
-					<button onClick={() => {setShow(false);}}>Close</button>
 					<FilterYear>Año</FilterYear>
+					<button className={css.closeButtonYear} onClick={() => {setShow(false);}}>Close</button>
 					</>
 				) : showFilter == "puntuacion" ? (
 					<>
-					<button onClick={() => {setShow(false);}}>Close</button>
 					<FilterRating>Puntuación</FilterRating>
+					<button className={css.closeButtonYear} onClick={() => {setShow(false);}}>Close</button>
 					</>
 				) : null}
 			</div>
