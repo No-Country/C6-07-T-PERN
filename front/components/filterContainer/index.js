@@ -4,58 +4,94 @@ import FilterYear from "../filterYear";
 import FilterRating from "../filterRating";
 
 export default function FilterContainer() {
-	const [showFilter, setShowFilter] = useState();
-	const [show, setShow] = useState(false);
-	const [toggleGenre, setToggleGenre] = useState(false);
-	const [toggleYear, setToggleYear] = useState(false);
-    const [toggleRating, setToggleRating] = useState(false);
+  const [showFilter, setShowFilter] = useState();
+  const [show, setShow] = useState(false);
+  const [toggleGenre, setToggleGenre] = useState(false);
+  const [toggleYear, setToggleYear] = useState(false);
+  const [toggleRating, setToggleRating] = useState(false);
 
-    function setFilter(filter) {
-		setShow(true);
-		const actions = {
-			genero: () => {
-				setShowFilter("genero");
-			},
-			año: () => {
-					setShowFilter("año");
-			}, 
-			puntuacion: () => {
-					setShowFilter("puntuacion");
-			},
-		};
-		const action = actions[filter];
-		action();
-	}
+  function setFilter(filter) {
+    setShow(true);
+    const actions = {
+      genero: () => {
+        setShowFilter("genero");
+      },
+      año: () => {
+        setShowFilter("año");
+      },
+      puntuacion: () => {
+        setShowFilter("puntuacion");
+      },
+    };
+    const action = actions[filter];
+    action();
+  }
 
-	return (
-		<div>
-			<div>
-				<button onClick={() => {setFilter("genero");}}>Géneros</button>
-				<button onClick={() => {setFilter("año")}}>Año</button>
-				<button onClick={() => {setFilter("puntuacion")}}>Puntuación</button>
-			</div>
-			{show ? (
-			<div style={{ height: "50px", color: "white" }}> 
-				<div>
-				{showFilter == "genero" ? (
-					<>
-					<button onClick={() => {setShow(false);}}>Close</button>
-					<FilterGenre>Géneros</FilterGenre>
-					</>
-				) : showFilter == "año" ? (
-					<>
-					<button onClick={() => {setShow(false);}}>Close</button>
-					<FilterYear>Año</FilterYear>
-					</>
-				) : showFilter == "puntuacion" ? (
-					<>
-					<button onClick={() => {setShow(false);}}>Close</button>
-					<FilterRating>Puntuación</FilterRating>
-					</>
-				) : null}
-			</div>
-		</div>
-	) : null }
-	</div>
-	);
+  return (
+    <div>
+      <div>
+        <button
+          onClick={() => {
+            setFilter("genero");
+          }}
+        >
+          Géneros
+        </button>
+        <button
+          onClick={() => {
+            setFilter("año");
+          }}
+        >
+          Año
+        </button>
+        <button
+          onClick={() => {
+            setFilter("puntuacion");
+          }}
+        >
+          Puntuación
+        </button>
+      </div>
+      {show ? (
+        <div style={{ height: "50px", color: "white" }}>
+          <div>
+            {showFilter == "genero" ? (
+              <>
+                <button
+                  onClick={() => {
+                    setShow(false);
+                  }}
+                >
+                  Close
+                </button>
+                <FilterGenre>Géneros</FilterGenre>
+              </>
+            ) : showFilter == "año" ? (
+              <>
+                <button
+                  onClick={() => {
+                    setShow(false);
+                  }}
+                >
+                  Close
+                </button>
+                <FilterYear>Año</FilterYear>
+              </>
+            ) : showFilter == "puntuacion" ? (
+              <>
+                <button
+                  onClick={() => {
+                    setShow(false);
+                  }}
+                >
+                  Close
+                </button>
+                <FilterRating>Puntuación</FilterRating>
+              </>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
 }
