@@ -1,20 +1,29 @@
 .primary {
-	font-family: inherit;
-	max-width: 101px;
-	padding: 7px 12px;
-	font-size: 16px;
-	font-weight: 600;
-	background-color: var(--primary);
-	border-radius: 10px;
-	outline: none;
-	border: 2px;
-	cursor: pointer;
-	color:var(--background)
+  font-family: inherit;
+  max-width: 101px;
+  padding: 7px 12px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: var(--primary);
+  border-radius: 10px;
+  outline: none;
+  border: 2px;
+  cursor: pointer;
+  color: var(--background);
 }
+<<<<<<< HEAD
+.buttonFilter {
+  border-style: none;
+  width: 70px;
+  height: 40px;
+  background-color: var(--background-secondary);
+  border-radius: 6px;
+=======
 .buttonFilter{
 	border-style: none;
 	width: 70px;
 height: 40px;
 	background-color: var(--background-secondary);
 	border-radius: 6px;
+>>>>>>> 7efec7aff06776b6b2b10890dd5b76072897f973
 }
