@@ -11,8 +11,9 @@ async function bootstrap() {
       transform: true,
       //Use whitelist to clear unnecesary or unsafe entry information
       whitelist: true,
-    }), 
+    }),
   );
+  app.enableCors();
   // Stablish the connection port
   await app.listen(3001);
 }

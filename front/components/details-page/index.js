@@ -1,11 +1,42 @@
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { H2, H4 } from "../../ui/text";
 import Card from "../card";
+import CommentsSection from "../commentsSection";
 import css from "./index.module.css";
 
 export default function DetailsPage(props) {
   const media = props.media;
-  console.log(media);
+  const [comments, setComments] = useState();
+  const [newComment, setNewComment] = useState(false);
+  useEffect(() => {
+    async function getComments() {
+      const data = await fetch(
+        `http://localhost:3001/comments?mediaType=${props.type}&mediaId=${media.id}`
+      );
+      const json = await data.json();
+      setComments(json);
+    }
+    getComments();
+  }, [media, newComment]);
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const comment = {
+      message: e.target.message.value,
+      type: props.type,
+      mediaId: media.id,
+      user: e.target.userName.value,
+    };
+    await fetch("http://localhost:3001/comments", {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(comment),
+    });
+    setNewComment(!newComment);
+  }
+
   return (
     <div className={css.mainContainer}>
       <H2 className={css.title}>{media.title}</H2>
@@ -33,7 +64,12 @@ export default function DetailsPage(props) {
             allowFullScreen
           ></iframe>
         </div>
-        <H4 className={css.noMargin}>Comentarios</H4>
+        <div>
+          <H4 className={css.noMargin}>Comentarios</H4>
+          {comments ? (
+            <CommentsSection comments={comments} submit={handleSubmit} />
+          ) : null}
+        </div>
       </div>
     </div>
   );

@@ -7,7 +7,6 @@
 }
 .searchBarContainer::after {
   display: block;
-
   content: "";
   height: 1px;
   background-color: var(--outlined);
