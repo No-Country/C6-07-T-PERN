@@ -1,0 +1,26 @@
+.filterBoxNew {
+	margin: 0;
+	padding: 0 10px;
+	display: block;
+}
+
+.filterGenreBoxA {
+	margin: 0;
+	padding: 0 10px;
+	display: block;
+	flex-direction: column-reverse;
+	float: left;
+}
+
+.filterGenreBoxB {
+	margin: 0;
+	padding: 2px 66px;
+	display: block;
+	flex-direction: column-reverse;
+	height: 5px;
+	float: right;
+}
+
+.checkBox {
+	background-color: var(--primary);
+}

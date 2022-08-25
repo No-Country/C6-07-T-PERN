@@ -34,11 +34,11 @@ export function SearchIcon() {
 export function WatchListIcon() {
   return <WatchList className={css.icon}></WatchList>;
 }
-export function ArrowUpIcon() {
-  return <Up className={css.icon}></Up>;
+export function ArrowUpIcon(props) {
+  return <Up className={css.icon + " " + props.className}></Up>;
 }
-export function ArrowDownIcon() {
-  return <Down className={css.icon}></Down>;
+export function ArrowDownIcon(props) {
+  return <Down className={css.icon + " " + props.className}></Down>;
 }
 export function CloseIcon() {
   return <Close className={css.icon}></Close>;

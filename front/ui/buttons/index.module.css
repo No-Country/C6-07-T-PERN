@@ -11,10 +11,19 @@
   cursor: pointer;
   color: var(--background);
 }
+<<<<<<< HEAD
 .buttonFilter {
   border-style: none;
   width: 70px;
   height: 40px;
   background-color: var(--background-secondary);
   border-radius: 6px;
+=======
+.buttonFilter{
+	border-style: none;
+	width: 70px;
+height: 40px;
+	background-color: var(--background-secondary);
+	border-radius: 6px;
+>>>>>>> 7efec7aff06776b6b2b10890dd5b76072897f973
 }
