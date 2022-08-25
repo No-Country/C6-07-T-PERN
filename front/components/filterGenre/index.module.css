@@ -14,11 +14,17 @@
 
 .filterGenreBoxB {
 	margin: 0;
-	padding: 2px 66px;
+	padding: 4px 66px;
 	display: block;
 	flex-direction: column-reverse;
 	height: 5px;
 	float: right;
+}
+
+.filterButton {
+	margin: 0 29px;
+	padding: 0;
+	display: block;
 }
 
 .checkBox {

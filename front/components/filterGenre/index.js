@@ -216,7 +216,7 @@ export default function FilterGenre() {
                 /> Western
 		    </label>
 			</H4>
-			<PrimaryButton onClick={() =>genreSubmit()}>Filtrar</PrimaryButton>
+			<div className={css.filterButton}><PrimaryButton onClick={() =>genreSubmit()}>Filtrar</PrimaryButton></div>
 		</div>
 	</div>
 	
