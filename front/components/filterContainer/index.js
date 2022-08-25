@@ -2,7 +2,10 @@ import { useState } from "react";
 import FilterGenre from "../filterGenre";
 import FilterYear from "../filterYear";
 import FilterRating from "../filterRating";
+import { ArrowDownIcon, ArrowUpIcon } from "../../ui/icons";
 import css from "../filterContainer/index.module.css";
+import { H3 } from "../../ui/text";
+import { PrimaryButton } from "../../ui/buttons";
 
 export default function FilterContainer() {
 	const [showFilter, setShowFilter] = useState();
@@ -15,6 +18,7 @@ export default function FilterContainer() {
 		const actions = {
 			genero: () => {
 				setShowFilter("genero");
+				<ArrowUpIcon />;
 			},
 			año: () => {
 					setShowFilter("año");
@@ -31,27 +35,27 @@ export default function FilterContainer() {
 	return (
 		<div>
 			<div>
-				<button onClick={() => {setFilter("genero");}}>Géneros</button>
-				<button onClick={() => {setFilter("año")}}>Año</button>
-				<button onClick={() => {setFilter("puntuacion")}}>Puntuación</button>
+				<button className={css.openButton} onClick={() => {setFilter("genero");}}><H3> Géneros <ArrowDownIcon /> </H3> </button>
+				<button className={css.openButton} onClick={() => {setFilter("año")}}><H3>Año <ArrowDownIcon /> </H3> </button>
+				<button className={css.openButton} onClick={() => {setFilter("puntuacion")}}><H3> Puntuación <ArrowDownIcon /> </H3></button>
 			</div>
 			{show ? (
-			<div style={{ height: "50px", color: "white" }}> 
+			<div> 
 				<div>
 				{showFilter == "genero" ? (
 					<>
-					<button className={css.closeButtonGenre} onClick={() => {setShow(false);}}>Close</button>
-					<FilterGenre>Géneros</FilterGenre>
+					<FilterGenre> <ArrowUpIcon /> Géneros </FilterGenre>
+					<div className={css.closeButtonGenre}><PrimaryButton onClick={() => {setShow(false);}}>Close</PrimaryButton></div>
 					</>
 				) : showFilter == "año" ? (
 					<>
-					<button className={css.closeButtonYear} onClick={() => {setShow(false);}}>Close</button>
 					<FilterYear>Año</FilterYear>
+					<div className={css.closeButtonYear}><PrimaryButton onClick={() => {setShow(false);}}>Close</PrimaryButton></div>
 					</>
 				) : showFilter == "puntuacion" ? (
 					<>
-					<button className={css.closeButtonYear} onClick={() => {setShow(false);}}>Close</button>
 					<FilterRating>Puntuación</FilterRating>
+					<div className={css.closeButtonYear}><PrimaryButton onClick={() => {setShow(false);}}>Close</PrimaryButton></div>
 					</>
 				) : null}
 			</div>

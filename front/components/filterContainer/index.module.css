@@ -1,11 +1,19 @@
+.openButton {
+	margin: 0px 5px;
+	background-color: transparent;
+	color: var(--text);
+	border: transparent;
+}
+
+
 .closeButtonGenre {
-	margin: 245px 30px;
+	margin: 240px 30px;
 	padding: 0;
 	display: block;
 }
 
 .closeButtonYear {
-	margin: -26px 100px;
+	margin: -34px 60px 2px;
 	padding: 0;
 	display: block;
 }
