@@ -1,0 +1,43 @@
+.margin{
+    margin: 0;
+}
+.commentsSectionContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.comment::after {
+    display: block;
+    content: "";
+    height: 1px;
+    background-color: var(--background-secondary);
+    width: 100%;
+    
+  }
+  .commentsForm{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .commentsInput{
+    font-family: inherit;
+    color: var(--text);
+    width: 100%;
+    height: 25px;
+    background:none;
+    border: 1px solid var(--outlined);
+border-radius: 8px;
+  }
+  .commentsTextArea{
+    font-family: inherit;
+    color: var(--text);
+    width: 100%;
+    height: 100px;
+    background:none;
+    border: 1px solid var(--outlined);
+border-radius: 8px;
+  }
+  .commentsInput:focus, .commentsTextArea:focus{
+    border: 1px solid var(--accent);
+    outline: none;
+  }

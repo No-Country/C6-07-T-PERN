@@ -5,6 +5,7 @@
     padding: 0 16px;
 }
 .detailsContainer{
+    margin-bottom: 50px;
     display: flex;
 flex-direction: column;
 gap: 40px;
