@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-
+//Stablish general services for methods
 @Injectable()
 export class AppService {
   getHello(): string {
-    return 'Hello World!';
+    return 'This is Miravos app backend 😜';
   }
 }

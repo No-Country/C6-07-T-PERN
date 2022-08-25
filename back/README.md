@@ -1,3 +1,5 @@
+# Miravos Backend
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -22,16 +24,6 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
-```
-
 ## Running the app
 
 ```bash
@@ -45,29 +37,26 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Porpose
 
-```bash
-# unit tests
-$ npm run test
+This project was created with two main intentions:
 
-# e2e tests
-$ npm run test:e2e
+### 1. Participate in Alkemy's challenge
 
-# test coverage
-$ npm run test:cov
-```
+One of the purposes of this project is gain experience building a colaborative team project being part of NoCountry, as well as to acquire new knowledge helped by the requeriments of the project that expect some technology or functionality uses that we did not know before starting the project.
 
-## Support
+### 2. Create a guided code for other programmers who are interested in learning about Backend with NestJS
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+The second purpose of this project is to build a generic code about how to set up a local server and connect it to a Postgress DB, so the code is fully commented to facilitate reading and indicate what each of the code blocks does.<br />
+**All comments are written in English.**
 
-## Stay in touch
+## Reading order
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+We present below what was the order of creation of each of the files to serve as a guide for reading the code and thus allow a threaded thought process that facilitates its understanding:
 
-## License
-
-Nest is [MIT licensed](LICENSE).
+**1.** main.ts <br />
+**2.** app.modules.ts, app.controller.ts & app.service.ts <br />
+**3.** modules/\*/entity.ts <br />
+**4.** modules/\*/service.ts <br />
+**5.** modules/\*/controller.ts <br />
+**6.** modules/\*/module.ts <br />
