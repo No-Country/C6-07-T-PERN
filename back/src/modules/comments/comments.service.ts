@@ -1,15 +1,14 @@
 //Import from libraries
 import { Injectable, NotFoundException, Options } from '@nestjs/common'; //Import error handlers or other NestJS state reponse like @NotFoundException"
 import { InjectRepository } from '@nestjs/typeorm';
-import { NotFoundError } from 'rxjs';
 import {
-  ConnectionNotFoundError,
-  EntityNotFoundError,
+  // ConnectionNotFoundError,
+  // EntityNotFoundError,
   Repository,
 } from 'typeorm';
+import { User } from '../users/users.entity';
 //Import local files
 import { Comment } from './comment.entity'; //Import entity
-import { NewCommentDto, UpdateCommentDto } from './dto'; //Import DTO's
 
 //Create functions that must be called by methods
 @Injectable()
@@ -36,16 +35,22 @@ export class CommentsService {
   }
 
   async getCommentById(id: string): Promise<Comment> {
-    const comment: Comment = await this.commentRepository.findOneBy({ id: id });
-    if (!comment) throw new NotFoundException();
-    return comment;
+    try {
+      const comment: Comment = await this.commentRepository.findOneBy({
+        id: id,
+      });
+      if (!comment) throw new NotFoundException();
+      return comment;
+    } catch {
+      throw new NotFoundException();
+    }
   }
 
   async addNewComment(
     message: string,
     type: 'serie' | 'movie',
     mediaId: number,
-    user: string,
+    user: User,
   ): Promise<Comment> {
     const newComment: Comment = this.commentRepository.create({
       message,
@@ -71,4 +76,22 @@ export class CommentsService {
     await this.commentRepository.remove(commentToDelete);
     return commentToDelete;
   }
+
+  // async deleteAllComments(): Promise<string> {
+  //   const comments: Comment[] = await this.commentRepository.find();
+  //   const repository = this.commentRepository;
+  //   console.log(this);
+  //   function handleDeletePromises(comments, index = comments.length - 1) {
+  //     const comment = comments[index];
+  //     repository
+  //       .remove(comment)
+  //       .then(() =>
+  //         comments[--index]
+  //           ? handleDeletePromises(comments, index)
+  //           : console.log('done'),
+  //       );
+  //   }
+  //   handleDeletePromises(comments);
+  //   return 'All comments deleted';
+  // }
 }

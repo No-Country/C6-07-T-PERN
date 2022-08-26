@@ -6,7 +6,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 // Import new modules
 import { CommentsModule } from './modules/comments/comments.module';
-import { Comment } from './modules/comments/comment.entity';
+import { UsersModule } from './modules/users/users.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -20,6 +21,8 @@ import { Comment } from './modules/comments/comment.entity';
       autoLoadEntities: true,
       synchronize: true,
     }),
+    UsersModule,
+    AuthModule,
   ], //Connect new modules
   controllers: [AppController],
   providers: [AppService],
