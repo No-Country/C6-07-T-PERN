@@ -59,6 +59,56 @@
   height: 180px;
 }
 
+@keyframes gradient {
+  0%{
+    background: linear-gradient(158.08deg, #79747E 0%, rgba(51, 51, 51, 0) 100%);
+  }
+  20%{
+    background: linear-gradient(158.08deg, #79747E 20%, rgba(51, 51, 51, 0) 100%);
+  }
+  40%{
+    background: linear-gradient(158.08deg, #79747E 40%, rgba(51, 51, 51, 0) 100%);
+  }
+  50%{
+    background: linear-gradient(158.08deg, rgba(51, 51, 51, 0) 0%, #79747E 100%);
+  }
+  
+  70%{
+    background: linear-gradient(158.08deg, rgba(51, 51, 51, 0) 0%, #79747E 70%);
+  }
+  90%{
+    background: linear-gradient(158.08deg, rgba(51, 51, 51, 0) 0%, #79747E 90%);
+  }
+  
+  100%{
+    background: linear-gradient(158.08deg, #f4f3f5 0%, rgba(51, 51, 51, 0) 100%);
+  }
+  }
+  @keyframes charge {
+    0%{
+      background-position: 0%;
+    }
+    50%{
+      background-position: 100%;
+    }
+    100%{
+      background-position: 0%;
+    }
+  }
+.loaderMain {
+  margin: 0 auto;
+  color: #fff;
+  padding: 0 18px;
+  background: linear-gradient(158.08deg, #e8e4eb 0%, rgba(51, 51, 51, 0) 100%);
+  background-size: 200% ;
+  display: flex;
+  flex-direction: column;
+  width: 328px;
+  height: 517px;
+  border-radius: 8px;
+  animation: charge 0.8s ease infinite;
+}
+
 .loader {
   margin: 100px auto;
   font-size: 25px;
