@@ -19,15 +19,17 @@ export class CommentsService {
     private readonly commentRepository: Repository<Comment>,
   ) {}
 
-  async getComments(): Promise<Comment[]> {
-    return await this.commentRepository.find();
-  }
+  // async getComments(): Promise<Comment[]> {
+  //   console.log(await this.commentRepository.find({ relations: ['user'] }))
+  //   return await this.commentRepository.find({ relations: ['user'] });
+  // }
 
   async getCommentsByMedia(
     type: 'serie' | 'movie',
     mediaId: number,
   ): Promise<Comment[]> {
     const comments: Comment[] = await this.commentRepository.find({
+      relations: ['user'],
       where: { type, mediaId },
     });
     if (!comments.length) throw new NotFoundException();
@@ -56,7 +58,7 @@ export class CommentsService {
       message,
       type,
       mediaId,
-      user,
+      user: user || null,
     });
     return this.commentRepository.save(newComment);
   }
