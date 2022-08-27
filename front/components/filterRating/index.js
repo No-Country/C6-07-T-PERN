@@ -2,23 +2,28 @@ import { H4 } from "../../ui/text";
 import { PrimaryButton } from "../../ui/buttons";
 var _ = require('lodash');
 import css from "../filterRating/index.module.css";
+import { useDispatch } from "react-redux";
+import { setFilterByRating } from "../../store/actions";
 
 
 
 export default function FilterRating() {
-    const rating = [];
+	const dispatch = useDispatch();
+
+    const ratingFilters = [];
 
 	function checkBoxClick(e) {
 		const { name, checked } = e.target;
 		if (checked) {
-			rating.push(name);
+			ratingFilters.push(name);
 		} else {
-			_.remove(rating, (rating) => (rating == name));
+			_.remove(ratingFilters, (rating) => rating == name);
 		} 
 	};
 
-	function ratingSubmit() {
-		
+	function handleOnSubmit() {
+		console.log(ratingFilters);
+		dispatch(setFilterByRating(ratingFilters));
 	}
 
 	return ( <div>
@@ -104,7 +109,7 @@ export default function FilterRating() {
 		</label>
 		<br></br>
 		</H4>
-		<div className={css.filterButtonRating}><PrimaryButton onClick={() =>ratingSubmit()}>Filtrar</PrimaryButton></div>
+		<div className={css.filterButtonRating}><PrimaryButton onClick={handleOnSubmit}>Filtrar</PrimaryButton></div>
 	</div> 
 	)
 }
