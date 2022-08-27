@@ -7,9 +7,10 @@
 
 
 .closeButtonGenre {
-	margin: 240px 30px;
-	padding: 0;
+	margin: 150px;
+	padding: 2px 22px;
 	display: block;
+	clear: both;
 }
 
 .closeButtonYear {

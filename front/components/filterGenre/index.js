@@ -27,23 +27,6 @@ export default function FilterGenre() {
 
   return (
     <div>
-      <div className={css.filterBoxNew}>
-        <H4>
-          <label>
-            <input
-              className={css.checkBox}
-              type="checkbox"
-              name="Estrenos"
-              onChange={checkBoxClick}
-            />{" "}
-            Estrenos
-          </label>
-          <label>
-            <input type="checkbox" name="populares" onChange={checkBoxClick} />{" "}
-            Populares
-          </label>
-        </H4>
-      </div>
       <div className={css.filterGenreBoxA}>
         <H4>
           <label>
@@ -239,6 +222,7 @@ export default function FilterGenre() {
             Western
           </label>
         </H4>
+		<br></br>
         <div className={css.filterButton}>
           <PrimaryButton onClick={handleOnSubmit}>Filtrar</PrimaryButton>
         </div>

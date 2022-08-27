@@ -1,4 +1,4 @@
-import { SET_FILTER_BY_GENRE, SET_FILTER_BY_PLATFORM } from "../actions";
+import { SET_FILTER_BY_GENRE, SET_FILTER_BY_PLATFORM, SET_FILTER_BY_RATING } from "../actions";
 
 const initialState = {
   filter: {
@@ -27,6 +27,13 @@ const filterReducer = (state = initialState, action) => {
           genres: action.payload,
         },
       };
+	case SET_FILTER_BY_RATING:
+	  return {
+		filter: {
+		  ...state.filter,
+		  vote_average: action.payload,
+		},
+	  };
     default:
       return state;
   }
