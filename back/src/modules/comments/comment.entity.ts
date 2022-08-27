@@ -30,5 +30,5 @@ export class Comment {
   @ManyToOne((type) => User, (user) => user.comments, { cascade: true }) //Use arrow function to map relation
   //Use cascade to relation Put, Delete and other methods
   @JoinColumn({ name: 'user_id' }) //Join column to create a relational column
-  user?: User;
+  user: User;
 }

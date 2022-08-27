@@ -1,7 +1,10 @@
 //Methods imported from libraries
-import { Controller } from '@nestjs/common'; //Import controller object
+import { Controller, UseGuards } from '@nestjs/common'; //Import controller object
 import { Query, Param, Body, HttpCode, HttpStatus } from '@nestjs/common'; //Import data from request and for reponses
 import { Get, Post, Put, Delete } from '@nestjs/common'; //Import methods
+import { GetUser } from '../auth/get-user.decorator';
+import { OptionalJwtAuthGuard } from '../auth/optional-authentication.guard';
+import { User } from '../users/users.entity';
 //Methods and varaibles imported from local files
 import { Comment } from './comment.entity'; //Import entity
 import { CommentsService } from './comments.service'; //Import services
@@ -26,10 +29,10 @@ export class CommentsController {
     return await this.commentService.getCommentsByMedia(mediaType, mediaId);
   }
 
-  @Get()
-  async getComments(): Promise<Comment[]> {
-    return await this.commentService.getComments();
-  }
+  // @Get()
+  // async getComments(): Promise<Comment[]> {
+  //   return await this.commentService.getComments();
+  // }
 
   // @Get(':id/:detail')
   // getCommentDetail(@Param('id') id: string, @Param('detail') detail: string) {
@@ -37,11 +40,15 @@ export class CommentsController {
   // }
 
   @Post()
+  @UseGuards(OptionalJwtAuthGuard)
   //   Setup the code response and the status
   //   @HttpCode(HttpStatus.BAD_REQUEST)
-  async createComment(@Body() body: NewCommentDto): Promise<string> {
-    const { message, type, mediaId, user } = body;
-    await this.commentService.addNewComment(message, type, mediaId, user);
+  async createComment(
+    @Body() body: NewCommentDto,
+    @GetUser() loggedUser: User,
+  ): Promise<string> {
+    const { message, type, mediaId } = body;
+    await this.commentService.addNewComment(message, type, mediaId, loggedUser);
     return 'New comment has been set.';
   }
 
