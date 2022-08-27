@@ -1,4 +1,4 @@
-import { SET_FILTER_BY_PLATFORM } from "../actions";
+import { SET_FILTER_BY_GENRE, SET_FILTER_BY_PLATFORM } from "../actions";
 
 const initialState = {
   filter: {
@@ -18,6 +18,13 @@ const filterReducer = (state = initialState, action) => {
         filter: {
           ...state.filter,
           platforms: action.payload,
+        },
+      };
+    case SET_FILTER_BY_GENRE:
+      return {
+        filter: {
+          ...state.filter,
+          genres: action.payload,
         },
       };
     default:

@@ -54,6 +54,7 @@ export class CommentsController {
 
   @Delete(':id')
   async deleteComment(@Param('id') id: string): Promise<string> {
+    // if (id == 'all') return await this.commentService.deleteAllComments();
     await this.commentService.deleteComment(id);
     return 'Comment has been deleted';
   }

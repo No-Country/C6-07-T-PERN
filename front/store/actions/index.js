@@ -7,6 +7,7 @@ export const SET_MEDIA = "media/set";
 export const CLEAR_MEDIA = "media/clear";
 export const FILTER_MEDIA = "media/filter";
 export const SET_FILTER_BY_PLATFORM = "filter/platform/set";
+export const SET_FILTER_BY_GENRE = "filter/genre/set";
 
 const api_key = process.env.APIKEY;
 
@@ -29,6 +30,13 @@ export function setFilterByPlatform(payload) {
   return {
     type: SET_FILTER_BY_PLATFORM,
     payload: platformsFilter,
+  };
+}
+
+export function setFilterByGenre(payload) {
+  return {
+    type: SET_FILTER_BY_GENRE,
+    payload: payload,
   };
 }
 
