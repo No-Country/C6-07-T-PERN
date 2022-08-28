@@ -20,7 +20,8 @@ import css from "./index.module.css";
 import { useEffect, useState } from "react";
 import { H2, H3semiBold, H4 } from "../../ui/text";
 import { useRouter } from "next/router";
-
+import { useTransition, animated } from "react-spring";
+import Sinopsis from "../sinopsis";
 //Denis: funcion que devuelve el icono de la plataforma correspondiente
 function showMoviePlatform(platform) {
   //Denis: Objeto con los posibles elementos a retornar
@@ -55,6 +56,13 @@ export default function Card(props) {
   const router = useRouter();
   const { media, delay } = props;
   const [showSinopsis, setShowsinopsis] = useState(false);
+  const transtition = useTransition(showSinopsis, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    delay: 100,
+  });
+
   //Nano: Estados para transcición de inggreso
   const [isMounted, setIsMounted] = useState(false);
   //Nano: Adición de estilos para ingreso de las cards(
@@ -94,76 +102,44 @@ export default function Card(props) {
         }}
       >
         <p className={css.sinopsisText}>Sinopsis</p>
-        {showSinopsis ? (
-          <ArrowUpIcon className={css.headerArrowDown}></ArrowUpIcon>
-        ) : (
-          <ArrowDownIcon className={css.headerArrowDown}></ArrowDownIcon>
+        <ArrowUpIcon
+          className={showSinopsis ? css.headerArrowDown : css.headerArrowUp}
+        />
+      </div>
+      <div style={{ width: "100%", position: "relative" }}>
+        {transtition((style, item) =>
+          item ? (
+            <Sinopsis
+              setShowSinopsis={setShowsinopsis}
+              style={style}
+              title={props.title}
+              director={props.director}
+              actors={props.actors}
+              sinopsis={props.sinopsis}
+            />
+          ) : null
         )}
       </div>
-      {showSinopsis ? (
-        <div
-          className={css.divSinopsisContainer}
-          onMouseLeave={() => {
-            setShowsinopsis(false);
-          }}
-        >
-          <div className={css.divSinopsisHeader}>
-            <SeenIcon></SeenIcon>
-            <h2 style={{ padding: "0px 15px", textAlign: "center" }}>
-              {props.title}
-            </h2>
-            <SaveIcon></SaveIcon>
-          </div>
-          <div className={css.divSinopsisBody}>
-            <div>
-              <H4 className={css.sinopsisTextMargin}>Director</H4>
-              <H3semiBold className={css.sinopsisTextMargin}>
-                {props.director}{" "}
-              </H3semiBold>
-            </div>
-            <div>
-              <H4 className={css.sinopsisTextMargin}>Elenco</H4>
-              {props.actors.map((element, index) => {
-                return index <= 1 ? (
-                  <H3semiBold
-                    className={css.sinopsisTextMargin}
-                    key={element.id}
-                  >
-                    {element.name}
-                  </H3semiBold>
-                ) : null;
-              })}
-            </div>
-            <div>
-              <H3semiBold className={css.sinopsisTextMargin}>
-                Sinopsis
-              </H3semiBold>
-              <H4 className={css.sinopsisBodyText}>{props.sinopsis}</H4>
-            </div>
-          </div>
+      <animated.div
+        className={css.divCardImage}
+        onMouseEnter={() => {
+          setShowsinopsis(true);
+        }}
+      >
+        <Image
+          priority={props.priority}
+          className={css.imgCardMain}
+          width={290}
+          height={420}
+          src={media.image}
+          alt={`${media.title}-banner`}
+        />
+        <div className={css.divImgCardPlatform}>
+          {media.platforms.map((element) => {
+            return showMoviePlatform(element);
+          })}
         </div>
-      ) : (
-        <div
-          className={css.divCardImage}
-          onMouseEnter={() => {
-            setShowsinopsis(true);
-          }}
-        >
-          <Image
-            priority={props.priority}
-            className={css.imgCardMain}
-            width={290}
-            height={420}
-            src={media.image}
-            alt={`${media.title}-banner`}
-          />
-          <div className={css.divImgCardPlatform}>
-            {media.platforms.map((element) => {
-              return showMoviePlatform(element);
-            })}
-          </div>
-        </div>
-      )}
+      </animated.div>
       <div className={css.divCardFooter}>
         <div className={css.divCardRaiting}>
           <p className={css.textCardRaiting}>{media.vote_average}</p>
@@ -182,3 +158,46 @@ export default function Card(props) {
     </div>
   );
 }
+
+// <animated.div
+// style={style}
+// className={css.divSinopsisContainer}
+// onMouseLeave={() => {
+//   setShowsinopsis(false);
+// }}
+// >
+// <div className={css.divSinopsisHeader}>
+//   <SeenIcon></SeenIcon>
+//   <h2 style={{ padding: "0px 15px", textAlign: "center" }}>
+//     {props.title}
+//   </h2>
+//   <SaveIcon></SaveIcon>
+// </div>
+// <div className={css.divSinopsisBody}>
+//   <div>
+//     <H4 className={css.sinopsisTextMargin}>Director</H4>
+//     <H3semiBold className={css.sinopsisTextMargin}>
+//       {props.director}{" "}
+//     </H3semiBold>
+//   </div>
+//   <div>
+//     <H4 className={css.sinopsisTextMargin}>Elenco</H4>
+//     {props.actors.map((element, index) => {
+//       return index <= 1 ? (
+//         <H3semiBold
+//           className={css.sinopsisTextMargin}
+//           key={element.id}
+//         >
+//           {element.name}
+//         </H3semiBold>
+//       ) : null;
+//     })}
+//   </div>
+//   <div>
+//     <H3semiBold className={css.sinopsisTextMargin}>
+//       Sinopsis
+//     </H3semiBold>
+//     <H4 className={css.sinopsisBodyText}>{props.sinopsis}</H4>
+//   </div>
+// </div>
+// </animated.div>

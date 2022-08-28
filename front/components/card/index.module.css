@@ -24,10 +24,12 @@
 .imgCardMain {
   border-radius: 4px;
 }
-.divSinopsisContainer{
+.animated{
+  position: relative;
   height: 420px;
   width: 100%;
-  overflow-y: scroll;
+ 
+  
 }
 .divSinopsisHeader{
   display: flex;
@@ -36,6 +38,13 @@
 .headerArrowDown{
   height: 16px;
   width: 16px;
+  transition:0.5s ease-in-out;
+}
+.headerArrowUp{
+  height: 16px;
+  width: 16px;
+ transform: rotate(180deg);
+ transition:0.5s ease-in-out;
 }
 .sinopsisTitle{
   padding: 8px 24px;
