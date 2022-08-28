@@ -1,0 +1,7 @@
+
+.logButton {
+	margin: 0 100px;
+	border: 1px solid var(--background);
+	background: var(--background);
+	color: var(--primary);
+}
