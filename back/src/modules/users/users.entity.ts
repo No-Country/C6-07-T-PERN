@@ -16,18 +16,31 @@ import { Comment } from '../comments/comment.entity';
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
-  @Column({ nullable: false })
+
+  @Column({ nullable: false, unique: true })
   username: string;
+
   @Column({ nullable: false, unique: true })
   email: string;
+
   @Column({ nullable: false })
   password: string;
+
   @Column({ type: 'boolean', default: false })
   active: boolean;
+
+  @Column({ type: 'uuid', unique: true })
+  activationToken: string;
+
+  @Column({ type: 'uuid', unique: true, nullable: true })
+  resetPasswordToken: string;
+
   @CreateDateColumn()
   createdAt: Date;
+
   @UpdateDateColumn()
   updatedAt: Date;
+
   @OneToMany((type) => Comment, (comment) => comment.user) //Use arrow function to map relation
   comments: Comment[];
 }

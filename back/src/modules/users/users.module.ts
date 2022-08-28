@@ -5,6 +5,6 @@ import { TypeOrmModule } from '@nestjs/typeorm'; //Imports TyperOrmModule
 import { User } from './users.entity';
 
 @Module({
-    imports:[TypeOrmModule.forFeature([User ])] //Use for feauture to connect the entity
+  imports: [TypeOrmModule.forFeature([User])], //Use for feauture to connect the entity
 })
 export class UsersModule {}
