@@ -82,12 +82,5 @@ export function PlatformIcon(props) {
 }
 
 export function Loading() {
-  return (
-    <div className={css.loaderContainer}>
-      <div className={css.loader}>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
-  );
+  return <div className={css.loaderMain}></div>;
 }

@@ -1,0 +1,58 @@
+.sinopsisText {
+    margin: 0;
+  }
+  
+ 
+  .divSinopsisContainer{
+    background-color: var(--background-secondary);
+    position: absolute;
+    z-index: 4;
+    height: 420px;
+    width: 100%;
+    overflow-y: scroll;
+    
+  }
+  .divSinopsisHeader{
+    display: flex;
+    justify-content: space-between;
+  }
+  .sinopsisTitle{
+    padding: 8px 24px;
+    margin: 0;
+  }
+  .divSinopsisBody{
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    padding-top: 27px;
+    /* min-height: 318px; */
+  
+  gap: 26px;
+  }
+  .sinopsisTextMargin{
+    margin: 4px 0;
+  }
+  .sinopsisBodyText{
+    line-height: 26px;
+  }
+  
+  .divSinopsisContainer::-webkit-scrollbar {
+   width: 5px;
+  height: 4px;
+  
+  }
+  
+  
+  .divSinopsisContainer::-webkit-scrollbar-track {
+    margin-top: 150px;
+    background:none;
+  }
+   
+  
+  .divSinopsisContainer::-webkit-scrollbar-thumb {
+  
+    background: var(--outlined);
+    border-radius: 10px;
+    height:2px;
+  } 
+  
