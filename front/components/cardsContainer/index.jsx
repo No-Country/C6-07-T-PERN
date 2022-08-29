@@ -49,6 +49,13 @@ function CardsContainer(props) {
           <Loading />
           <Loading />
           <Loading />
+          <Loading />
+          <Loading />
+          <Loading />
+          <Loading />
+          <Loading />
+          <Loading />
+          <Loading />
         </>
       ) : media[0] === "No hay coincidencias" ? (
         <h1 style={{ color: "white" }}>{media[0]}</h1>

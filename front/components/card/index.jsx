@@ -68,7 +68,7 @@ export default function Card(props) {
   //Nano: Adición de estilos para ingreso de las cards(
   const unmountedStyle = {
     opacity: 0,
-    transform: "translate(0px, 300px)",
+    // transform: "translate(0px, 300px)",
   };
   const mountedStyle = {
     opacity: 1,
