@@ -72,32 +72,13 @@ export default function FilterContainer() {
           <div>
             {showFilter == "genero" ? (
               <>
-                <FilterGenre>
-                  {" "}
-                  <ArrowUpIcon /> Géneros{" "}
+                <FilterGenre click={setShow}>
+                  <ArrowUpIcon /> Géneros
                 </FilterGenre>
-                <div className={css.closeButtonGenre}>
-                  <PrimaryButton
-                    onClick={() => {
-                      setShow(false);
-                    }}
-                  >
-                    Close
-                  </PrimaryButton>
-                </div>
               </>
             ) : showFilter == "año" ? (
               <>
-                <YearOrder>Año</YearOrder>
-                <div className={css.closeButtonYear}>
-                  <PrimaryButton
-                    onClick={() => {
-                      setShow(false);
-                    }}
-                  >
-                    Close
-                  </PrimaryButton>
-                </div>
+                <YearOrder click={setShow}>Año</YearOrder>
               </>
             ) : showFilter == "puntuacion" ? (
               <>

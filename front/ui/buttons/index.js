@@ -7,7 +7,25 @@ import { useState } from "react";
 import css from "./index.module.css";
 
 export function PrimaryButton(props) {
-  return <button className={css.primary} onClick={props.onClick}>{props.children}</button>;
+  return (
+    <button className={css.primary} onClick={props.onClick}>
+      {props.children}
+    </button>
+  );
+}
+export function OutlinedButton(props) {
+  return (
+    <button className={css.outlined} onClick={props.onClick}>
+      {props.children}
+    </button>
+  );
+}
+export function BorderlessButton(props) {
+  return (
+    <button className={css.borderLess} onClick={props.onClick}>
+      {props.children}
+    </button>
+  );
 }
 export function PlatformFilterButton(props) {
   const [active, setActive] = useState(false);

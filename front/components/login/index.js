@@ -51,7 +51,7 @@ export function Login() {
         tumail@gmail.com
         <div className={css.enterButton}>
           <H5>Contraseña</H5>
-		  <a className={css.passRecoveryLink}>¿Olvidaste tu contraseña?</a>
+          <a className={css.passRecoveryLink}>¿Olvidaste tu contraseña?</a>
         </div>
         <input className={css.mailForm} type="text" name="password" />
         Contraseña de 8 dígitos o más

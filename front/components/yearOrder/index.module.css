@@ -1,5 +1,22 @@
+.mainContainer{
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
 .orderButtonYear {
 	margin: 0;
 	padding: 0 160px;
 	display: block;
+}
+.filterContainer{
+	color: var(--text);
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+.filterButton {
+	display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-right: 35px;
 }
