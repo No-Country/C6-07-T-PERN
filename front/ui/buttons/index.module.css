@@ -1,4 +1,5 @@
 .primary {
+  width: 100%;
   font-family: inherit;
   max-width: 101px;
   padding: 7px 12px;
@@ -10,6 +11,34 @@
   border: 2px;
   cursor: pointer;
   color: var(--background);
+}
+.outlined {
+  width: 100%;
+  font-family: inherit;
+  max-width: 101px;
+  padding: 7px 12px;
+  font-size: 16px;
+  font-weight: 600;
+  background:none;
+  border-radius: 10px;
+  outline: none;
+  border:solid 2px var(--primary);
+  cursor: pointer;
+  color: var(--primary);
+}
+.borderLess {
+  width: 100%;
+  font-family: inherit;
+  max-width: 101px;
+  padding: 7px 12px;
+  font-size: 16px;
+  font-weight: 600;
+  background:none;
+  border-radius: 10px;
+  outline: none;
+  border:none;
+  cursor: pointer;
+  color: var(--primary);
 }
 
 .buttonFilter {
