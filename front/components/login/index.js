@@ -2,7 +2,7 @@ import { H2, H4, H5 } from "../../ui/text";
 import { PrimaryButton } from "../../ui/buttons";
 import css from "../login/index.module.css";
 
-export default function Login() {
+export function SignUp() {
   return (
     <div>
       <form>
@@ -37,7 +37,7 @@ export default function Login() {
   );
 }
 
-export function SignUp() {
+export function Login() {
   return (
     <div>
       <form>
@@ -49,8 +49,9 @@ export function SignUp() {
         </div>
         <input className={css.mailForm} type="text" name="email" />
         tumail@gmail.com
-        <div>
+        <div className={css.enterButton}>
           <H5>Contraseña</H5>
+		  <a className={css.passRecoveryLink}>¿Olvidaste tu contraseña?</a>
         </div>
         <input className={css.mailForm} type="text" name="password" />
         Contraseña de 8 dígitos o más
