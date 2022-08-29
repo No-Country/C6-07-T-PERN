@@ -10,6 +10,11 @@
 	border-radius: 8px;
   }
 
+.passRecoveryLink {
+	font-family: inherit;
+	color: var(--outlined);
+}
+
 .enterButton {
 	display: flex;
 	justify-content: space-between;
