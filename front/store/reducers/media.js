@@ -1,4 +1,9 @@
-import { SET_MEDIA, CLEAR_MEDIA, FILTER_MEDIA } from "../actions";
+import {
+  SET_MEDIA,
+  CLEAR_MEDIA,
+  FILTER_MEDIA,
+  SET_ORDER_BY_YEAR,
+} from "../actions";
 
 const initialState = {
   allMedia: [],

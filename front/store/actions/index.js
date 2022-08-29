@@ -9,6 +9,7 @@ export const FILTER_MEDIA = "media/filter";
 export const SET_FILTER_BY_PLATFORM = "filter/platform/set";
 export const SET_FILTER_BY_GENRE = "filter/genre/set";
 export const SET_FILTER_BY_RATING = "filter/rating/set";
+export const SET_ORDER_BY_YEAR = "order/year/set";
 
 const api_key = process.env.APIKEY;
 
@@ -43,7 +44,7 @@ export function setFilterByGenre(payload) {
 
 export function setFilterByRating(payload) {
   return {
-	type: SET_FILTER_BY_RATING,
+    type: SET_FILTER_BY_RATING,
     payload: payload,
   };
 }
@@ -63,6 +64,29 @@ export function clearMedia() {
   };
 }
 
+export function setOrderByYear(payload) {
+  return {
+    type: SET_ORDER_BY_YEAR,
+    payload: payload,
+  };
+}
+
+function orderMediaByYear(mediaList, order) {
+  if (order && order == "asc") {
+    const media = mediaList.sort(
+      (movieA, movieB) => movieA.release_year - movieB.release_year
+    );
+    return media;
+  }
+  if (order && order == "des") {
+    const media = mediaList.sort(
+      (movieA, movieB) => movieB.release_year - movieA.release_year
+    );
+    return media;
+  }
+  return mediaList;
+}
+
 export function filterMedia() {
   let media = store.getState().mediaReducer.allMedia;
   const filter = store.getState().filterReducer.filter;
@@ -71,6 +95,7 @@ export function filterMedia() {
         mediaFilter(media, filter).length &&
         mediaFilter(media, filter)) || ["No hay coincidencias"]
     : [];
+  media = orderMediaByYear(media, filter.year_order);
   return {
     type: FILTER_MEDIA,
     payload: media,

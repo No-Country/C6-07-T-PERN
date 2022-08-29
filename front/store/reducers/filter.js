@@ -1,8 +1,14 @@
-import { SET_FILTER_BY_GENRE, SET_FILTER_BY_PLATFORM, SET_FILTER_BY_RATING } from "../actions";
+import {
+  SET_FILTER_BY_GENRE,
+  SET_FILTER_BY_PLATFORM,
+  SET_FILTER_BY_RATING,
+  SET_ORDER_BY_YEAR,
+} from "../actions";
 
 const initialState = {
   filter: {
     adults: false,
+    year_order: null, //asc or des
     min_release_year: null,
     max_release_year: null,
     vote_average: [],
@@ -27,13 +33,21 @@ const filterReducer = (state = initialState, action) => {
           genres: action.payload,
         },
       };
-	case SET_FILTER_BY_RATING:
-	  return {
-		filter: {
-		  ...state.filter,
-		  vote_average: action.payload,
-		},
-	  };
+    case SET_FILTER_BY_RATING:
+      return {
+        filter: {
+          ...state.filter,
+          vote_average: action.payload,
+        },
+      };
+    case SET_ORDER_BY_YEAR:
+      return {
+        filter: {
+          ...state.filter,
+          year_order: action.payload,
+        },
+      };
+
     default:
       return state;
   }
