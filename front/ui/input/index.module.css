@@ -1,0 +1,112 @@
+.checkboxLabel {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	cursor: pointer;
+	font-size: 16px;
+  }
+  
+  
+  .checkboxLabel input {
+	display:none;
+	cursor: pointer;
+  }
+  
+  
+  .checkboxMark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: none;
+	border: solid 1px var(--outlined);
+	border-radius: 4px;
+  }
+  
+  .checkboxLabel:hover input ~ .checkboxMark {
+	background-color: var(--background-secondary);
+  }
+  
+  .checkboxLabel input:checked ~ .checkboxMark {
+	background-color: var(--primary);
+  }
+  
+  
+  .checkboxMark:after {
+	content: "";
+	position: absolute;
+	display: none;
+  }
+  
+  
+  .checkboxLabel input:checked ~ .checkboxMark:after {
+	display: block;
+  }
+  
+  
+  .checkboxLabel .checkboxMark:after {
+	left: 6px;
+	top: 3px;
+	width: 7px;
+	height: 12px;
+	border: solid var(--background);
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+  }
+.radioLabel {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	cursor: pointer;
+	font-size: 16px;
+  }
+  
+  
+  .radioLabel input {
+	display:none;
+	cursor: pointer;
+  }
+  
+  
+  .radioMark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 24px;
+	width: 24px;
+	background-color: none;
+	border: solid 1px var(--outlined);
+	border-radius: 100%;
+  }
+  .radioLabel:hover input ~ .radioMark {
+      background-color: var(--background-secondary);
+    }
+    
+    .radioLabel input:checked ~ .radioMark {
+        background-color: var(--primary);
+    }
+    
+    
+    .radioMark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+    
+    
+    .radioLabel input:checked ~ .radioMark:after {
+        display: block;
+    }
+    
+    
+    .radioLabel .radioMark:after {
+        left: 1px;
+        top: 1px;
+        width: 12px;
+        height: 12px;
+        border: solid 4px var(--background);
+        border-radius: 100%;
+        
+    }
+ 
