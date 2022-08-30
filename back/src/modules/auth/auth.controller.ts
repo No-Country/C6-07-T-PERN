@@ -45,7 +45,6 @@ export class AuthController {
   ): Promise<{ accessToken: string }> {
     this.authService.loggedRestriction(loggedUser);
     const authenticationToken = await this.authService.login(body);
-    console.log(authenticationToken);
     return authenticationToken;
   }
 

@@ -10,6 +10,7 @@ import {
 
 //Import entities for reational database
 import { Comment } from '../comments/comment.entity';
+import { List } from '../lists/lists.entity';
 
 //Define entity to recognize type and export it
 @Entity()
@@ -26,7 +27,7 @@ export class User {
   @Column({ nullable: false })
   password: string;
 
-  @Column({ type: 'boolean', default: false })
+  @Column({ type: 'boolean', default: true })
   active: boolean;
 
   @Column({ type: 'uuid', unique: true })
@@ -43,4 +44,7 @@ export class User {
 
   @OneToMany((type) => Comment, (comment) => comment.user) //Use arrow function to map relation
   comments: Comment[];
+
+  @OneToMany((type) => List, (list) => list.user) //Use arrow function to map relation
+  lists: List[];
 }
