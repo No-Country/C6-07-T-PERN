@@ -17,7 +17,10 @@ import Netflix from "./images/netflix-icon.svg";
 import Disney from "./images/disney-icon.svg";
 import Hbo from "./images/hbo-icon.svg";
 import Seen from "./images/seen-icon.svg";
+import Unseen from "./images/unseen-icon.svg";
 import Save from "./images/save-icon.svg";
+import Saved from "./images/saved-icon.svg";
+import Unsaved from "./images/unsaved-icon.svg";
 import css from "./index.module.css";
 export function ColorLogo() {
   return <Color className={css.logo}></Color>;
@@ -74,8 +77,17 @@ export function HboIcon() {
 export function SaveIcon() {
   return <Save className={css.save}></Save>;
 }
-export function SeenIcon() {
-  return <Seen className={css.seen}></Seen>;
+export function SavedIcon(props) {
+  return <Saved onClick={props.onClick} className={css.saved}></Saved>;
+}
+export function UnsavedIcon(props) {
+  return <Unsaved onClick={props.onClick} className={css.saved}></Unsaved>;
+}
+export function SeenIcon(props) {
+  return <Seen onClick={props.onClick} className={css.seen}></Seen>;
+}
+export function UnseenIcon(props) {
+  return <Unseen onClick={props.onClick} className={css.seen}></Unseen>;
 }
 export function PlatformIcon(props) {
   return <button className={css.platformIcon}>{props.children}</button>;

@@ -41,9 +41,15 @@ export default function FilterContainer() {
           }}
         >
           <H3>
-            {" "}
-            Géneros <ArrowDownIcon />{" "}
-          </H3>{" "}
+            Géneros
+            <ArrowUpIcon
+              className={
+                show && showFilter == "genero"
+                  ? css.headerArrowDown
+                  : css.headerArrowUp
+              }
+            />
+          </H3>
         </button>
         <button
           className={css.openButton}
@@ -52,8 +58,15 @@ export default function FilterContainer() {
           }}
         >
           <H3>
-            Año <ArrowDownIcon />{" "}
-          </H3>{" "}
+            Año
+            <ArrowUpIcon
+              className={
+                show && showFilter == "año"
+                  ? css.headerArrowDown
+                  : css.headerArrowUp
+              }
+            />
+          </H3>
         </button>
         <button
           className={css.openButton}
@@ -62,13 +75,19 @@ export default function FilterContainer() {
           }}
         >
           <H3>
-            {" "}
-            Puntuación <ArrowDownIcon />{" "}
+            Puntuación
+            <ArrowUpIcon
+              className={
+                show && showFilter == "puntuacion"
+                  ? css.headerArrowDown
+                  : css.headerArrowUp
+              }
+            />
           </H3>
         </button>
       </div>
       {show ? (
-        <div>
+        <div className={css.filtersContainer}>
           <div>
             {showFilter == "genero" ? (
               <>
@@ -82,16 +101,7 @@ export default function FilterContainer() {
               </>
             ) : showFilter == "puntuacion" ? (
               <>
-                <FilterRating>Puntuación</FilterRating>
-                <div className={css.closeButtonYear}>
-                  <PrimaryButton
-                    onClick={() => {
-                      setShow(false);
-                    }}
-                  >
-                    Close
-                  </PrimaryButton>
-                </div>
+                <FilterRating click={setShow}>Puntuación</FilterRating>
               </>
             ) : null}
           </div>

@@ -1,5 +1,24 @@
+.filtersContainer{
+	display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.ratingContainer{
+	display: flex;
+
+    color: white;
+    gap: 80px;
+    padding: 0 35px;
+}
+.checkboxContainer{
+	display: flex;
+	color: white;
+	gap: 15px;
+	flex-direction: column;
+}
 .filterButtonRating {
-	margin: 0;
-	padding: 0 160px;
-	display: block;
+	display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-right: 35px;
 }
