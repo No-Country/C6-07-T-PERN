@@ -70,7 +70,7 @@ _Agrega notas adicionales sobre como hacer deploy_
 
 _Menciona las herramientas que utilizaste para crear tu proyecto_
 
-- Figma ([figma.com](https://www.figma.com/)
+- Figma ([figma.com])(https://www.figma.com/)
 
 ## Contribuyendo 🖇️
 
