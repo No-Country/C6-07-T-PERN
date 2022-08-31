@@ -22,11 +22,12 @@ export class ListsService {
     mediaId: number,
     user: User,
     onList: boolean,
-    list: 'weatched' | 'myList',
-  ): Promise<List> {
+    list: 'watched' | 'my_list',
+  ): Promise<any> {
     //Find or create media
     let media: Media = await this.mediaRepository.findOne({
       where: { mediaId, mediaType },
+      select: { id: true, mediaId: true, mediaType: true },
     });
     if (!media) {
       const newMedia: Media = this.mediaRepository.create({
@@ -36,20 +37,29 @@ export class ListsService {
       media = newMedia;
     }
     //Find and update or create List
-    let lister: List = await this.listRepository.preload({
-      user,
-      media,
-      [list]: onList,
+    let lister: List = await this.listRepository.findOne({
+      relations: ['user', 'media'],
+      where: { user: { id: user.id }, media: { mediaId, mediaType } },
+      select: {
+        id: true,
+        updatedAt: true,
+        user: { id: true, username: true },
+        media: { id: true, mediaId: true, mediaType: true },
+      },
     });
     if (!lister) {
       const newLister: List = this.listRepository.create({
         user,
-        media,
+        media: { id: media.id, mediaId, mediaType },
         [list]: onList,
       });
-      lister = newLister;
-      return this.listRepository.save(lister);
+      await this.listRepository.save(newLister);
+      return await this.getListsByMediaIdAndUser(mediaType, mediaId, user);
     }
+    lister[list] = onList;
+    // return lister;
+    await this.listRepository.save(lister);
+    return await this.getListsByMediaIdAndUser(mediaType, mediaId, user);
   }
 
   async getListsByMediaIdAndUser(
@@ -58,14 +68,18 @@ export class ListsService {
     user: User,
   ): Promise<List> {
     if (!user) throw new UnauthorizedException();
-    let media: Media = await this.mediaRepository.findOne({
-      where: { mediaId, mediaType },
-    });
-    if (!media) throw new NotFoundException();
     let list: List = await this.listRepository.findOne({
       relations: ['media', 'user'],
-      where: { media, user },
+      where: { media: { mediaId, mediaType }, user: { id: user.id } },
+      select: {
+        id: true,
+        watched: true,
+        my_list: true,
+        user: { id: true, username: true },
+        media: { mediaId: true, mediaType: true },
+      },
     });
+    if (!list) throw new NotFoundException();
     return list;
   }
 }
