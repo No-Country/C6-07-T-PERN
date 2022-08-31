@@ -8,7 +8,7 @@ import {
 const initialState = {
   filter: {
     adults: false,
-    year_order: null, //asc or des
+    year_order: "des", //asc or des
     min_release_year: null,
     max_release_year: null,
     vote_average: [],

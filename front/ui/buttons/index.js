@@ -7,16 +7,39 @@ import { useState } from "react";
 import css from "./index.module.css";
 
 export function PrimaryButton(props) {
+  const [showClick, setShowClick] = useState(false);
+  function clicked() {
+    setShowClick(true);
+    setTimeout(() => {
+      setShowClick(false);
+    }, 20);
+    if (props.onClick) {
+      props.onClick();
+    }
+  }
   return (
-    <button className={css.primary} onClick={props.onClick}>
+    <button className={css.primary} onClick={clicked}>
       {props.children}
+      {showClick ? <div className={css.clickedPrimary}></div> : null}
     </button>
   );
 }
 export function OutlinedButton(props) {
+  const [showClick, setShowClick] = useState(false);
+  function clicked() {
+    setShowClick(true);
+    setTimeout(() => {
+      setShowClick(false);
+    }, 20);
+    if (props.onClick) {
+      props.onClick();
+    }
+  }
   return (
-    <button className={css.outlined} onClick={props.onClick}>
+    <button className={css.outlined} onClick={clicked}>
       {props.children}
+
+      {showClick ? <div className={css.clickedOutlined}></div> : null}
     </button>
   );
 }

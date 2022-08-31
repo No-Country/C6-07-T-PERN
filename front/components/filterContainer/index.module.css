@@ -1,3 +1,11 @@
+.filtersContainer{
+	width: 100%;
+	max-width: 360px;
+	position: absolute;
+	background-color: rgba(6, 6, 6, 0.9);
+	padding: 0 16px;
+	padding-bottom: 40px;
+}
 .openButton {
 	margin: 0px 5px;
 	background-color: transparent;
@@ -18,3 +26,14 @@
 	padding: 0;
 	display: block;
 }
+.headerArrowDown{
+	height: 16px;
+	width: 16px;
+	transition:0.5s ease-in-out;
+  }
+  .headerArrowUp{
+	height: 16px;
+	width: 16px;
+   transform: rotate(180deg);
+   transition:0.5s ease-in-out;
+  }

@@ -7,10 +7,18 @@ import {
 var _ = require("lodash");
 import css from "./index.module.css";
 import { setOrderByYear } from "../../store/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, connect, useSelector } from "react-redux";
 import { Radio } from "../../ui/input";
 
-export default function FilterYear(props) {
+function mapStateToProps(state) {
+  return {
+    media: state.filterReducer,
+  };
+}
+
+function FilterYear(props) {
+  const { filter } = useSelector((state) => state.filterReducer);
+  console.log(filter);
   const dispatch = useDispatch();
 
   let order = null;
@@ -23,6 +31,7 @@ export default function FilterYear(props) {
 
   function handleOnSubmit() {
     dispatch(setOrderByYear(order));
+    props.click(false);
   }
 
   return (
@@ -33,6 +42,7 @@ export default function FilterYear(props) {
           name="antiguedad"
           id="des"
           onChange={checkBoxClick}
+          checked={filter.year_order == "des"}
         />
 
         <Radio
@@ -40,6 +50,7 @@ export default function FilterYear(props) {
           name="antiguedad"
           id="asc"
           onChange={checkBoxClick}
+          checked={filter.year_order == "asc"}
         />
       </div>
       <div className={css.filterButton} style={{ border: "none" }}>
@@ -55,3 +66,4 @@ export default function FilterYear(props) {
     </div>
   );
 }
+export default connect(mapStateToProps)(FilterYear);

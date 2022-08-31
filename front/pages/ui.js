@@ -3,7 +3,11 @@ import FilterContainer from "../components/filterContainer";
 import Footer from "../components/footer";
 import { Login, SignUp } from "../components/login";
 import NavBar from "../components/nav-bar";
-import { PlatformFilterButton, PrimaryButton } from "../ui/buttons";
+import {
+  OutlinedButton,
+  PlatformFilterButton,
+  PrimaryButton,
+} from "../ui/buttons";
 import {
   AmazonIcon,
   ArrowDownIcon,
@@ -50,6 +54,7 @@ export default function UI() {
         <InstagramIcon></InstagramIcon>
         <TwitterIcon></TwitterIcon>
         <PrimaryButton>Más Datos</PrimaryButton>
+        <OutlinedButton>Filtrar</OutlinedButton>
         <PlatformFilterButton>
           <AmazonIcon></AmazonIcon>
         </PlatformFilterButton>
