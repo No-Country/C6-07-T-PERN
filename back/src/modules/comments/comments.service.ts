@@ -1,11 +1,17 @@
 //Import from libraries
-import { Injectable, NotFoundException, Options } from '@nestjs/common'; //Import error handlers or other NestJS state reponse like @NotFoundException"
+import {
+  Injectable,
+  NotFoundException,
+  Options,
+  UnauthorizedException,
+} from '@nestjs/common'; //Import error handlers or other NestJS state reponse like @NotFoundException"
 import { InjectRepository } from '@nestjs/typeorm';
 import {
   // ConnectionNotFoundError,
   // EntityNotFoundError,
   Repository,
 } from 'typeorm';
+import { Media } from '../media/media.entity';
 import { User } from '../users/users.entity';
 //Import local files
 import { Comment } from './comment.entity'; //Import entity
@@ -17,6 +23,8 @@ export class CommentsService {
   constructor(
     @InjectRepository(Comment)
     private readonly commentRepository: Repository<Comment>,
+    @InjectRepository(Media)
+    private readonly mediaRepository: Repository<Media>,
   ) {}
 
   // async getComments(): Promise<Comment[]> {
@@ -25,12 +33,18 @@ export class CommentsService {
   // }
 
   async getCommentsByMedia(
-    type: 'serie' | 'movie',
+    mediaType: 'serie' | 'movie',
     mediaId: number,
   ): Promise<Comment[]> {
     const comments: Comment[] = await this.commentRepository.find({
-      relations: ['user'],
-      where: { type, mediaId },
+      relations: ['user', 'media'],
+      where: { media: { mediaId, mediaType } },
+      select: {
+        id: true,
+        message: true,
+        updatedAt: true,
+        user: { id: true, username: true },
+      },
     });
     if (!comments.length) throw new NotFoundException();
     return comments;
@@ -38,8 +52,17 @@ export class CommentsService {
 
   async getCommentById(id: string): Promise<Comment> {
     try {
-      const comment: Comment = await this.commentRepository.findOneBy({
-        id: id,
+      const comment: Comment = await this.commentRepository.findOne({
+        relations: ['user', 'media'],
+        where: {
+          id: id,
+        },
+        select: {
+          id: true,
+          message: true,
+          updatedAt: true,
+          user: { id: true, username: true },
+        },
       });
       if (!comment) throw new NotFoundException();
       return comment;
@@ -50,33 +73,51 @@ export class CommentsService {
 
   async addNewComment(
     message: string,
-    type: 'serie' | 'movie',
+    mediaType: 'serie' | 'movie',
     mediaId: number,
     user: User,
   ): Promise<Comment> {
+    let media: Media = await this.mediaRepository.findOne({
+      where: { mediaId, mediaType },
+    });
+    if (!media) {
+      const newMedia: Media = this.mediaRepository.create({
+        mediaId: mediaId,
+        mediaType: mediaType,
+      });
+      media = newMedia;
+    }
+
     const newComment: Comment = this.commentRepository.create({
       message,
-      type,
-      mediaId,
+      media,
       user: user || null,
     });
     return this.commentRepository.save(newComment);
   }
 
-  async updateComment(id: string, message: string): Promise<Comment> {
-    const targetComment: Comment = await this.commentRepository.preload({
-      id,
-      message,
-    });
+  async updateComment(
+    id: string,
+    message: string,
+    user: User,
+  ): Promise<Comment> {
+    const targetComment: Comment = await this.getCommentById(id);
     if (!targetComment) throw new NotFoundException();
-    return targetComment;
+    if (targetComment.user.id == user.id) {
+      targetComment.message = message;
+      return this.commentRepository.save(targetComment);
+    }
+    throw new UnauthorizedException();
   }
 
-  async deleteComment(id: string): Promise<Comment> {
+  async deleteComment(id: string, user: User): Promise<Comment> {
     const commentToDelete: Comment = await this.getCommentById(id);
     if (!commentToDelete) throw new NotFoundException();
-    await this.commentRepository.remove(commentToDelete);
-    return commentToDelete;
+    if (commentToDelete.user && commentToDelete.user.id == user.id) {
+      await this.commentRepository.remove(commentToDelete);
+      return commentToDelete;
+    }
+    throw new UnauthorizedException();
   }
 
   // async deleteAllComments(): Promise<string> {

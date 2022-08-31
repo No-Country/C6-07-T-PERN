@@ -2,6 +2,7 @@
 import { Controller, UseGuards } from '@nestjs/common'; //Import controller object
 import { Query, Param, Body, HttpCode, HttpStatus } from '@nestjs/common'; //Import data from request and for reponses
 import { Get, Post, Put, Delete } from '@nestjs/common'; //Import methods
+import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from '../auth/get-user.decorator';
 import { OptionalJwtAuthGuard } from '../auth/optional-authentication.guard';
 import { User } from '../users/users.entity';
@@ -46,23 +47,36 @@ export class CommentsController {
   async createComment(
     @Body() body: NewCommentDto,
     @GetUser() loggedUser: User,
-  ): Promise<string> {
+  ): Promise<{ id: string }> {
     const { message, type, mediaId } = body;
-    await this.commentService.addNewComment(message, type, mediaId, loggedUser);
-    return 'New comment has been set.';
+    const comment: Comment = await this.commentService.addNewComment(
+      message,
+      type,
+      mediaId,
+      loggedUser,
+    );
+    return { id: comment.id };
   }
 
   @Put()
-  async updateComment(@Body() body: UpdateCommentDto): Promise<string> {
+  @UseGuards(AuthGuard('jwt'))
+  async updateComment(
+    @Body() body: UpdateCommentDto,
+    @GetUser() user: User,
+  ): Promise<Comment> {
     const { id, message } = body;
-    await this.commentService.updateComment(id, message);
-    return 'The comment has been updated';
+    const comment = await this.commentService.updateComment(id, message, user);
+    return comment;
   }
 
   @Delete(':id')
-  async deleteComment(@Param('id') id: string): Promise<string> {
+  @UseGuards(AuthGuard('jwt'))
+  async deleteComment(
+    @Param('id') id: string,
+    @GetUser() user: User,
+  ): Promise<string> {
     // if (id == 'all') return await this.commentService.deleteAllComments();
-    await this.commentService.deleteComment(id);
+    await this.commentService.deleteComment(id, user);
     return 'Comment has been deleted';
   }
 }

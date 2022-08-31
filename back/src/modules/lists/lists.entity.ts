@@ -15,12 +15,15 @@ import { User } from '../users/users.entity';
 
 //Define entity to recognize type and export it
 @Entity()
-export class Comment {
+export class List {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ nullable: false })
-  message: string;
+  @Column({ nullable: false, default: false })
+  watched: boolean;
+
+  @Column({ nullable: false, default: false })
+  my_list: boolean;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -28,12 +31,12 @@ export class Comment {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne((type) => Media, (media) => media.comments, { cascade: true }) //Use arrow function to map relation
+  @ManyToOne((type) => Media, (media) => media.lists, { cascade: true }) //Use arrow function to map relation
   //Use cascade to relation Put, Delete and other methods
   @JoinColumn() //Join column to create a relational column
   media: Media;
 
-  @ManyToOne((type) => User, (user) => user.comments, { cascade: true }) //Use arrow function to map relation
+  @ManyToOne((type) => User, (user) => user.lists, { cascade: true }) //Use arrow function to map relation
   //Use cascade to relation Put, Delete and other methods
   @JoinColumn({ name: 'user_id' }) //Join column to create a relational column
   user: User;
