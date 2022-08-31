@@ -35,8 +35,9 @@
 
 .borderlessMessage {
   width: 90px;
-  height: 60px;
-  padding: 0px 9px;
+  height: 80px;
+  text-align: inherit;
+  padding: 2px 10px;
   border: 2px solid #d3a7ff;
   border-radius: 10px;
   color: #d3a7ff;

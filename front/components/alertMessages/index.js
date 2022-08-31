@@ -69,32 +69,25 @@ export function LoginAlert() {
   );
 }
 
-export function AddedToList() {
-  return (
-    <div className={css.borderlessMessage}>
-      <H5>Agregado a la lista</H5>
-    </div>
-  );
+export function MessageBox(props) {
+  return <div className={css.borderlessMessage}>{props.children}</div>;
 }
 
-export function RemovedFromList() {
+export function Messages() {
   return (
-    <div className={css.borderlessMessage}>
-      <H5>Quitada de la lista</H5>
-    </div>
-  );
-}
-export function AddedSeen() {
-  return (
-    <div className={css.borderlessMessage}>
-      <H5>Marcada como vista</H5>
-    </div>
-  );
-}
-export function RemovedSeen() {
-  return (
-    <div className={css.borderlessMessage}>
-      <H5>Marcada no vista</H5>
+    <div>
+      <MessageBox className={css.borderlessMessage}>
+        <H5>Agregada a la lista</H5>
+      </MessageBox>
+      <MessageBox className={css.borderlessMessage}>
+        <H5>Quitada de la lista</H5>
+      </MessageBox>
+      <MessageBox className={css.borderlessMessage}>
+        <H5>Marcada como vista</H5>
+      </MessageBox>
+      <MessageBox className={css.borderlessMessage}>
+        <H5>Marcada como no vista</H5>
+      </MessageBox>
     </div>
   );
 }
