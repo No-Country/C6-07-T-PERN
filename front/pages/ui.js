@@ -1,7 +1,7 @@
 // import { PrimaryButton } from "../ui/buttons";
 import FilterContainer from "../components/filterContainer";
 import Footer from "../components/footer";
-import { Login, SignUp } from "../components/login";
+
 import NavBar from "../components/nav-bar";
 import {
   OutlinedButton,
@@ -77,8 +77,6 @@ export default function UI() {
         <H5>H5!</H5>
         <Loading />
         <FilterContainer />
-        <Login />
-        <SignUp />
       </div>
     </>
   );
