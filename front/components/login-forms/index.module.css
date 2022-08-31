@@ -1,3 +1,24 @@
+.red{
+	margin: 0;
+	text-align: right;
+	color: var(--error);
+}
+.mainDiv{
+	position: absolute;
+
+	z-index: 99;
+	display: flex;
+	align-items: center;
+     height: 100vh;
+	background-color: rgba(58, 58, 58, 0.575);
+	max-width: 360px;
+	
+}
+.mainForm{
+	
+	padding: 0 16px;
+background-color: var(--background);
+}
 .mailForm {
 	font-family: inherit;
 	color: var(--outlined);

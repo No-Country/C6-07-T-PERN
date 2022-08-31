@@ -28,8 +28,8 @@ export function ColorLogo() {
 export function DarkLogo() {
   return <Dark className={css.logo}></Dark>;
 }
-export function ProfileIcon() {
-  return <Profile className={css.icon}></Profile>;
+export function ProfileIcon(props) {
+  return <Profile onClick={props.onClick} className={css.icon}></Profile>;
 }
 export function SearchIcon() {
   return <Search className={css.icon}></Search>;

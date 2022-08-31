@@ -38,7 +38,13 @@ function SearchBar(props) {
   }
 
   return (
-    <div className={css.searchBarContainer}>
+    <div
+      className={
+        props.type == "outlined"
+          ? css.searchBarContainerOulined
+          : css.searchBarContainer
+      }
+    >
       <form onSubmit={handleOnSubmit} className={css.searchBarForm}>
         <div className={css.searchBarIcons} onClick={props.toggle}>
           <CloseIcon />

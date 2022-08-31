@@ -5,6 +5,7 @@
     background-color: var(--background);
 }
 .navBarLogo{
+    max-width: 200px;
     height: 100%;
     width: 100%;
 }
@@ -12,17 +13,75 @@
     width: 100%;
     height: 100%;
     display: flex;
+    justify-content: space-between;
 }
-.navMenu{
+
+.navMenuMobile{
     padding: 0;
     margin: 0;
     height: 100%;
     display: flex;
     gap: 23px;
 }
+@media screen and (min-width:744px){
+    .navMenuMobile{
+        display: none;
+    }
+}
+.navMenuMedium{
+    color: var(--primary);
+    width: 100%;
+    max-width: 350px;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    display: none;
+    gap: 23px;
+}
+@media screen and (min-width:744px){
+    .navMenuMedium{
+        display: flex;
+    }
+}
+.navMenuLarge{
+    color: var(--primary);
+    width: 100%;
+    max-width: 220px;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    gap: 23px;
+}
+.searchBar{
+    width: 100%;
+    flex-grow: 4;
+    display: none;
+}
+.navLarge{
+    width: 100%;
+    max-width: 220px;
+    display: none;
+    
+}
+@media screen and (min-width:1000px){
+    .navMenuMedium{
+        display: none;
+    }
+    .navLarge{
+        display: flex;
+    }
+    .searchBar{
+        display: block;
+        padding: 11px 0;
+    }
+    
+}
 .navMenuItem{
-    width: 24px;
+    width: 100%;
+    min-width: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
 }
