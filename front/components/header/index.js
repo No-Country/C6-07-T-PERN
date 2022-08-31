@@ -14,16 +14,13 @@ export default function Header() {
   function toggleSearchBar() {
     setToggle(!toggle);
   }
-  const width = window.innerWidth;
 
   return (
     <header className={css.header}>
       <NavBar toggle={toggleSearchBar} />
       {
         //Denis: Si toggle es == true muestro el searchBar sino devuelvo null
-        toggle && width <= "1000" ? (
-          <SearchBar toggle={toggleSearchBar} />
-        ) : null
+        toggle ? <SearchBar toggle={toggleSearchBar} /> : null
       }
       <div className={css.headerFiltersContainer}>
         <PlatformFilters></PlatformFilters>
