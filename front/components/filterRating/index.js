@@ -1,14 +1,26 @@
 import { H4 } from "../../ui/text";
-import { PrimaryButton } from "../../ui/buttons";
+import {
+  BorderlessButton,
+  OutlinedButton,
+  PrimaryButton,
+} from "../../ui/buttons";
 var _ = require("lodash");
 import css from "../filterRating/index.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, connect, useSelector } from "react-redux";
 import { setFilterByRating } from "../../store/actions";
+import { Checkbox } from "../../ui/input";
 
-export default function FilterRating() {
+function mapStateToProps(state) {
+  return {
+    media: state.filterReducer,
+  };
+}
+
+function FilterRating(props) {
+  const { filter } = useSelector((state) => state.filterReducer);
   const dispatch = useDispatch();
 
-  const ratingFilters = [];
+  const ratingFilters = filter.vote_average;
 
   function checkBoxClick(e) {
     const { name, checked } = e.target;
@@ -20,57 +32,99 @@ export default function FilterRating() {
   }
 
   function handleOnSubmit() {
-    console.log(ratingFilters);
     dispatch(setFilterByRating(ratingFilters));
+    props.click(false);
   }
 
   return (
-    <div>
-      <H4>
-        <label>
-          <input type="checkbox" name="1" onChange={checkBoxClick} /> 1
-        </label>
-        <br></br>
-        <label>
-          <input type="checkbox" name="2" onChange={checkBoxClick} /> 2
-        </label>
-        <br></br>
-        <label>
-          <input type="checkbox" name="3" onChange={checkBoxClick} /> 3
-        </label>
-        <br></br>
-        <label>
-          <input type="checkbox" name="4" onChange={checkBoxClick} /> 4
-        </label>
-        <br></br>
-        <label>
-          <input type="checkbox" name="5" onChange={checkBoxClick} /> 5
-        </label>
-        <br></br>
-        <label>
-          <input type="checkbox" name="6" onChange={checkBoxClick} /> 6
-        </label>
-        <br></br>
-        <label>
-          <input type="checkbox" name="7" onChange={checkBoxClick} /> 7
-        </label>
-        <br></br>
-        <label>
-          <input type="checkbox" name="8" onChange={checkBoxClick} /> 8
-        </label>
-        <br></br>
-        <label>
-          <input type="checkbox" name="9" onChange={checkBoxClick} /> 9
-        </label>
-        <br></br>
-        <label>
-          <input type="checkbox" name="10" onChange={checkBoxClick} /> 10
-        </label>
-        <br></br>
-      </H4>
+    <div className={css.filtersContainer}>
+      <div className={css.ratingContainer}>
+        <div className={css.checkboxContainer}>
+          <Checkbox
+            name="1"
+            label="1"
+            id={0}
+            onChange={checkBoxClick}
+            checked={filter.vote_average.includes(1)}
+          />
+          <Checkbox
+            name="2"
+            label="2"
+            id={0}
+            onChange={checkBoxClick}
+            checked={filter.vote_average.includes(2)}
+          />
+          <Checkbox
+            name="3"
+            label="3"
+            id={0}
+            onChange={checkBoxClick}
+            checked={filter.vote_average.includes(3)}
+          />
+          <Checkbox
+            name="4"
+            label="4"
+            id={0}
+            onChange={checkBoxClick}
+            checked={filter.vote_average.includes(4)}
+          />
+          <Checkbox
+            name="5"
+            label="5"
+            id={0}
+            onChange={checkBoxClick}
+            checked={filter.vote_average.includes(5)}
+          />
+        </div>
+        <div className={css.checkboxContainer}>
+          <Checkbox
+            name="6"
+            label="6"
+            id={0}
+            onChange={checkBoxClick}
+            checked={filter.vote_average.includes(6)}
+          />
+          <Checkbox
+            name="7"
+            label="7"
+            id={0}
+            onChange={checkBoxClick}
+            checked={filter.vote_average.includes(7)}
+          />
+          <Checkbox
+            name="8"
+            label="8"
+            id={0}
+            onChange={checkBoxClick}
+            checked={filter.vote_average.includes(8)}
+          />
+          <Checkbox
+            name="9"
+            label="9"
+            id={0}
+            onChange={checkBoxClick}
+            checked={filter.vote_average.includes(9)}
+          />
+          <Checkbox
+            name="10"
+            label="10"
+            id={0}
+            onChange={checkBoxClick}
+            checked={filter.vote_average.includes(10)}
+          />
+        </div>
+      </div>
       <div className={css.filterButtonRating}>
-        <PrimaryButton onClick={handleOnSubmit}>Filtrar</PrimaryButton>
+        <BorderlessButton
+          onClick={() => {
+            props.click(false);
+          }}
+        >
+          Cerrar
+        </BorderlessButton>
+        <OutlinedButton onClick={handleOnSubmit}>Filtrar</OutlinedButton>
       </div>
     </div>
   );
 }
+export default connect(mapStateToProps)(FilterRating);

@@ -1,4 +1,5 @@
 .primary {
+  position: relative;
   width: 100%;
   font-family: inherit;
   max-width: 101px;
@@ -12,7 +13,26 @@
   cursor: pointer;
   color: var(--background);
 }
+.primary:hover{
+  background-color: var(--primary-hover);
+}
+.primary:active{
+  background-color: var(--primary);
+}
+.clickedPrimary{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 36px;
+  width: 50px;
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.521);
+}
+
+
 .outlined {
+  position: relative;
   width: 100%;
   font-family: inherit;
   max-width: 101px;
@@ -26,6 +46,26 @@
   cursor: pointer;
   color: var(--primary);
 }
+.outlined:hover{
+  color: var(--primary-hover);
+  border:solid 2px var(--primary-hover);
+}
+.outlined:active{
+  color: var(--primary);
+  border:solid 2px var(--primary);
+}
+.clickedOutlined{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 36px;
+  width: 60px;
+  border-radius: 100%;
+  background:radial-gradient(50% 50% at 50% 50%, #2A9E70 0%, rgba(42, 158, 112, 0) 100%);
+
+}
+
 .borderLess {
   width: 100%;
   font-family: inherit;
@@ -40,7 +80,9 @@
   cursor: pointer;
   color: var(--primary);
 }
-
+.borderLess:hover{
+  color: var(--primary-hover);
+}
 .buttonFilter {
   border-style: none;
   width: 70px;

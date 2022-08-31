@@ -45,6 +45,14 @@
   max-width: 38px;
   max-height: 30px;
 }
+.seen {
+  place-self: center;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  max-width: 40px;
+  max-height: 40px;
+}
 .save {
   place-self: center;
   cursor: pointer;
@@ -52,6 +60,14 @@
   height: 100%;
   max-width: 30px;
   max-height: 40px;
+}
+.saved {
+  place-self: center;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  max-width: 48px;
+  max-height: 48px;
 }
 
 .loaderContainer {

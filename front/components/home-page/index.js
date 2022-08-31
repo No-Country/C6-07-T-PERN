@@ -7,9 +7,8 @@ import css from "./index.module.css";
 export default function HomePage() {
   return (
     <div className={css.homePage}>
-      <PlatformFilters></PlatformFilters>
-
-      <FilterContainer />
+      {/* <PlatformFilters></PlatformFilters>
+      <FilterContainer /> */}
       <div>
         <H2>Populares</H2>
         <CardsContainer></CardsContainer>

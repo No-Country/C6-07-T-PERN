@@ -8,6 +8,7 @@ export function Checkbox(props) {
         name={props.name}
         id={props.id}
         onChange={props.onChange}
+        defaultChecked={props.checked}
       />
       <span className={css.checkboxMark}></span>
     </label>
@@ -22,6 +23,7 @@ export function Radio(props) {
         name={props.name}
         id={props.id}
         onChange={props.onChange}
+        defaultChecked={props.checked}
       />
       <span className={css.radioMark}></span>
     </label>
