@@ -2,24 +2,24 @@ import { H2, H3, H5 } from "../../ui/text";
 import css from "../alertMessages/index.module.css";
 
 export function PasswordRecovery() {
-	function onSubmit() {
-	  return <></>;
-	}
-  
-	return (
-	  <form>
-		<H2>Recuperar contraseña</H2>
-		<H5>Ingresa tu correo electrónico</H5>
-		<input className={css.emailTextArea} type="text" name="email" />tumail@gmail.com
-		<br></br>
-		<H5>Enviaremos un correo electrónico para recuperar la contraseña</H5>
-		<button className={css.recoveryButton} onSubmit={onSubmit()}>
-		  Recuperar Contraseña
-		</button>
-	  </form>
-	);
+  function onSubmit() {
+    return <></>;
   }
-  
+
+  return (
+    <form>
+      <H2>Recuperar contraseña</H2>
+      <H5>Ingresa tu correo electrónico</H5>
+      <input className={css.emailTextArea} type="text" name="email" />
+      tumail@gmail.com
+      <br></br>
+      <H5>Enviaremos un correo electrónico para recuperar la contraseña</H5>
+      <button className={css.recoveryButton} onSubmit={onSubmit()}>
+        Recuperar Contraseña
+      </button>
+    </form>
+  );
+}
 
 export function WatchlistAlert() {
   return (
@@ -65,6 +65,36 @@ export function LoginAlert() {
         <H3>Ingresaste a tu cuenta con éxito</H3>
       </div>
       <button className={css.logButton}>Continuar</button>
+    </div>
+  );
+}
+
+export function AddedToList() {
+  return (
+    <div className={css.borderlessMessage}>
+      <H5>Agregado a la lista</H5>
+    </div>
+  );
+}
+
+export function RemovedFromList() {
+  return (
+    <div className={css.borderlessMessage}>
+      <H5>Quitada de la lista</H5>
+    </div>
+  );
+}
+export function AddedSeen() {
+  return (
+    <div className={css.borderlessMessage}>
+      <H5>Marcada como vista</H5>
+    </div>
+  );
+}
+export function RemovedSeen() {
+  return (
+    <div className={css.borderlessMessage}>
+      <H5>Marcada no vista</H5>
     </div>
   );
 }
