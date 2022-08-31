@@ -5,6 +5,13 @@
   width: 100%;
   transition: 1s ease-in-out;
 }
+.searchBarContainerOutlined {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  transition: 1s ease-in-out;
+}
 .searchBarContainer::after {
   display: block;
   content: "";

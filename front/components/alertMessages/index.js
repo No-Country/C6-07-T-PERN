@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { H2, H3, H5 } from "../../ui/text";
 import css from "../alertMessages/index.module.css";
 
@@ -21,19 +22,36 @@ export function PasswordRecovery() {
   );
 }
 
-export function WatchlistAlert() {
+export function MustLoginAlert(props) {
   return (
-    <div>
-      <div className={css.alertTitle}>
-        <H2>Debes ingresar a una cuenta</H2>
+    <div className={css.mainDiv}>
+      <div className={css.alertDiv}>
+        <div className={css.alertTitle}>
+          <H2>Debes ingresar a una cuenta</H2>
+        </div>
+        <div className={css.alertSubtitle}>
+          <H3>
+            Para ir a "Perfil" o utilizar "Mi Lista" debes ingresar<span></span>{" "}
+            o registrarte en una cuenta
+          </H3>
+        </div>
+        <button
+          className={css.logButton}
+          onClick={() => {
+            props.showAlert(false);
+          }}
+        >
+          Ingresar o registrarse
+        </button>
+        <button
+          className={css.closeButton}
+          onClick={() => {
+            props.close(false);
+          }}
+        >
+          Cerrar
+        </button>
       </div>
-      <div className={css.alertSubtitle}>
-        <H3>
-          Para utilizar "Mi Lista" debes ingresar<span></span> o registrarte en
-          una cuenta
-        </H3>
-      </div>
-      <button className={css.logButton}>Ingresar o registrarse</button>
     </div>
   );
 }
@@ -55,16 +73,26 @@ export function RecoveryAlert() {
   );
 }
 
-export function LoginAlert() {
+export function LoginAlert(props) {
+  const router = useRouter();
   return (
-    <div>
-      <div className={css.alertTitle}>
-        <H2>¡Hola!</H2>
+    <div className={css.mainDiv}>
+      <div className={css.alertDiv}>
+        <div className={css.alertTitle}>
+          <H2>¡Hola!</H2>
+        </div>
+        <div className={css.alertSubtitle}>
+          <H3>Ingresaste a tu cuenta con éxito</H3>
+        </div>
+        <button
+          className={css.logButton}
+          onClick={() => {
+            props.close(false);
+          }}
+        >
+          Continuar
+        </button>
       </div>
-      <div className={css.alertSubtitle}>
-        <H3>Ingresaste a tu cuenta con éxito</H3>
-      </div>
-      <button className={css.logButton}>Continuar</button>
     </div>
   );
 }
