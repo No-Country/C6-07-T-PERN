@@ -41,7 +41,7 @@ function CardsContainer(props) {
       setTimeout(() => dispatch(filterMedia()));
     };
   }, [filter, allMedia]);
-
+  console.log(media);
   //Nano: Devolución de la etiqueta
   return (
     <div>
