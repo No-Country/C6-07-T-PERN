@@ -6,6 +6,8 @@ import {
   Query,
   Patch,
   UseGuards,
+  BadRequestException,
+  HttpCode,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { User } from '../users/users.entity';
@@ -26,18 +28,35 @@ import { OptionalJwtAuthGuard } from './optional-authentication.guard';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  @Get()
+  @UseGuards(OptionalJwtAuthGuard)
+  async isLogged(
+    @GetUser() loggedUser: User,
+  ): Promise<{ logged: boolean }> {
+    try {
+      return { logged: this.authService.isLogged(loggedUser) };
+    } catch (e) {
+      throw new BadRequestException();
+    }
+  }
+
   @Post('/register')
   @UseGuards(OptionalJwtAuthGuard)
   async register(
     @Body() body: UserRegisterDto,
     @GetUser() loggedUser: User,
   ): Promise<string> {
-    this.authService.loggedRestriction(loggedUser);
-    await this.authService.userRegiter(body);
-    return `User ${body.username} have been registered`;
+    try {
+      this.authService.loggedRestriction(loggedUser);
+      await this.authService.userRegiter(body);
+      return `User ${body.username} have been registered`;
+    } catch (e) {
+      throw new BadRequestException();
+    }
   }
 
   @Post('/login')
+  @HttpCode(200)
   @UseGuards(OptionalJwtAuthGuard)
   async login(
     @Body() body: LoginDto,
