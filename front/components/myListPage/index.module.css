@@ -1,0 +1,50 @@
+/* .myListContainer{
+    height: 100%;
+} */
+.titleContainer{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .titleWrapper{
+    width: 100%;
+    text-align: right;
+  }
+  .title{
+    margin-right: 110px;
+  }
+  @media screen and (min-width:744px){
+    .title{
+      margin-right: 265px;
+    }
+  }
+  @media screen and (min-width:1108px){
+    .title{
+      margin-right: 460px;
+    }
+  }
+  @media screen and (min-width:1465px){
+    .title{
+      margin-right: 635px;
+    }
+  }
+  .spacer{
+    height: 10;
+    width: 328px;
+  }
+  .divSectionContainer{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  .divCardContainer {
+    margin: 24px auto 40px auto;
+    width: 100%;
+    height: 80vh;
+    max-width: 1500px;
+    gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: var(--background);
+  }
+  

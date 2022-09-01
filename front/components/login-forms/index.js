@@ -100,14 +100,20 @@ export function LoginForm(props) {
   const [error, setError] = useState(false);
   const [identification, setIdentification] = useState("");
   const [password, setPassword] = useState("");
+  const [wrongPassword, setWrongPassword] = useState(false);
   async function handleSubmit(e) {
     e.preventDefault();
     setError(false);
+    setWrongPassword(false);
     setLoading(true);
     const res = await getToken(identification, password);
     if (res && res.status === 200) {
       setLoading(false);
       setLogged(true);
+    }
+    if (res && res.status === 401) {
+      setLoading(false);
+      setWrongPassword(true);
     } else {
       setLoading(false);
       setError(true);
@@ -124,6 +130,7 @@ export function LoginForm(props) {
             <H5>Nombre de usuario ó Correo electrónico</H5>
           </div>
           <input
+            autoComplete="off"
             className={css.mailForm}
             type="text"
             name="email"
@@ -137,6 +144,7 @@ export function LoginForm(props) {
             <a className={css.passRecoveryLink}>¿Olvidaste tu contraseña?</a>
           </div>
           <input
+            autoComplete="off"
             className={css.mailForm}
             type="password"
             name="password"
@@ -144,7 +152,9 @@ export function LoginForm(props) {
               setPassword(e.target.value);
             }}
           />
-          Contraseña de 8 dígitos o más
+          {wrongPassword ? (
+            <H5 className={css.red}>Contraseña incorrecta</H5>
+          ) : null}
           <div className={css.enterButton}>
             <H4>
               <label>

@@ -6,6 +6,7 @@ import { useState } from "react";
 // Manu: Importacion de archivos propios
 import css from "./index.module.css";
 import { clearMedia, getMedia } from "../../store/actions";
+import { useRouter } from "next/router";
 
 //Nano: Mapeo de los estados de redux con las props del elemento
 function mapStateToProps(state) {
@@ -23,6 +24,7 @@ function mapDispatchToProps(dispatch) {
 
 // Manu: exportacion del componente SearchBar
 function SearchBar(props) {
+  const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
   const dispatch = useDispatch();
 
@@ -31,6 +33,7 @@ function SearchBar(props) {
     event.preventDefault();
     dispatch(clearMedia());
     dispatch(getMedia("search", searchValue));
+    router.push("/");
   }
   // Nano: Manejo del cambio en la searchbar
   function handleOnChange(event) {
