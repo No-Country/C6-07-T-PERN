@@ -1,7 +1,6 @@
-import { IsNumber, IsObject, IsString } from 'class-validator';
-import { User } from 'src/modules/users/users.entity';
+import { IsNumber, IsString } from 'class-validator';
 
-export default class GetMediaListsDto {
+export class GetMediaListsDto {
   @IsString()
   readonly mediaType: 'serie' | 'movie';
 

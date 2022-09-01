@@ -2,8 +2,7 @@ import { Body, Controller, Get, Param, Put, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from '../auth/get-user.decorator';
 import { User } from '../users/users.entity';
-import { SetListDto } from './dto';
-import GetMediaListsDto from './dto/get-media-lists.dto';
+import { SetListDto, GetMediaListsDto } from './dto';
 import { List } from './lists.entity';
 import { ListsService } from './lists.service';
 

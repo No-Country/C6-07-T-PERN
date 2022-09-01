@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { getComments, postComment } from "../../lib/api";
+import { getComments, postComment } from "../../lib";
 import { H2, H4 } from "../../ui/text";
 import Card from "../card";
 import CommentsSection from "../commentsSection";

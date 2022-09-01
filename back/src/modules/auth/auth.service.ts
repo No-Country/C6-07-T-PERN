@@ -142,4 +142,8 @@ export class AuthService {
   loggedRestriction(user: User): void {
     if (user) throw new MethodNotAllowedException();
   }
+
+  isLogged(user: User): boolean {
+    return user ? true : false;
+  }
 }

@@ -1,8 +1,8 @@
 //Import from libraries
 import {
+  BadRequestException,
   Injectable,
   NotFoundException,
-  Options,
   UnauthorizedException,
 } from '@nestjs/common'; //Import error handlers or other NestJS state reponse like @NotFoundException"
 import { InjectRepository } from '@nestjs/typeorm';
@@ -77,23 +77,27 @@ export class CommentsService {
     mediaId: number,
     user: User,
   ): Promise<Comment> {
-    let media: Media = await this.mediaRepository.findOne({
-      where: { mediaId, mediaType },
-    });
-    if (!media) {
-      const newMedia: Media = this.mediaRepository.create({
-        mediaId: mediaId,
-        mediaType: mediaType,
+    try {
+      let media: Media = await this.mediaRepository.findOne({
+        where: { mediaId, mediaType },
       });
-      media = newMedia;
-    }
+      if (!media) {
+        const newMedia: Media = this.mediaRepository.create({
+          mediaId: mediaId,
+          mediaType: mediaType,
+        });
+        media = newMedia;
+      }
 
-    const newComment: Comment = this.commentRepository.create({
-      message,
-      media,
-      user: user || null,
-    });
-    return this.commentRepository.save(newComment);
+      const newComment: Comment = this.commentRepository.create({
+        message,
+        media,
+        user: user || null,
+      });
+      return this.commentRepository.save(newComment);
+    } catch {
+      throw new BadRequestException();
+    }
   }
 
   async updateComment(
