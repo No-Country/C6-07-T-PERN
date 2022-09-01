@@ -18,8 +18,21 @@ export default function DetailsMovie() {
     getMovie();
   }, [id]);
   return (
-    <Layout>
-      {movie ? <DetailsPage type="movie" media={movie} /> : <Loading></Loading>}
+    <Layout filterless={true}>
+      {movie ? (
+        <DetailsPage type="movie" media={movie} />
+      ) : (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            height: "80vh",
+            alignItems: "center",
+          }}
+        >
+          <Loading />
+        </div>
+      )}
     </Layout>
   );
 }

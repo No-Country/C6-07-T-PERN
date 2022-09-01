@@ -8,7 +8,7 @@ import FilterContainer from "../filterContainer";
 import css from "./index.module.css";
 import { SignUp } from "../login-forms";
 
-export default function Header() {
+export default function Header(props) {
   const [toggle, setToggle] = useState(false);
   //Denis: Funcion que sirve para mostrar u ocultar el sarchBar
   function toggleSearchBar() {
@@ -22,10 +22,12 @@ export default function Header() {
         //Denis: Si toggle es == true muestro el searchBar sino devuelvo null
         toggle ? <SearchBar toggle={toggleSearchBar} /> : null
       }
-      <div className={css.headerFiltersContainer}>
-        <PlatformFilters></PlatformFilters>
-        <FilterContainer />
-      </div>
+      {!props.filterless ? (
+        <div className={css.headerFiltersContainer}>
+          <PlatformFilters></PlatformFilters>
+          <FilterContainer />
+        </div>
+      ) : null}
     </header>
   );
 }

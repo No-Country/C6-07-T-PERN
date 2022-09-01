@@ -16,19 +16,13 @@ export function SignUpForm(props) {
     e.preventDefault();
     setError(false);
     setLoading(true);
-    // const res = { username, password, email };
     const res = await getAuth(username, email, password);
-    console.log(res);
     if (res && res.status === 201) {
-      setTimeout(() => {
-        setLoading(false);
-        props.show(false);
-      }, 500);
+      setLoading(false);
+      props.show(false);
     } else {
-      setTimeout(() => {
-        setLoading(false);
-        setError(true);
-      }, 500);
+      setLoading(false);
+      setError(true);
     }
   }
   return (
@@ -112,15 +106,11 @@ export function LoginForm(props) {
     setLoading(true);
     const res = await getToken(identification, password);
     if (res && res.status === 200) {
-      setTimeout(() => {
-        setLoading(false);
-        setLogged(true);
-      }, 500);
+      setLoading(false);
+      setLogged(true);
     } else {
-      setTimeout(() => {
-        setLoading(false);
-        setError(true);
-      }, 500);
+      setLoading(false);
+      setError(true);
     }
   }
   return (

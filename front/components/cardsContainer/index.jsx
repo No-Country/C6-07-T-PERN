@@ -7,6 +7,7 @@ import { clearMedia, filterMedia, getMedia } from "../../store/actions";
 import Card from "../card";
 import css from "./index.module.css";
 import { Loading } from "../../ui/icons";
+import { H2 } from "../../ui/text";
 
 //Nano: Mapeo de los estados de redux con las props del elemento
 function mapStateToProps(state) {
@@ -43,38 +44,46 @@ function CardsContainer(props) {
 
   //Nano: Devolución de la etiqueta
   return (
-    <div className={css.divCardContainer}>
-      {!media.length ? (
-        <>
-          <Loading />
-          <Loading />
-          <Loading />
-          <Loading />
-          <Loading />
-          <Loading />
-          <Loading />
-          <Loading />
-          <Loading />
-          <Loading />
-        </>
-      ) : media[0] === "No hay coincidencias" ? (
-        <h1 style={{ color: "white" }}>{media[0]}</h1>
-      ) : (
-        media.map((element, index) => {
-          return (
-            <Card
-              key={element.id + element.type}
-              media={element}
-              priority={index == 0 ? true : false}
-              actors={element.actors}
-              sinopsis={element.overview}
-              title={element.title}
-              director={element.director}
-              delay={index <= 5 ? index : 5}
-            />
-          );
-        })
-      )}
+    <div>
+      <div className={css.titleContainer}>
+        <div className={css.titleWrapper}>
+          <H2 className={css.title}>Populares</H2>
+        </div>
+        <div className={css.titleWrapper}></div>
+      </div>
+      <div className={css.divCardContainer}>
+        {!media.length ? (
+          <>
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+          </>
+        ) : media[0] === "No hay coincidencias" ? (
+          <h1 style={{ color: "white" }}>{media[0]}</h1>
+        ) : (
+          media.map((element, index) => {
+            return (
+              <Card
+                key={element.id + element.type}
+                media={element}
+                priority={index == 0 ? true : false}
+                actors={element.actors}
+                sinopsis={element.overview}
+                title={element.title}
+                director={element.director}
+                delay={index <= 5 ? index : 5}
+              />
+            );
+          })
+        )}
+      </div>
     </div>
   );
 }

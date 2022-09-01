@@ -1,5 +1,5 @@
 // Manu: Importacion de librerias
-import { CloseIcon, ArrowRightIcon } from "../../ui/icons";
+import { CloseIcon, ArrowRightIcon, SearchIcon } from "../../ui/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
@@ -45,22 +45,38 @@ function SearchBar(props) {
           : css.searchBarContainer
       }
     >
-      <form onSubmit={handleOnSubmit} className={css.searchBarForm}>
-        <div className={css.searchBarIcons} onClick={props.toggle}>
-          <CloseIcon />
-        </div>
-        <input
-          className={css.searchBarInput}
-          type="text"
-          placeholder="Buscar..."
-          onChange={handleOnChange}
-        />
-        <button type="submit" className={css.searchBarButton}>
-          <div className={css.searchBarIcons}>
-            <ArrowRightIcon />
+      {props.type == "outlined" ? (
+        <form onSubmit={handleOnSubmit} className={css.searchBarForm}>
+          <div className={css.containerSearchBar}>
+            <input
+              className={css.searchBarInputDesktop}
+              type="text"
+              placeholder="Busca una película o serie"
+              onChange={handleOnChange}
+            />
+            <button type="submit" className={css.searchBarButtonDesktop}>
+              <SearchIcon />
+            </button>
           </div>
-        </button>
-      </form>
+        </form>
+      ) : (
+        <form onSubmit={handleOnSubmit} className={css.searchBarForm}>
+          <div className={css.searchBarIcons} onClick={props.toggle}>
+            <CloseIcon />
+          </div>
+          <input
+            className={css.searchBarInput}
+            type="text"
+            placeholder="Buscar..."
+            onChange={handleOnChange}
+          />
+          <button type="submit" className={css.searchBarButton}>
+            <div className={css.searchBarIcons}>
+              <ArrowRightIcon />
+            </div>
+          </button>
+        </form>
+      )}
     </div>
   );
 }

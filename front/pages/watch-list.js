@@ -3,8 +3,8 @@ import { H2 } from "../ui/text";
 
 export default function WatchList() {
   return (
-    <Layout>
-      <div style={{ backgroundColor: "black" }}>
+    <Layout filterless={true}>
+      <div style={{ backgroundColor: "black", height: "80vh" }}>
         <H2>WatchList</H2>
       </div>
     </Layout>

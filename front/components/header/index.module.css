@@ -1,10 +1,13 @@
 .header{
+    margin: 0 auto;
+   
     position: sticky;
     top: 0px;
     z-index: 90;
     
 }
 .headerFiltersContainer{
+    padding: 0 16px;
     max-width: 360px;
     margin: 0 auto;
     background-color: var(--background);

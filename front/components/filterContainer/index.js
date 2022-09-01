@@ -33,7 +33,7 @@ export default function FilterContainer() {
 
   return (
     <div>
-      <div>
+      <div className={css.buttonsContainer}>
         <button
           className={css.openButton}
           onClick={() => {

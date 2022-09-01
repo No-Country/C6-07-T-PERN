@@ -2,6 +2,8 @@
     margin: 0;
 }
 .commentsSectionContainer{
+  margin: 0 auto;
+  max-width: 1105px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -14,6 +16,11 @@
     width: 100%;
     
   }
+  .userCommentSection{
+    width: 100%;
+    max-width: 660px;
+    margin: 0 auto;
+  }
   .commentsForm{
     display: flex;
     flex-direction: column;
@@ -23,21 +30,27 @@
     font-family: inherit;
     color: var(--text);
     width: 100%;
+    max-width: 200px;
     height: 25px;
     background:none;
     border: 1px solid var(--outlined);
 border-radius: 8px;
   }
   .commentsTextArea{
+    resize: none;
     font-family: inherit;
     color: var(--text);
     width: 100%;
-    height: 100px;
+    max-width: 660px;
+    height: 106px;
     background:none;
     border: 1px solid var(--outlined);
 border-radius: 8px;
   }
   .commentsInput:focus, .commentsTextArea:focus{
-    border: 1px solid var(--accent);
+    border-color: var(--accent);
     outline: none;
+  }
+  .commentsSubmitButton{
+    place-self: end;
   }

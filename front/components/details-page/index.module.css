@@ -2,7 +2,9 @@
     margin: 0;
 }
 .mainContainer{
+    margin: 0 auto;
     padding: 0 16px;
+    max-width: 1040px;
 }
 .detailsContainer{
     margin-bottom: 50px;
@@ -11,10 +13,43 @@ flex-direction: column;
 gap: 40px;
 
 }
+.movieDetailsContainer{
+    margin: 0 auto;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+@media screen and (min-width:1108px){
+    .movieDetailsContainer{
+        justify-content: stretch;
+        flex-direction: row;
+    }
+}
 .title{
     margin: 24px 0;
 }
 .cardContainer{
     display: flex;
     justify-content: center;
+}
+.videoContainer{
+    width: 100%;
+    height: 215px;
+}
+@media screen and (min-width:744px){
+    .videoContainer{
+        height: 410px;
+    }
+}
+@media screen and (min-width:1108px){
+    .videoContainer{
+        height: 420px;
+    }
+}
+@media screen and (min-width:1465px){
+    .videoContainer{
+        height: 500px;
+    }
 }
