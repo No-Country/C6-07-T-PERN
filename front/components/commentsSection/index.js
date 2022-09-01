@@ -4,7 +4,6 @@ import Comment from "../comment";
 import css from "./index.module.css";
 export default function CommentsSection(props) {
   const comments = props.comments;
-  console.log(comments);
   return (
     <div className={css.commentsSectionContainer}>
       <div>
