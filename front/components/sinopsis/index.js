@@ -17,49 +17,14 @@ import { H2, H3semiBold, H4 } from "../../ui/text";
 import css from "./index.module.css";
 import { useTransition, animated } from "react-spring";
 import { useState } from "react";
+import SinopsisHeader from "../sinopsisHeader";
 export default function Sinopsis(props) {
   const [showSaved, setShowSaved] = useState(false);
   const [showSeen, setShowSeen] = useState(false);
   const test = false;
   return (
-    <animated.div
-      style={props.style}
-      className={css.divSinopsisContainer}
-      onMouseLeave={() => {
-        props.setShowSinopsis(false);
-      }}
-    >
-      <div className={css.divSinopsisHeader}>
-        {showSaved ? (
-          <SavedIcon
-            onClick={() => {
-              setShowSaved(false);
-            }}
-          />
-        ) : (
-          <UnsavedIcon
-            onClick={() => {
-              setShowSaved(true);
-            }}
-          />
-        )}
-        <h2 style={{ padding: "0px 15px", textAlign: "center" }}>
-          {props.title}
-        </h2>
-        {showSeen ? (
-          <SeenIcon
-            onClick={() => {
-              setShowSeen(false);
-            }}
-          />
-        ) : (
-          <UnseenIcon
-            onClick={() => {
-              setShowSeen(true);
-            }}
-          />
-        )}
-      </div>
+    <animated.div style={props.style} className={css.divSinopsisContainer}>
+      <SinopsisHeader title={props.title} />
       <div className={css.divSinopsisBody}>
         <div>
           <H4 className={css.sinopsisTextMargin}>Director</H4>

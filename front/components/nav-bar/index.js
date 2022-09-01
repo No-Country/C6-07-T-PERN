@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { isLogged } from "../../lib";
 import {
   ProfileIcon,
   ColorLogo,
@@ -13,16 +14,20 @@ import css from "./index.module.css";
 export default function NavBar(props) {
   const [showLogContainer, setShowLogContainer] = useState(false);
   const router = useRouter();
-  const logged = false;
-  function handleWatchList() {
-    if (logged) {
+
+  async function handleWatchList() {
+    console.log("handle");
+    const res = await isLogged();
+    if (res.logged == true) {
       router.push("/watch-list");
     } else {
       setShowLogContainer(true);
     }
   }
-  function handleProfile() {
-    if (logged) {
+  async function handleProfile() {
+    console.log("handle");
+    const res = await isLogged();
+    if (res.logged == true) {
       router.push("/profile");
     } else {
       setShowLogContainer(true);
@@ -31,7 +36,12 @@ export default function NavBar(props) {
   return (
     <nav className={css.navBar}>
       <div className={css.navBarItemsContainer}>
-        <div className={css.navBarLogo}>
+        <div
+          className={css.navBarLogo}
+          onClick={() => {
+            router.push("/");
+          }}
+        >
           <ColorLogo></ColorLogo>
         </div>
         <div className={css.searchBar}>

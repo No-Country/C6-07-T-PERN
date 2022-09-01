@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { H2, H3, H5 } from "../../ui/text";
+import { H2, H3, H4Buttons, H5 } from "../../ui/text";
 import css from "../alertMessages/index.module.css";
 
 export function PasswordRecovery() {
@@ -41,7 +41,7 @@ export function MustLoginAlert(props) {
             props.showAlert(false);
           }}
         >
-          Ingresar o registrarse
+          <H4Buttons className={css.primary}>Ingresar o registrarse</H4Buttons>
         </button>
         <button
           className={css.closeButton}
@@ -49,7 +49,7 @@ export function MustLoginAlert(props) {
             props.close(false);
           }}
         >
-          Cerrar
+          <H4Buttons className={css.primary}>Cancelar</H4Buttons>
         </button>
       </div>
     </div>

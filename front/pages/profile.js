@@ -1,12 +1,10 @@
 import { Layout } from "../components/layout";
-import { H2 } from "../ui/text";
+import ProfilePage from "../components/profile-page";
 
 export default function Profile() {
   return (
-    <Layout>
-      <div style={{ backgroundColor: "black" }}>
-        <H2>Perfil</H2>
-      </div>
+    <Layout filterless={true}>
+      <ProfilePage />
     </Layout>
   );
 }

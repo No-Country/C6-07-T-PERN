@@ -4,7 +4,7 @@ import Header from "../header";
 export function Layout(props) {
   return (
     <>
-      <Header></Header>
+      <Header filterless={props.filterless}></Header>
       {props.children}
       <Footer></Footer>
     </>

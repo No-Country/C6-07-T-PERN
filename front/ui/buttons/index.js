@@ -18,7 +18,7 @@ export function PrimaryButton(props) {
     }
   }
   return (
-    <button className={css.primary} onClick={clicked}>
+    <button className={css.primary + " " + props.className} onClick={clicked}>
       {props.children}
       {showClick ? <div className={css.clickedPrimary}></div> : null}
     </button>

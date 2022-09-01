@@ -14,14 +14,16 @@ import {
   SeenIcon,
   SaveIcon,
   ArrowUpIcon,
+  DarkLogo,
 } from "../../ui/icons";
 import Image from "next/future/image";
 import css from "./index.module.css";
 import { useEffect, useState } from "react";
-import { H2, H3semiBold, H4 } from "../../ui/text";
+import { H2, H3semiBold, H4, H5 } from "../../ui/text";
 import { useRouter } from "next/router";
 import { useTransition, animated } from "react-spring";
 import Sinopsis from "../sinopsis";
+import SinopsisHeader from "../sinopsisHeader";
 //Denis: funcion que devuelve el icono de la plataforma correspondiente
 function showMoviePlatform(platform) {
   //Denis: Objeto con los posibles elementos a retornar
@@ -120,20 +122,28 @@ export default function Card(props) {
           ) : null
         )}
       </div>
-      <animated.div
-        className={css.divCardImage}
-        onMouseEnter={() => {
-          setShowsinopsis(true);
-        }}
-      >
-        <Image
-          priority={props.priority}
-          className={css.imgCardMain}
-          width={290}
-          height={420}
-          src={media.image}
-          alt={`${media.title}-banner`}
-        />
+      <animated.div className={css.divCardImage}>
+        {/null/.test(media.image) ? (
+          <div className={css.mockImage}>
+            <SinopsisHeader title={props.title} />
+            <div className={css.mockImageBody}>
+              Imagen no disponible
+              <DarkLogo />
+            </div>
+          </div>
+        ) : (
+          <>
+            <SinopsisHeader title="" className={css.imgHeader} />
+            <Image
+              priority={props.priority}
+              className={css.imgCardMain}
+              width={290}
+              height={420}
+              src={media.image}
+              alt={`${media.title}-banner`}
+            />
+          </>
+        )}
         <div className={css.divImgCardPlatform}>
           {media.platforms.map((element) => {
             return showMoviePlatform(element);
@@ -146,14 +156,18 @@ export default function Card(props) {
           <ImdbIcon></ImdbIcon>
         </div>
         <p className={css.textCardYear}>{media.release_year}</p>
-        <PrimaryButton
-          className={css.buttonCardData}
-          onClick={() => {
-            goToDetails(media.id, media.type);
-          }}
-        >
-          Mas Datos
-        </PrimaryButton>
+        {props.type ? (
+          <H5>{props.type == "movie" ? "Película" : "Serie"}</H5>
+        ) : (
+          <PrimaryButton
+            className={css.buttonCardData}
+            onClick={() => {
+              goToDetails(media.id, media.type);
+            }}
+          >
+            Mas Datos
+          </PrimaryButton>
+        )}
       </div>
     </div>
   );

@@ -5,13 +5,14 @@
 }
 .mainDiv{
 	position: absolute;
-
+width: 100%;
 	z-index: 99;
 	display: flex;
 	align-items: center;
+	justify-content: center;
      height: 100vh;
 	background-color: rgba(58, 58, 58, 0.575);
-	max-width: 360px;
+	
 	
 }
 .mainForm{
@@ -30,7 +31,10 @@ background-color: var(--background);
 	border: 1px solid var(--outlined);
 	border-radius: 8px;
   }
-
+.mailForm:focus{
+	border-color: var(--accent);
+	outline: none;
+}
 .passRecoveryLink {
 	font-family: inherit;
 	color: var(--outlined);
@@ -48,8 +52,12 @@ background-color: var(--background);
 	float: right;
 }
 .registerForm {
+	cursor: pointer;
 	margin: 0px 5px;
 	background-color: transparent;
 	color: var(--primary);
 	border: transparent;
+}
+.registerForm:hover{
+color: var(--primary-hover);
 }

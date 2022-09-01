@@ -4,6 +4,7 @@ import Comment from "../comment";
 import css from "./index.module.css";
 export default function CommentsSection(props) {
   const comments = props.comments;
+  console.log(comments);
   return (
     <div className={css.commentsSectionContainer}>
       <div>
@@ -20,10 +21,10 @@ export default function CommentsSection(props) {
             })
           : null}
       </div>
-      <div>
+      <div className={css.userCommentSection}>
         <H5>Deja tu comentario:</H5>
         <form className={css.commentsForm} onSubmit={props.submit}>
-          <label>
+          {/* <label>
             <H5 className={css.margin} aut>
               User Name:
             </H5>
@@ -33,10 +34,12 @@ export default function CommentsSection(props) {
               name="userName"
               autoComplete="off"
             />
-          </label>
-          <H5 className={css.margin}>Comentario:</H5>
+          </label> */}
+          {/* <H5 className={css.margin}>Comentario:</H5> */}
           <textarea className={css.commentsTextArea} name="message"></textarea>
-          <PrimaryButton>Enviar</PrimaryButton>
+          <PrimaryButton className={css.commentsSubmitButton}>
+            Enviar
+          </PrimaryButton>
         </form>
       </div>
     </div>
