@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { getComments, postComment } from "../../lib/api";
 import { H2, H4 } from "../../ui/text";
 import Card from "../card";
 import CommentsSection from "../commentsSection";
@@ -9,16 +10,11 @@ export default function DetailsPage(props) {
   const media = props.media;
   const [comments, setComments] = useState();
   const [newComment, setNewComment] = useState(false);
+
   useEffect(() => {
-    async function getComments() {
-      const data = await fetch(
-        `http://localhost:3001/comments?mediaType=${props.type}&mediaId=${media.id}`
-      );
-      const json = await data.json();
-      setComments(json);
-    }
-    getComments();
+    getComments(props.type, media.id).then((response) => setComments(response));
   }, [media, newComment]);
+
   async function handleSubmit(e) {
     e.preventDefault();
     const comment = {
@@ -27,13 +23,7 @@ export default function DetailsPage(props) {
       mediaId: media.id,
       user: e.target.userName.value,
     };
-    await fetch("http://localhost:3001/comments", {
-      method: "post",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(comment),
-    });
+    await postComment(comment);
     setNewComment(!newComment);
   }
 
