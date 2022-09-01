@@ -3,7 +3,7 @@ import FilterContainer from "../components/filterContainer";
 import Footer from "../components/footer";
 
 import NavBar from "../components/nav-bar";
-import { getJWT, isLogged, logout } from "../lib/api";
+
 import {
   OutlinedButton,
   PlatformFilterButton,
