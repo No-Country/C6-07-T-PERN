@@ -44,7 +44,7 @@ export default function UI() {
           padding: "10px",
         }}
       >
-        {/* <button onClick={() => getLists(11019, "serie")}>test</button> */}
+        <button onClick={() => getLists("my_list")}>test</button>
         <DarkLogo></DarkLogo>
         <ColorLogo></ColorLogo>
         <ProfileIcon></ProfileIcon>

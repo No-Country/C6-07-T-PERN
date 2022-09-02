@@ -83,17 +83,15 @@ export class ListsService {
     return list;
   }
 
-  async getListsByUser(
-    list: 'watched' | 'my_list',
-    user: User,
-  ): Promise<List[]> {
+  async getListsByUser(user: User): Promise<List[]> {
     if (!user) throw new UnauthorizedException();
     let mediaList: List[] = await this.listRepository.find({
       relations: ['media', 'user'],
-      where: { [list]: true, user: { id: user.id } },
+      where: { user: { id: user.id } },
       select: {
         id: true,
-        [list]: true,
+        watched: true,
+        my_list: true,
         user: { id: true, username: true },
         media: { mediaId: true, mediaType: true },
       },

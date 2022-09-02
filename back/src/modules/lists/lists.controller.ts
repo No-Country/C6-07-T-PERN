@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Get,
@@ -52,11 +53,8 @@ export class ListsController {
 
   @Get('/user_media')
   @UseGuards(AuthGuard('jwt'))
-  async getListsByUser(
-    @Query('list') list: 'watched' | 'my_list',
-    @GetUser() user: User,
-  ): Promise<List[]> {
-    const lists = await this.listService.getListsByUser(list, user);
+  async getListsByUser(@GetUser() user: User): Promise<List[]> {
+    const lists = await this.listService.getListsByUser(user);
     return lists;
   }
 }

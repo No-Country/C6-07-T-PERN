@@ -14,9 +14,28 @@ export async function SaveMovie(media) {
   return await data.json();
 }
 
-export function getLists(mediaId, mediaType) {
+// export function getLists(mediaId, mediaType) {
+//   const token = `Bearer ${getJWT()}`;
+//   return fetch(`${host}/lists?mediaId=${mediaId}&mediaType=${mediaType}`, {
+//     method: "get",
+//     headers: {
+//       Accept: "application/json",
+//       "Content-Type": "application/json",
+//       Authorization: token,
+//     },
+//   })
+//     .then((response) => {
+//       return response.json();
+//     })
+//     .then((response) => {
+//       console.log(response);
+//       return response;
+//     });
+// }
+
+export function getLists() {
   const token = `Bearer ${getJWT()}`;
-  return fetch(`${host}/lists?mediaId=${mediaId}&mediaType=${mediaType}`, {
+  return fetch(`${host}/lists/user_media`, {
     method: "get",
     headers: {
       Accept: "application/json",
@@ -28,12 +47,8 @@ export function getLists(mediaId, mediaType) {
       return response.json();
     })
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       return response;
     });
+  // {{Host}}
 }
-
-
-export function getLists(mediaType, list){
-    // {{Host}}/lists/user_media?list=watched
-  }
