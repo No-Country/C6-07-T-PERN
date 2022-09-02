@@ -8,6 +8,10 @@
     flex-direction: column;
     gap: 16px;
 }
+.commentsBox{
+  display: flex;
+  flex-direction: column-reverse;
+}
 .comment::after {
     display: block;
     content: "";
