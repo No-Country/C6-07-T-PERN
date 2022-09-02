@@ -88,7 +88,6 @@ export class CommentsService {
         });
         media = newMedia;
       }
-
       const newComment: Comment = this.commentRepository.create({
         message,
         media,

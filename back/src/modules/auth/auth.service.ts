@@ -146,4 +146,9 @@ export class AuthService {
   isLogged(user: User): boolean {
     return user ? true : false;
   }
+
+  getUser(user: User): { username: string; email: string; createdAt: Date } {
+    const { username, email, createdAt } = user;
+    return { username, email, createdAt };
+  }
 }
