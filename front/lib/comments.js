@@ -1,5 +1,6 @@
 import { host } from ".";
 import { getJWT } from "./authentication";
+const api_key = process.env.APIKEY;
 
 export async function getComments(type, mediaId) {
   const data = await fetch(

@@ -3,6 +3,7 @@ import FilterContainer from "../components/filterContainer";
 import Footer from "../components/footer";
 
 import NavBar from "../components/nav-bar";
+import { getLists } from "../lib/list";
 
 import {
   OutlinedButton,
@@ -43,6 +44,7 @@ export default function UI() {
           padding: "10px",
         }}
       >
+        <button onClick={() => getLists("my_list")}>test</button>
         <DarkLogo></DarkLogo>
         <ColorLogo></ColorLogo>
         <ProfileIcon></ProfileIcon>

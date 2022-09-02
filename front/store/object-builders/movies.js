@@ -1,3 +1,5 @@
+import store from "..";
+
 const api_key = process.env.APIKEY;
 
 //Nano: Función para llamar la API de detalles
@@ -82,7 +84,13 @@ function getTrailer(mediaId) {
 }
 
 //Nano: Función para construir el objeto media con la información necesaria para nuestro filtros
-export async function movieBuilder(mediaId, country) {
+export async function movieBuilder(mediaId, lists, country) {
+  //Nano: Extraigo las listas
+  const thisMediaLists = lists.find(
+    (media) =>
+      media.media.mediaId == mediaId && media.media.mediaType == "movie"
+  );
+
   //Nano: Hago la llamada a la API de detalles
   const details = await getDetails(mediaId);
   if (details.id) {
@@ -129,6 +137,7 @@ export async function movieBuilder(mediaId, country) {
       title: title,
       overview: details.overview || "No disponible",
       release_date: details.release_date,
+      // release_year: mediaId,
       release_year: details.release_date
         ? details.release_date.slice(0, 4)
         : "N/D",
@@ -146,6 +155,8 @@ export async function movieBuilder(mediaId, country) {
       })),
       trailer: `${trailer}`,
       type: "movie",
+      watched: thisMediaLists && thisMediaLists.watched,
+      my_list: thisMediaLists && thisMediaLists.my_list,
     };
     return media;
   }

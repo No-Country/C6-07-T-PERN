@@ -4,6 +4,7 @@ import store from "..";
 //Nano: Importo builders de archivos propios
 import { serieBuilder } from "./series";
 import { movieBuilder } from "./movies";
+import { getLists } from "../../lib/list";
 
 const api_key = process.env.APIKEY;
 
@@ -12,6 +13,7 @@ export async function getMediaFromAPI(caller, query) {
   // `https://api.themoviedb.org/3/movie/now_playing?api_key=${api_key}&language=en-US&`
   const filter = store.getState().filterReducer.filter;
   const adult = filter.adults;
+  const lists = await getLists();
   let baseURL;
   switch (caller) {
     case "trending":
@@ -52,9 +54,9 @@ export async function getMediaFromAPI(caller, query) {
   const media = await Promise.all(
     allResultsNoDuplicated.map(async (result) => {
       if (result.media_type === "movie")
-        return await movieBuilder(result.id, "AR");
+        return await movieBuilder(result.id, lists, "AR");
       if (result.media_type === "tv")
-        return await serieBuilder(result.id, "AR");
+        return await serieBuilder(result.id, lists, "AR");
     })
   );
   return media;

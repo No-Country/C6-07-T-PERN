@@ -82,4 +82,21 @@ export class ListsService {
     if (!list) throw new NotFoundException();
     return list;
   }
+
+  async getListsByUser(user: User): Promise<List[]> {
+    if (!user) throw new UnauthorizedException();
+    let mediaList: List[] = await this.listRepository.find({
+      relations: ['media', 'user'],
+      where: { user: { id: user.id } },
+      select: {
+        id: true,
+        watched: true,
+        my_list: true,
+        user: { id: true, username: true },
+        media: { mediaId: true, mediaType: true },
+      },
+    });
+    if (!mediaList) throw new NotFoundException();
+    return mediaList;
+  }
 }

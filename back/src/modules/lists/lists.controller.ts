@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Put, UseGuards } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Get,
+  Param,
+  Put,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from '../auth/get-user.decorator';
 import { User } from '../users/users.entity';
@@ -31,14 +40,21 @@ export class ListsController {
   @Get()
   @UseGuards(AuthGuard('jwt'))
   async getListsByMediaIdAndUser(
-    @Body() body: GetMediaListsDto,
+    @Query('mediaId') mediaId: number,
+    @Query('mediaType') mediaType: 'movie' | 'serie',
     @GetUser() user: User,
-  ): Promise<any> {
-    const { mediaId, mediaType } = body;
+  ): Promise<List> {
     return await this.listService.getListsByMediaIdAndUser(
       mediaType,
-      mediaId,
+      Number(mediaId),
       user,
     );
+  }
+
+  @Get('/user_media')
+  @UseGuards(AuthGuard('jwt'))
+  async getListsByUser(@GetUser() user: User): Promise<List[]> {
+    const lists = await this.listService.getListsByUser(user);
+    return lists;
   }
 }
