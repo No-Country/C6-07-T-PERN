@@ -8,7 +8,7 @@ export default function Login(props) {
   const [showAlert, setShowshowAlert] = useState(true);
 
   return (
-    <div>
+    <div className={props.className}>
       {showAlert ? (
         <MustLoginAlert showAlert={setShowshowAlert} close={props.close} />
       ) : (

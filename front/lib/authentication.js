@@ -6,7 +6,7 @@ function storeJWT(jwt) {
 }
 
 //Nano: Funcion obtener la JWT del almacenamiento local
-function getJWT() {
+export function getJWT() {
   return window.localStorage.getItem("JWT");
 }
 
