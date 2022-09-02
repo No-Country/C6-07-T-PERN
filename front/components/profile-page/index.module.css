@@ -1,0 +1,14 @@
+.profileContainer {
+	background-color: var(--background); 
+	height: 75vh; 
+	margin: 12px;
+}
+
+.profileUser {
+	padding: 2px;
+}
+
+.profileCloseButton {
+	display: flex; 
+	flex-direction: row-reverse;
+}
