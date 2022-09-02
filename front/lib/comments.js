@@ -1,4 +1,5 @@
 import { host } from ".";
+const api_key = process.env.APIKEY;
 
 export async function getComments(type, mediaId) {
   const data = await fetch(
