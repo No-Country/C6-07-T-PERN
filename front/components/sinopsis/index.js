@@ -19,12 +19,9 @@ import { useTransition, animated } from "react-spring";
 import { useState } from "react";
 import SinopsisHeader from "../sinopsisHeader";
 export default function Sinopsis(props) {
-  const [showSaved, setShowSaved] = useState(false);
-  const [showSeen, setShowSeen] = useState(false);
-  const test = false;
   return (
     <animated.div style={props.style} className={css.divSinopsisContainer}>
-      <SinopsisHeader title={props.title} />
+      <SinopsisHeader title={props.title} id={props.id} type={props.type} />
       <div className={css.divSinopsisBody}>
         <div>
           <H4 className={css.sinopsisTextMargin}>Director</H4>

@@ -19,7 +19,7 @@ export default function NavBar(props) {
     console.log("handle");
     const res = await isLogged();
     if (res.logged == true) {
-      router.push("/watch-list");
+      router.push("/my-list");
     } else {
       setShowLogContainer(true);
     }
