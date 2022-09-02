@@ -12,7 +12,7 @@ export default function DetailsPage(props) {
   const [comments, setComments] = useState();
   const [newComment, setNewComment] = useState(false);
   const [showLoggin, setshowLoggin] = useState(false);
-  console.log(media);
+
   useEffect(() => {
     getComments(props.type, media.id).then((response) => setComments(response));
   }, [media, newComment]);
@@ -77,7 +77,6 @@ export default function DetailsPage(props) {
             </div>
           </div>
           <div>
-            <H4 className={css.noMargin}>Comentarios</H4>
             {comments ? (
               <CommentsSection comments={comments} submit={handleSubmit} />
             ) : null}

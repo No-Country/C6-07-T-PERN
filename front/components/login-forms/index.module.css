@@ -22,7 +22,7 @@ background-color: var(--background);
 }
 .mailForm {
 	font-family: inherit;
-	color: var(--outlined);
+	color: var(--text);
 	align-items: flex-start;
 	resize: none;
 	width: 100%;

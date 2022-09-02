@@ -34,6 +34,7 @@
   margin: 0 auto;
 }
 .divCardContainer {
+  min-height: 80vh;
   margin: 24px auto 40px auto;
   width: 100%;
   max-width: 1500px;

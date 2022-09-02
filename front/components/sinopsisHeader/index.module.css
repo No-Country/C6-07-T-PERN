@@ -2,3 +2,14 @@
     display: flex;
     justify-content: space-between;
   }
+  .leftalert{
+    z-index: 99;
+    top: -67px;
+    position: absolute;
+  }
+  .rightalert{
+    z-index: 99;
+    position: absolute;
+    top: -67px;
+    right: -37px;
+  }

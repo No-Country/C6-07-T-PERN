@@ -4,7 +4,7 @@ import css from "./index.module.css";
 import { LoginAlert } from "../alertMessages";
 import { useState } from "react";
 import { getAuth, getToken } from "../../lib";
-import Spinner from "../../ui/spinner";
+import { Spinner } from "../../ui/spinner";
 
 export function SignUpForm(props) {
   const [loading, setLoading] = useState(false);
@@ -16,7 +16,7 @@ export function SignUpForm(props) {
     e.preventDefault();
     setError(false);
     setLoading(true);
-    const res = await getAuth(username, email, password);
+    const res = await getAuth(username, email, password.toString());
     if (res && res.status === 201) {
       setLoading(false);
       props.show(false);
@@ -153,7 +153,7 @@ export function LoginForm(props) {
             }}
           />
           {wrongPassword ? (
-            <H5 className={css.red}>Contraseña incorrecta</H5>
+            <H5 className={css.red}>Contraseña o User incorrectos</H5>
           ) : null}
           <div className={css.enterButton}>
             <H4>

@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Spinner, { SpinnerAccent } from "../../ui/spinner";
 import { H2, H3, H4Buttons, H5 } from "../../ui/text";
 import css from "../alertMessages/index.module.css";
 
@@ -101,21 +102,22 @@ export function MessageBox(props) {
   return <div className={css.borderlessMessage}>{props.children}</div>;
 }
 
-export function Messages() {
+export function Messages(props) {
   return (
-    <div>
-      <MessageBox className={css.borderlessMessage}>
-        <H5>Agregada a la lista</H5>
-      </MessageBox>
-      <MessageBox className={css.borderlessMessage}>
-        <H5>Quitada de la lista</H5>
-      </MessageBox>
-      <MessageBox className={css.borderlessMessage}>
-        <H5>Marcada como vista</H5>
-      </MessageBox>
-      <MessageBox className={css.borderlessMessage}>
-        <H5>Marcada como no vista</H5>
-      </MessageBox>
-    </div>
+    <MessageBox className={css.borderlessMessage}>
+      <div
+        className={css.close}
+        onClick={() => {
+          props.click({ show: false });
+        }}
+      >
+        <H5>x</H5>
+      </div>
+      {props.loading ? (
+        <SpinnerAccent />
+      ) : (
+        <H5 className={css.accent}>{props.text}</H5>
+      )}
+    </MessageBox>
   );
 }
