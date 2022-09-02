@@ -18,7 +18,7 @@ _Deploy: (https://test-de-deploy.vercel.app/)
 
 _Menciona las herramientas que utilizaste para crear tu proyecto_
 
-- Figma (https://www.figma.com/)
+- UX: Figma, UXteak
 - Front: HTML, CSS, JavaScript, React, Redux, NextJS
 - Back: NestJS, TypeScript
 - ORM: TypeORM
