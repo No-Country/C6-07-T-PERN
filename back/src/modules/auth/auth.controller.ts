@@ -30,11 +30,21 @@ export class AuthController {
 
   @Get()
   @UseGuards(OptionalJwtAuthGuard)
-  async isLogged(
-    @GetUser() loggedUser: User,
-  ): Promise<{ logged: boolean }> {
+  async isLogged(@GetUser() loggedUser: User): Promise<{ logged: boolean }> {
     try {
       return { logged: this.authService.isLogged(loggedUser) };
+    } catch (e) {
+      throw new BadRequestException();
+    }
+  }
+
+  @Get('/user')
+  @UseGuards(AuthGuard('jwt'))
+  getUser(@GetUser() loggedUser: User): {
+    user: { username: string; email: string; createdAt: Date };
+  } {
+    try {
+      return { user: this.authService.getUser(loggedUser) };
     } catch (e) {
       throw new BadRequestException();
     }
