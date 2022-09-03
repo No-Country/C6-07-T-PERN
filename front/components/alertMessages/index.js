@@ -105,14 +105,6 @@ export function MessageBox(props) {
 export function Messages(props) {
   return (
     <MessageBox className={css.borderlessMessage}>
-      <div
-        className={css.close}
-        onClick={() => {
-          props.click({ show: false });
-        }}
-      >
-        <H5>x</H5>
-      </div>
       {props.loading ? (
         <SpinnerAccent />
       ) : (

@@ -8,7 +8,7 @@
 
     color: white;
     gap: 80px;
-    padding: 0 35px;
+    padding: 0 70px;
 }
 .checkboxContainer{
 	display: flex;
@@ -21,4 +21,5 @@
     justify-content: flex-end;
     gap: 10px;
     margin-right: 35px;
+    margin-top: 10px;
 }

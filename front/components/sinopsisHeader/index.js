@@ -3,13 +3,14 @@ import { isLogged } from "../../lib";
 import { SaveMovie } from "../../lib/list";
 import { SavedIcon, SeenIcon, UnsavedIcon, UnseenIcon } from "../../ui/icons";
 import { Messages } from "../alertMessages";
+import Login from "../login";
 import css from "./index.module.css";
 export default function SinopsisHeader(props) {
   const [showSaved, setShowSaved] = useState(false);
   const [showSeen, setShowSeen] = useState(false);
   const [showAlertLeft, setShowAlertLeft] = useState({});
   const [showAlertRight, setShowAlertRight] = useState({});
-  console.log(props.list);
+
   useEffect(() => {
     if (props.list) {
       setShowSaved(true);
@@ -29,10 +30,10 @@ export default function SinopsisHeader(props) {
         };
         const res = await SaveMovie(media);
         if (!res.error) {
-          setShowAlertLeft({ show: true, text: "Quiatada de la lista" });
+          setShowAlertLeft({ show: true, text: "Quitada de la lista" });
           setTimeout(() => {
             setShowAlertLeft({ show: false, text: "" });
-          }, 1500);
+          }, 1200);
           setShowSaved(false);
         } else {
           console.log("error");
@@ -53,7 +54,7 @@ export default function SinopsisHeader(props) {
           });
           setTimeout(() => {
             setShowAlertLeft({ show: false, text: "" });
-          }, 1500);
+          }, 1200);
           setShowSaved(true);
         } else {
           console.log("error");
