@@ -19,18 +19,6 @@ export default function DetailsPage(props) {
       setComments(response)
     );
   }, [media, newComment]);
-  useEffect(() => {
-    if (showLoggin) {
-      window.scroll(0, 0);
-      window.onscroll = () => {
-        window.scroll(0, 0);
-      };
-    } else {
-      window.onscroll = () => {
-        window.scroll();
-      };
-    }
-  }, [showLoggin]);
 
   async function handleSubmit(e) {
     e.preventDefault();

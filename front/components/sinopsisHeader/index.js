@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { isLogged } from "../../lib";
 import { SaveMovie } from "../../lib/list";
@@ -10,6 +11,7 @@ export default function SinopsisHeader(props) {
   const [showSeen, setShowSeen] = useState(false);
   const [showAlertLeft, setShowAlertLeft] = useState({});
   const [showAlertRight, setShowAlertRight] = useState({});
+  const router = useRouter();
 
   useEffect(() => {
     if (props.list) {
@@ -107,7 +109,8 @@ export default function SinopsisHeader(props) {
 
       actions[type]();
     } else {
-      alert("debes estar loggeado");
+      props.showLogin(true);
+      // alert("debes estar loggeado");
     }
   }
 
