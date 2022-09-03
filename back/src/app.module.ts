@@ -10,9 +10,14 @@ import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { MediaModule } from './modules/media/media.module';
 import { ListsModule } from './modules/lists/lists.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      isGlobal: true,
+    }),
     CommentsModule,
     //Import TypeOrm into the module and connect the DB with forRoot method
     TypeOrmModule.forRoot({
