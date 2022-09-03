@@ -16,7 +16,6 @@ export default function NavBar(props) {
   const router = useRouter();
 
   async function handleWatchList() {
-    console.log("handle");
     const res = await isLogged();
     if (res.logged == true) {
       router.push("/my-list");
@@ -25,7 +24,6 @@ export default function NavBar(props) {
     }
   }
   async function handleProfile() {
-    console.log("handle");
     const res = await isLogged();
     if (res.logged == true) {
       router.push("/profile");

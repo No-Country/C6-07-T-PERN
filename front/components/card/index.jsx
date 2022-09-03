@@ -120,6 +120,8 @@ export default function Card(props) {
               sinopsis={props.sinopsis}
               id={media.id}
               type={media.type}
+              list={media.my_list}
+              watched={media.watched}
             />
           ) : null
         )}
@@ -127,7 +129,12 @@ export default function Card(props) {
       <animated.div className={css.divCardImage}>
         {/null/.test(media.image) ? (
           <div className={css.mockImage}>
-            <SinopsisHeader title={props.title} />
+            <SinopsisHeader
+              icons={true}
+              title={props.title}
+              list={media.my_list}
+              watched={media.watched}
+            />
             <div className={css.mockImageBody}>
               Imagen no disponible
               <DarkLogo />
@@ -136,10 +143,13 @@ export default function Card(props) {
         ) : (
           <>
             <SinopsisHeader
+              icons={true}
               title=""
               className={css.imgHeader}
               id={media.id}
               type={media.type}
+              list={media.my_list}
+              watched={media.watched}
             />
             <Image
               priority={props.priority}

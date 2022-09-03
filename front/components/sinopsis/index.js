@@ -21,7 +21,13 @@ import SinopsisHeader from "../sinopsisHeader";
 export default function Sinopsis(props) {
   return (
     <animated.div style={props.style} className={css.divSinopsisContainer}>
-      <SinopsisHeader title={props.title} id={props.id} type={props.type} />
+      <SinopsisHeader
+        title={props.title}
+        id={props.id}
+        type={props.type}
+        list={props.list}
+        watched={props.watched}
+      />
       <div className={css.divSinopsisBody}>
         <div>
           <H4 className={css.sinopsisTextMargin}>Director</H4>

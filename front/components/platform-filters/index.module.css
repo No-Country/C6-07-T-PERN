@@ -4,3 +4,12 @@
     display: flex;
 justify-content: space-between;
 }
+@media screen and (min-width:744px){
+    .divPlatformFilters{
+        padding: 16px 0;
+    width: 360px;
+    display: flex;
+    gap: 20px;
+
+    }
+}

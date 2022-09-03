@@ -33,4 +33,39 @@
       transform: rotate(360deg);
     }
   }
+.spinnerAccent {
+    display: inline-block;
+    position: relative;
+    width: 15px;
+    height: 15px;
+  }
+  .spinnerAccent div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    margin: 2px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    animation: spinnerAccent 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: var(--accent) transparent transparent transparent;
+  }
+  .spinnerAccent div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .spinnerAccent div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .spinnerAccent div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes spinnerAccent {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
   

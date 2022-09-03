@@ -30,7 +30,6 @@ export function isLogged() {
       return response.json();
     })
     .then((response) => {
-      console.log(response);
       return response;
     });
 }

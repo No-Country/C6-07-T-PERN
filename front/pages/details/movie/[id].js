@@ -9,10 +9,10 @@ export default function DetailsMovie() {
   const router = useRouter();
   const { id } = router.query;
   const [movie, setMovie] = useState();
-  console.log(id);
+
   useEffect(() => {
     async function getMovie() {
-      const data = await movieBuilder(id, "ar");
+      const data = await movieBuilder(id, [], "ar");
       setMovie(data);
     }
     getMovie();

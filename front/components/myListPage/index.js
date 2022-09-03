@@ -1,24 +1,13 @@
 import { useEffect, useState } from "react";
-import { movieBuilder } from "../../store/object-builders/movies";
+
 import { H2 } from "../../ui/text";
 import Card from "../card";
 import { list } from "./mockList.js";
 import css from "./index.module.css";
 import { Loading } from "../../ui/icons";
-export default function MyListPage() {
-  const [watchedMovies, setWatchedMovies] = useState(null);
-  useEffect(() => {
-    async function constructor() {
-      const array = [];
-      const movie1 = await movieBuilder(361743, "ar");
-      const movie2 = await movieBuilder(94997, "ar");
-      const movie3 = await movieBuilder(629176, "ar");
-      array.push(movie1, movie2, movie3);
-      setWatchedMovies(array);
-    }
-
-    constructor();
-  });
+import { getLists } from "../../lib/list";
+import { isLogged } from "../../lib";
+export default function MyListPage(props) {
   return (
     <div className={css.myListContainer}>
       <div className={css.titleContainer}>
@@ -28,9 +17,9 @@ export default function MyListPage() {
         <div className={css.titleWrapper}></div>
       </div>
       <div className={css.divCardContainer}>
-        {watchedMovies ? (
+        {props.media ? (
           <>
-            {watchedMovies.map((element, index) => {
+            {props.media.map((element, index) => {
               return (
                 <Card
                   key={element.id + element.type}
