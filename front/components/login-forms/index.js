@@ -47,6 +47,8 @@ export function SignUpForm(props) {
           <H5>Correo electrónico</H5>
         </div>
         <input
+          style={{ color: "white" }}
+          placeholder="tumail@gmail.com"
           className={css.mailForm}
           type="text"
           name="email"
@@ -59,6 +61,8 @@ export function SignUpForm(props) {
           <H5>Contraseña</H5>
         </div>
         <input
+          style={{ color: "white" }}
+          placeholder="Contraseña de 8 dígitos o más"
           className={css.mailForm}
           name="password"
           type="password"
