@@ -25,7 +25,7 @@ export default function WatchList() {
   //efect que buildea el objeto media con las movies y series
   useEffect(() => {
     async function builder(list) {
-      const filtered = list.filter((item) => item.my_list || item.watched);
+      const filtered = list.filter((item) => item.my_list);
       const res = await Promise.all(
         filtered.map(async function (item) {
           if (item.media.mediaType == "movie") {

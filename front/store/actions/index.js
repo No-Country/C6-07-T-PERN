@@ -4,7 +4,8 @@ import { getMediaFromAPI } from "../object-builders/mediaCalls";
 import { definedMediaFilter, mediaFilter } from "../object-builders/filters";
 
 export const SET_MEDIA = "media/set";
-export const CLEAR_MEDIA = "media/clear";
+export const CLEAR_FILTERED_MEDIA = "media/filtered/clear";
+export const CLEAR_ALL_MEDIA = "media/all/clear";
 export const FILTER_MEDIA = "media/filter";
 export const SET_FILTER_BY_PLATFORM = "filter/platform/set";
 export const SET_FILTER_BY_GENRE = "filter/genre/set";
@@ -57,9 +58,16 @@ export function getMedia(caller, query) {
   };
 }
 
-export function clearMedia() {
+export function clearFilteredMedia() {
   return {
-    type: CLEAR_MEDIA,
+    type: CLEAR_FILTERED_MEDIA,
+    payload: [],
+  };
+}
+
+export function clearAllMedia() {
+  return {
+    type: CLEAR_ALL_MEDIA,
     payload: [],
   };
 }

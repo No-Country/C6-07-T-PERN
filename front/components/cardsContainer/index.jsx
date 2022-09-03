@@ -3,7 +3,7 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 //Nano: Importado de archivos propios:
-import { clearMedia, filterMedia, getMedia } from "../../store/actions";
+import { clearFilteredMedia, filterMedia, getMedia } from "../../store/actions";
 import Card from "../card";
 import css from "./index.module.css";
 import { Loading } from "../../ui/icons";
@@ -37,7 +37,7 @@ function CardsContainer(props) {
     !allMedia.length && dispatch(getMedia("trending"));
     return function setUp() {
       if (!media.length) return dispatch(filterMedia());
-      media.length && dispatch(clearMedia());
+      media.length && dispatch(clearFilteredMedia());
       setTimeout(() => dispatch(filterMedia()));
     };
   }, [filter, allMedia]);

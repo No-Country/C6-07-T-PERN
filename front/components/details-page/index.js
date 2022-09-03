@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getComments, isLogged, postComment } from "../../lib";
+import { getAllComments } from "../../lib/comments";
 import { H2, H4 } from "../../ui/text";
 import Card from "../card";
 import CommentsSection from "../commentsSection";
@@ -14,7 +15,9 @@ export default function DetailsPage(props) {
   const [showLoggin, setshowLoggin] = useState(false);
 
   useEffect(() => {
-    getComments(props.type, media.id).then((response) => setComments(response));
+    getAllComments(props.type, media.id).then((response) =>
+      setComments(response)
+    );
   }, [media, newComment]);
   useEffect(() => {
     if (showLoggin) {
@@ -28,6 +31,7 @@ export default function DetailsPage(props) {
       };
     }
   }, [showLoggin]);
+
   async function handleSubmit(e) {
     e.preventDefault();
     const comment = {
@@ -35,14 +39,9 @@ export default function DetailsPage(props) {
       type: props.type,
       mediaId: media.id,
     };
-    const res = await isLogged();
-    if (res.logged == true) {
-      await postComment(comment);
-      e.target.reset();
-      setNewComment(!newComment);
-    } else {
-      setshowLoggin(true);
-    }
+    await postComment(comment);
+    e.target.reset();
+    setNewComment(!newComment);
   }
 
   return (
@@ -78,7 +77,11 @@ export default function DetailsPage(props) {
           </div>
           <div>
             {comments ? (
-              <CommentsSection comments={comments} submit={handleSubmit} />
+              <CommentsSection
+                setshowLoggin={setshowLoggin}
+                comments={comments}
+                submit={handleSubmit}
+              />
             ) : null}
           </div>
         </div>

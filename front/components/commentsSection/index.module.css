@@ -1,68 +1,71 @@
-.margin{
-    margin: 0;
+.margin {
+  margin: 0;
 }
-.containerTitle{
+.containerTitle {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.commentsSectionContainer{
+.commentsSectionContainer {
   margin: 0 auto;
   max-width: 1105px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-.commentsBox{
+.commentsBox {
   display: flex;
   flex-direction: column-reverse;
+  line-height: 24px;
+  padding: 0px 10px;
+  /* border: red 1px solid */
 }
 .comment::after {
-    display: block;
-    content: "";
-    height: 1px;
-    background-color: var(--background-secondary);
-    width: 100%;
-    
-  }
-  .userCommentSection{
-    width: 100%;
-    max-width: 660px;
-    margin: 0 auto;
-  }
-  .commentsForm{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .commentsInput{
-    font-family: inherit;
-    color: var(--text);
-    width: 100%;
-    max-width: 200px;
-    height: 25px;
-    background:none;
-    border: 1px solid var(--outlined);
-border-radius: 8px;
-  }
-  .commentsTextArea{
-    resize: none;
-    font-family: inherit;
-    color: var(--text);
-    width: 100%;
-    max-width: 660px;
-    height: 106px;
-    background:none;
-    border: 1px solid var(--outlined);
-border-radius: 8px;
-  }
-  .commentsInput:focus, .commentsTextArea:focus{
-    border-color: var(--accent);
-    outline: none;
-  }
-  .commentsSubmitButton{
-    width: 200px;
-    display: flex;
-    gap: 15px;
-    place-self: end;
-  }
+  display: block;
+  content: "";
+  height: 1px;
+  background-color: var(--background-secondary);
+  width: 100%;
+}
+.userCommentSection {
+  width: 100%;
+  max-width: 660px;
+  margin: 0 auto;
+}
+.commentsForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.commentsInput {
+  font-family: inherit;
+  color: var(--text);
+  width: 100%;
+  max-width: 200px;
+  height: 25px;
+  background: none;
+  border: 1px solid var(--outlined);
+  border-radius: 8px;
+}
+.commentsTextArea {
+  resize: none;
+  font-family: inherit;
+  color: var(--text);
+  width: 100%;
+  max-width: 660px;
+  height: 106px;
+  background: none;
+  border: 1px solid var(--outlined);
+  border-radius: 8px;
+}
+.commentsInput:focus,
+.commentsTextArea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+.commentsSubmitButton {
+  width: 200px;
+  display: flex;
+  gap: 15px;
+  place-self: end;
+}

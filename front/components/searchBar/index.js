@@ -5,7 +5,7 @@ import { useState } from "react";
 
 // Manu: Importacion de archivos propios
 import css from "./index.module.css";
-import { clearMedia, getMedia } from "../../store/actions";
+import { clearFilteredMedia, clearMedia, getMedia } from "../../store/actions";
 import { useRouter } from "next/router";
 
 //Nano: Mapeo de los estados de redux con las props del elemento
@@ -31,7 +31,7 @@ function SearchBar(props) {
   // Nano: Manejo del submit
   function handleOnSubmit(event) {
     event.preventDefault();
-    dispatch(clearMedia());
+    dispatch(clearFilteredMedia());
     dispatch(getMedia("search", searchValue));
     router.push("/");
   }
