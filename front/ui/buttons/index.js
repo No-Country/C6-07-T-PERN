@@ -45,7 +45,10 @@ export function OutlinedButton(props) {
 }
 export function BorderlessButton(props) {
   return (
-    <button className={css.borderLess} onClick={props.onClick}>
+    <button
+      className={css.borderLess + " " + props.className}
+      onClick={props.onClick}
+    >
       {props.children}
     </button>
   );
