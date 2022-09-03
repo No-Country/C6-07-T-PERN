@@ -12,7 +12,7 @@ _Para aquellas personas que no se preocupaban por elegir, les va a ahorrar much�
 
 ## Comenzando 🚀
 
-_Deploy: (https://test-de-deploy.vercel.app/)
+_Deploy: (https://miravos.vercel.app/)
 
 ## Construido con 🛠️
 
@@ -34,8 +34,8 @@ _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios
 
 - **Adrián Fermanelli** - _UX UI Designer_ - [AdrianFermanelli](https://github.com/AdrianFermanelli)
 - **Fabián Alfonso Gómez** - _Full Stack - PERN_ - [Nano204](https://https://github.com/Nano204)
-- **Manuel Alejandro Martinez** - _Full Stack - PERN_ - [Manu-Martinez](#https://github.com/Manu-Martinez)
-- **Denis Parada** - _Full Stack - PERN_ - [DenisMPar](#https://github.com/DenisMPar)
+- **Manuel Alejandro Martinez** - _Full Stack - PERN_ - [Manu-Martinez](https://github.com/Manu-Martinez)
+- **Denis Parada** - _Full Stack - PERN_ - [DenisMPar](https://github.com/DenisMPar)
 
 También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto.
 
