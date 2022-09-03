@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { isLogged } from "../../lib";
 import { OutlinedButton, PrimaryButton } from "../../ui/buttons";
 import { H4, H5 } from "../../ui/text";
 import Comment from "../comment";
@@ -6,6 +7,12 @@ import css from "./index.module.css";
 export default function CommentsSection(props) {
   const [showTextArea, setShowTextArea] = useState();
   const comments = props.comments;
+
+  async function showLoggin() {
+    const res = await isLogged();
+    if (!res.logged) return props.setshowLoggin(true);
+    setShowTextArea(true);
+  }
 
   return (
     <div className={css.commentsSectionContainer}>
@@ -35,9 +42,7 @@ export default function CommentsSection(props) {
       <div className={css.containerTitle}>
         <H4>Comentarios:</H4>
         {!showTextArea ? (
-          <PrimaryButton onClick={() => setShowTextArea(true)}>
-            Comentar
-          </PrimaryButton>
+          <PrimaryButton onClick={showLoggin}>Comentar</PrimaryButton>
         ) : null}
       </div>
       <div className={css.commentsBox}>

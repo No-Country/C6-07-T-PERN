@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import { isLogged } from "../../lib";
-import { getMedia } from "../../store/actions";
+import { clearAllMedia, getMedia } from "../../store/actions";
 import {
   ProfileIcon,
   ColorLogo,
@@ -17,7 +17,7 @@ import css from "./index.module.css";
 //Nano: Mapeo de los funciones dispatch de redux con las props del elemento
 function mapDispatchToProps(dispatch) {
   return {
-    getMedia: () => dispatch(getMedia()),
+    clearAllMedia: () => dispatch(clearAllMedia()),
   };
 }
 
@@ -44,7 +44,7 @@ function NavBar(props) {
   }
   async function handleReload() {
     console.log("handle reload");
-    dispatch(getMedia("trending"));
+    dispatch(clearAllMedia());
     router.push("/");
   }
   return (

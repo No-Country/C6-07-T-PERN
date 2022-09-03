@@ -4,6 +4,7 @@ import FilterContainer from "../components/filterContainer";
 import Footer from "../components/footer";
 
 import NavBar from "../components/nav-bar";
+import { getAllComments } from "../lib/comments";
 import { getLists } from "../lib/list";
 
 import {
@@ -45,7 +46,7 @@ export default function UI() {
           padding: "10px",
         }}
       >
-        <button onClick={() => getLists("my_list")}>test</button>
+        <button onClick={() => getAllComments("movie", 361743)}>test</button>
         <DarkLogo></DarkLogo>
         <ColorLogo></ColorLogo>
         <ProfileIcon></ProfileIcon>
