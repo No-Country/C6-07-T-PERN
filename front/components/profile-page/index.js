@@ -1,12 +1,25 @@
 import { useRouter } from "next/router";
+import { connect, useDispatch } from "react-redux";
 import { logout } from "../../lib";
+import { clearAllFilters, clearAllMedia } from "../../store/actions";
 import { BorderlessButton } from "../../ui/buttons";
 import { H2, H3, H5 } from "../../ui/text";
 import css from "./index.module.css";
 
-export default function ProfilePage(props) {
+//Nano: Mapeo de los funciones dispatch de redux con las props del elemento
+function mapDispatchToProps(dispatch) {
+  return {
+    clearAllMedia: () => dispatch(clearAllMedia()),
+    clearAllFilters: () => dispatch(clearAllFilters()),
+  };
+}
+export function ProfilePage(props) {
   const router = useRouter();
+  const dispatch = useDispatch();
+
   async function handleClick() {
+    dispatch(clearAllMedia());
+    dispatch(clearAllFilters());
     await logout();
     router.push("/");
   }
@@ -29,3 +42,4 @@ export default function ProfilePage(props) {
     </div>
   );
 }
+export default connect(null, mapDispatchToProps)(ProfilePage);

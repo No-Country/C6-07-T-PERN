@@ -11,6 +11,7 @@ export const SET_FILTER_BY_PLATFORM = "filter/platform/set";
 export const SET_FILTER_BY_GENRE = "filter/genre/set";
 export const SET_FILTER_BY_RATING = "filter/rating/set";
 export const SET_ORDER_BY_YEAR = "order/year/set";
+export const CLEAR_ALL_FILTERS = "clear/all/filters";
 
 const api_key = process.env.APIKEY;
 
@@ -93,6 +94,20 @@ function orderMediaByYear(mediaList, order) {
     return media;
   }
   return mediaList;
+}
+
+export function clearAllFilters() {
+  return {
+    type: CLEAR_ALL_FILTERS,
+    payload: {
+      adults: false,
+      min_release_year: null,
+      max_release_year: null,
+      vote_average: [],
+      genres: [],
+      platforms: [],
+    },
+  };
 }
 
 export function filterMedia() {

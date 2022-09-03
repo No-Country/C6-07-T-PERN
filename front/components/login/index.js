@@ -18,7 +18,10 @@ export default function Login(props) {
       ) : (
         <>
           {showLogIn ? (
-            <SignUpForm show={setShowLogIn} />
+            <SignUpForm
+              show={setShowLogIn}
+              showRegistered={setshowRegistered}
+            />
           ) : (
             <>
               {showRegistered ? (
