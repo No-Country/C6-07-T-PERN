@@ -5,6 +5,16 @@ import { LoginAlert } from "../alertMessages";
 import { useState } from "react";
 import { getAuth, getToken } from "../../lib";
 import { Spinner } from "../../ui/spinner";
+import { connect, useDispatch } from "react-redux";
+import { clearAllFilters, clearAllMedia } from "../../store/actions";
+
+//Nano: Mapeo de los funciones dispatch de redux con las props del elemento
+function mapDispatchToProps(dispatch) {
+  return {
+    clearAllMedia: () => dispatch(clearAllMedia()),
+    clearAllFilters: () => dispatch(clearAllFilters()),
+  };
+}
 
 export function SignUpForm(props) {
   const [loading, setLoading] = useState(false);
@@ -79,7 +89,13 @@ export function SignUpForm(props) {
               Recordarme
             </label>
           </H4>
-          <PrimaryButton>{!loading ? "Registrate" : <Spinner />}</PrimaryButton>
+          <PrimaryButton
+            onClick={() => {
+              props.showRegistered(true);
+            }}
+          >
+            {!loading ? "Registrate" : <Spinner />}
+          </PrimaryButton>
         </div>
         {error ? (
           <H5 className={css.red}>Algo salio mal, vuelve a intentarlo.</H5>
@@ -88,7 +104,11 @@ export function SignUpForm(props) {
           <H5>¿Ya tenés cuenta?</H5>
           <button
             className={css.registerForm}
-            onClick={() => props.show(false)}
+            onClick={() => {
+              props.show(false);
+              props.showRegistered(false);
+              // console.log(props);
+            }}
           >
             Ingresa
           </button>
@@ -99,6 +119,7 @@ export function SignUpForm(props) {
 }
 
 export function LoginForm(props) {
+  const dispatch = useDispatch();
   const [logged, setLogged] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -112,6 +133,8 @@ export function LoginForm(props) {
     setLoading(true);
     const res = await getToken(identification, password);
     if (res && res.status === 200) {
+      dispatch(clearAllFilters());
+      dispatch(clearAllMedia());
       setLoading(false);
       setLogged(true);
     }
@@ -187,3 +210,5 @@ export function LoginForm(props) {
     </div>
   );
 }
+
+export default connect(null, mapDispatchToProps)(LoginForm);

@@ -1,4 +1,5 @@
 import {
+  CLEAR_ALL_FILTERS,
   SET_FILTER_BY_GENRE,
   SET_FILTER_BY_PLATFORM,
   SET_FILTER_BY_RATING,
@@ -45,6 +46,13 @@ const filterReducer = (state = initialState, action) => {
         filter: {
           ...state.filter,
           year_order: action.payload,
+        },
+      };
+    case CLEAR_ALL_FILTERS:
+      return {
+        filter: {
+          ...state.filter,
+          ...action.payload,
         },
       };
 

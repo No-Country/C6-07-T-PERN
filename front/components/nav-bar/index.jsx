@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import { isLogged } from "../../lib";
-import { clearAllMedia, getMedia } from "../../store/actions";
+import { clearAllFilters, clearAllMedia, getMedia } from "../../store/actions";
 import {
   ProfileIcon,
   ColorLogo,
@@ -18,6 +18,7 @@ import css from "./index.module.css";
 function mapDispatchToProps(dispatch) {
   return {
     clearAllMedia: () => dispatch(clearAllMedia()),
+    clearAllFilters: () => dispatch(clearAllFilters()),
   };
 }
 
@@ -44,6 +45,7 @@ function NavBar(props) {
   }
   async function handleReload() {
     console.log("handle reload");
+    dispatch(clearAllFilters());
     dispatch(clearAllMedia());
     router.push("/");
   }
