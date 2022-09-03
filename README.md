@@ -24,10 +24,6 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 - ORM: TypeORM
 - DB: PostgresSQL
 
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
 ## Autores ✒️
 
 _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
