@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { connect, useDispatch } from "react-redux";
 import { isLogged } from "../../lib";
+import { getMedia } from "../../store/actions";
 import {
   ProfileIcon,
   ColorLogo,
@@ -11,9 +13,18 @@ import Login from "../login";
 import SearchBar from "../searchBar";
 
 import css from "./index.module.css";
-export default function NavBar(props) {
+
+//Nano: Mapeo de los funciones dispatch de redux con las props del elemento
+function mapDispatchToProps(dispatch) {
+  return {
+    getMedia: () => dispatch(getMedia()),
+  };
+}
+
+function NavBar(props) {
   const [showLogContainer, setShowLogContainer] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   async function handleWatchList() {
     console.log("handle");
@@ -33,15 +44,15 @@ export default function NavBar(props) {
       setShowLogContainer(true);
     }
   }
+  async function handleReload() {
+    console.log("handle reload");
+    dispatch(getMedia("trending"));
+    router.push("/");
+  }
   return (
     <nav className={css.navBar}>
       <div className={css.navBarItemsContainer}>
-        <div
-          className={css.navBarLogo}
-          onClick={() => {
-            router.push("/");
-          }}
-        >
+        <div className={css.navBarLogo} onClick={handleReload}>
           <ColorLogo></ColorLogo>
         </div>
         <div className={css.searchBar}>
@@ -93,3 +104,5 @@ export default function NavBar(props) {
     </nav>
   );
 }
+
+export default connect(null, mapDispatchToProps)(NavBar);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ColorLogo } from "../../ui/icons";
-import NavBar from "../nav-bar";
+import NavBar from "../nav-bar/index";
 import SearchBar from "../searchBar";
 import SearchBarContainer from "../searchBarContainer";
 import PlatformFilters from "../platform-filters";
