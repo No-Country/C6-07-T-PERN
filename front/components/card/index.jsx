@@ -24,6 +24,7 @@ import { useRouter } from "next/router";
 import { useTransition, animated } from "react-spring";
 import Sinopsis from "../sinopsis";
 import SinopsisHeader from "../sinopsisHeader";
+import Login from "../login";
 //Denis: funcion que devuelve el icono de la plataforma correspondiente
 function showMoviePlatform(platform) {
   //Denis: Objeto con los posibles elementos a retornar
@@ -143,6 +144,7 @@ export default function Card(props) {
         ) : (
           <>
             <SinopsisHeader
+              showLogin={props.showLogin}
               icons={true}
               title=""
               className={css.imgHeader}
