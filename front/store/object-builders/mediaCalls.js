@@ -2,9 +2,8 @@
 import store from "..";
 
 //Nano: Importo builders de archivos propios
-import { serieBuilder } from "./series";
-import { movieBuilder } from "./movies";
 import { getLists } from "../../lib/list";
+import { mediaBuilder } from "./media";
 
 const api_key = process.env.APIKEY;
 
@@ -32,8 +31,15 @@ export async function getMediaFromAPI(caller, query) {
     default:
       break;
   }
+  console.log(
+    "genre",
+    await fetch(
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}&language=en-US`
+    ).then((r) => r.json())
+  );
   const apiCall = async (baseURL) => await fetch(baseURL).then((r) => r.json());
   const apiResponse = await apiCall(baseURL(1));
+  console.log(apiResponse);
   const { results, total_pages: pages } = apiResponse;
   const allResults = [...results];
   for (let i = 2; i <= 5 && i < pages; i++) {
@@ -53,10 +59,8 @@ export async function getMediaFromAPI(caller, query) {
 
   const media = await Promise.all(
     allResultsNoDuplicated.map(async (result) => {
-      if (result.media_type === "movie")
-        return await movieBuilder(result.id, lists, "AR");
-      if (result.media_type === "tv")
-        return await serieBuilder(result.id, lists, "AR");
+      const mediaType = result.media_type === "tv" ? "serie" : "movie";
+      return await mediaBuilder(result.id, mediaType, lists);
     })
   );
   return media;

@@ -4,8 +4,6 @@ import FilterContainer from "../components/filterContainer";
 import Footer from "../components/footer";
 
 import NavBar from "../components/nav-bar";
-import { getAllComments } from "../lib/comments";
-import { getLists } from "../lib/list";
 
 import {
   OutlinedButton,
@@ -32,6 +30,9 @@ import {
   Loading,
 } from "../ui/icons";
 import { H2, H3, H3semiBold, H4, H4Buttons, H5 } from "../ui/text";
+import { mediaBuilder } from "../store/object-builders/media";
+import { getLists } from "../lib/list";
+import { getMediaFromAPI } from "../store/object-builders/mediaCalls";
 
 export default function UI() {
   return (
@@ -46,7 +47,13 @@ export default function UI() {
           padding: "10px",
         }}
       >
-        <button onClick={() => getAllComments("movie", 361743)}>test</button>
+        <button
+          onClick={async () => {
+            console.log(await getMediaFromAPI("trending"));
+          }}
+        >
+          test
+        </button>
         <DarkLogo></DarkLogo>
         <ColorLogo></ColorLogo>
         <ProfileIcon></ProfileIcon>
