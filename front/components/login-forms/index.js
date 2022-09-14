@@ -7,6 +7,8 @@ import { getAuth, getToken } from "../../lib";
 import { Spinner } from "../../ui/spinner";
 import { connect, useDispatch } from "react-redux";
 import { clearAllFilters, clearAllMedia } from "../../store/actions";
+import Modal from "../modal";
+import { HidePasswordIcon } from "../../ui/icons";
 
 //Nano: Mapeo de los funciones dispatch de redux con las props del elemento
 function mapDispatchToProps(dispatch) {
@@ -22,6 +24,7 @@ export function SignUpForm(props) {
   const [username, setUsername] = useState([]);
   const [password, setPassword] = useState([]);
   const [email, setEmail] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
   async function handleSubmit(e) {
     e.preventDefault();
     setError(false);
@@ -38,6 +41,10 @@ export function SignUpForm(props) {
   return (
     <div className={css.mainDiv}>
       <form className={css.mainForm} onSubmit={handleSubmit}>
+	  <Modal onClick={() => {
+				setModalOpen(true);
+			}}></Modal>
+			{modalOpen && <Modal setOpenModal={setModalOpen} />}
         <div>
           <H2>Registrate</H2>
         </div>
@@ -70,8 +77,10 @@ export function SignUpForm(props) {
         <div>
           <H5>Contraseña</H5>
         </div>
-        <input
-          style={{ color: "white" }}
+		<view style={{ flexDirection: "row", borderBottomWidth: 1, paddingBottom: 10  }}> 
+		<HidePasswordIcon /> 
+		<input
+          style={{ color: "white", flex: 1 }}
           placeholder="Contraseña de 8 dígitos o más"
           className={css.mailForm}
           name="password"
@@ -80,8 +89,9 @@ export function SignUpForm(props) {
           onChange={(e) => {
             setPassword(e.target.value);
           }}
-        />
-        Contraseña de 8 dígitos o más
+        /> 
+        Contraseña de 8 dígitos o más 
+		</view> 
         <div className={css.enterButton}>
           <H4>
             <label>
