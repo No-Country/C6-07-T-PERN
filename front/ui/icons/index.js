@@ -21,6 +21,7 @@ import Unseen from "./images/unseen-icon.svg";
 import Save from "./images/save-icon.svg";
 import Saved from "./images/saved-icon.svg";
 import Unsaved from "./images/unsaved-icon.svg";
+import HidePassword from "./images/hid-password-icon.svg";
 import css from "./index.module.css";
 export function ColorLogo() {
   return <Color className={css.logo}></Color>;
@@ -95,4 +96,8 @@ export function PlatformIcon(props) {
 
 export function Loading() {
   return <div className={css.loaderMain}></div>;
+}
+
+export function HidePasswordIcon() {
+	return <HidePassword></HidePassword>;
 }

@@ -30,11 +30,19 @@ background-color: var(--background);
 	background: none;
 	border: 1px solid var(--outlined);
 	border-radius: 8px;
+	padding: 10px;
   }
 .mailForm:focus{
 	border-color: var(--accent);
 	outline: none;
 }
+
+.passwordIcon {
+	display: flex;
+	margin: 332px;
+	float: right;
+}
+
 .passRecoveryLink {
 	font-family: inherit;
 	color: var(--outlined);

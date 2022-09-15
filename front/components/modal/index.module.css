@@ -1,0 +1,9 @@
+.modalButton {
+	margin: 7px 0px 30px;
+	padding: 0;
+	width: 20px;
+  height: 24px;
+  display: block;
+  float: right;
+  background: var(--background);
+}
