@@ -78,7 +78,7 @@ export function SignUpForm(props) {
           <H5>Contraseña</H5>
         </div>
 		<view style={{ flexDirection: "row", borderBottomWidth: 1, paddingBottom: 10  }}> 
-		<HidePasswordIcon /> 
+		<span style={{ display: "block", position: "fixed", margin: "9px 340px" }}><HidePasswordIcon /></span>
 		<input
           style={{ color: "white", flex: 1 }}
           placeholder="Contraseña de 8 dígitos o más"
