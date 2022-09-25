@@ -13,24 +13,17 @@ export const SET_FILTER_BY_RATING = "filter/rating/set";
 export const SET_ORDER_BY_YEAR = "order/year/set";
 export const CLEAR_ALL_FILTERS = "clear/all/filters";
 
-const api_key = process.env.APIKEY;
-
 export function setFilterByPlatform(payload) {
   if (store.getState().filterReducer.filter.platforms.includes(payload)) {
     const platformsFilter = store
       .getState()
-      .filterReducer.filter.platforms.filter(
-        (platform) => platform !== payload
-      );
+      .filterReducer.filter.platforms.filter((platform) => platform !== payload);
     return {
       type: SET_FILTER_BY_PLATFORM,
       payload: platformsFilter,
     };
   }
-  const platformsFilter = [
-    ...store.getState().filterReducer.filter.platforms,
-    payload,
-  ];
+  const platformsFilter = [...store.getState().filterReducer.filter.platforms, payload];
   return {
     type: SET_FILTER_BY_PLATFORM,
     payload: platformsFilter,

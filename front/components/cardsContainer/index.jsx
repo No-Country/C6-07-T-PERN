@@ -28,9 +28,7 @@ function mapDispatchToProps(dispatch) {
 function CardsContainer(props) {
   const [login, setShowLogin] = useState(false);
   //Nano: Asociación del objeto media y los dispátch con las props:
-  const { allMedia, filteredMedia: media } = useSelector(
-    (state) => state.mediaReducer
-  );
+  const { allMedia, filteredMedia: media } = useSelector((state) => state.mediaReducer);
   const { filter } = useSelector((state) => state.filterReducer);
   const dispatch = useDispatch();
   //Nano: Aministración de estados de la etiqueta Card

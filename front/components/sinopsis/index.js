@@ -32,18 +32,26 @@ export default function Sinopsis(props) {
         <div>
           <H4 className={css.sinopsisTextMargin}>Director</H4>
           <H3semiBold className={css.sinopsisTextMargin}>
-            {props.director}{" "}
+            {props.director || "No disponible"}
           </H3semiBold>
         </div>
         <div>
           <H4 className={css.sinopsisTextMargin}>Elenco</H4>
-          {props.actors.map((element, index) => {
-            return index <= 1 ? (
-              <H3semiBold className={css.sinopsisTextMargin} key={element.id}>
-                {element.name}
-              </H3semiBold>
-            ) : null;
-          })}
+          {props.actors ? (
+            props.actors.map((element, index) => {
+              return (
+                index <= 1 && (
+                  <H3semiBold className={css.sinopsisTextMargin} key={element.id}>
+                    {element.name}
+                  </H3semiBold>
+                )
+              );
+            })
+          ) : (
+            <H3semiBold className={css.sinopsisTextMargin} key={"none"}>
+              No disponible
+            </H3semiBold>
+          )}
         </div>
         <div>
           <H3semiBold className={css.sinopsisTextMargin}>Sinopsis</H3semiBold>

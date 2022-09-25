@@ -7,9 +7,7 @@ export function definedMediaFilter(media) {
 export function mediaFilter(media, filter) {
   return media.filter((element) => {
     if (element) {
-      const adultFilter = filter.adults
-        ? element.adults === filter.adults
-        : true;
+      const adultFilter = filter.adults ? element.adults === filter.adults : true;
       const min_release_yearFilter = filter.min_release_year
         ? element.release_year >= filter.min_release_year
         : true;
@@ -20,9 +18,7 @@ export function mediaFilter(media, filter) {
         ? filter.vote_average.includes(Math.round(element.vote_average))
         : true;
       const genresFilter = filter.genres.length
-        ? element.genres
-            .map((genre) => filter.genres.includes(genre.name))
-            .includes(true)
+        ? element.genres.map((genre) => filter.genres.includes(genre.name)).includes(true)
         : true;
       const platformsFilter = filter.platforms.length
         ? element.platforms
