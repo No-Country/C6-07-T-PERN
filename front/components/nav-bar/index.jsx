@@ -3,12 +3,7 @@ import { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import { isLogged } from "../../lib";
 import { clearAllFilters, clearAllMedia, getMedia } from "../../store/actions";
-import {
-  ProfileIcon,
-  ColorLogo,
-  WatchListIcon,
-  SearchIcon,
-} from "../../ui/icons";
+import { ProfileIcon, ColorLogo, WatchListIcon, SearchIcon } from "../../ui/icons";
 import Login from "../login";
 import SearchBar from "../searchBar";
 
@@ -44,7 +39,6 @@ function NavBar(props) {
     }
   }
   async function handleReload() {
-    console.log("handle reload");
     dispatch(clearAllFilters());
     dispatch(clearAllMedia());
     router.push("/");
@@ -98,9 +92,7 @@ function NavBar(props) {
         </div>
         
       </div> */}
-      {showLogContainer ? (
-        <div>{<Login close={setShowLogContainer} />}</div>
-      ) : null}
+      {showLogContainer ? <div>{<Login close={setShowLogContainer} />}</div> : null}
     </nav>
   );
 }

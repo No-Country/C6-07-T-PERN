@@ -1,9 +1,5 @@
 import { H4 } from "../../ui/text";
-import {
-  BorderlessButton,
-  OutlinedButton,
-  PrimaryButton,
-} from "../../ui/buttons";
+import { BorderlessButton, OutlinedButton, PrimaryButton } from "../../ui/buttons";
 var _ = require("lodash");
 import css from "./index.module.css";
 import { setOrderByYear } from "../../store/actions";
@@ -18,7 +14,6 @@ function mapStateToProps(state) {
 
 function FilterYear(props) {
   const { filter } = useSelector((state) => state.filterReducer);
-  console.log(filter);
   const dispatch = useDispatch();
 
   let order = null;
