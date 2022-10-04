@@ -24,7 +24,7 @@ _Deploy: (https://miravos.vercel.app/)
 
 ## Autores ✒️
 
-- **Adrián Fermanelli** - _UX UI Designer_ - [AdrianFermanelli]((https://www.behance.net/adrianfermane)
+- **Adrián Fermanelli** - _UX UI Designer_ - [AdrianFermanelli](https://www.behance.net/adrianfermane)
 - **Fabián Alfonso Gómez** - _Full Stack - PERN_ - [Nano204](https://https://github.com/Nano204)
 - **Manuel Alejandro Martinez** - _Full Stack - PERN_ - [Manu-Martinez](https://github.com/Manu-Martinez)
 - **Denis Parada** - _Full Stack - PERN_ - [DenisMPar](https://github.com/DenisMPar)
