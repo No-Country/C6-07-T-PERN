@@ -16,8 +16,6 @@ _Deploy: (https://miravos.vercel.app/)
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
 - UX: Figma, UXteak, Photoshop
 - Front: HTML, CSS, JavaScript, React, Redux, NextJS
 - Back: NestJS, TypeScript
@@ -25,8 +23,6 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 - DB: PostgresSQL
 
 ## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
 - **Adrián Fermanelli** - _UX UI Designer_ - [AdrianFermanelli](https://github.com/AdrianFermanelli)
 - **Fabián Alfonso Gómez** - _Full Stack - PERN_ - [Nano204](https://https://github.com/Nano204)
